@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Minecraft Rus';
+    src: local('Minecraft Rus Regular'), local('Minecraft-Rus-Regular'),
+        url('Minecraft.woff2') format('woff2'),
+        url('Minecraft.woff') format('woff'),
+        url('Minecraft.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
