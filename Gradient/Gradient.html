@@ -1,0 +1,5089 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gradient-prefix</title>
+		<meta charset="utf-8">
+		<link rel="icon" type="image" href="">
+		<link href = "Minecraft/style.css" rel = "stylesheet" type = "text/css">
+		<style type="text/css">
+			.body {
+				margin: 0 auto;
+				font-family: 'Minecraft Rus';
+   				src: local('Minecraft Rus Regular'), local('Minecraft-Rus-Regular'),
+   				    url('Minecraft.woff2') format('woff2'),
+   				    url('Minecraft.woff') format('woff'),
+   				    url('Minecraft.ttf') format('truetype');
+   				font-weight: 400;
+   				font-style: normal;
+			}
+			.header {
+				margin: 0;
+			}
+			.imgPrefix {
+				margin: 0 auto;
+				background-image: url(PrefixRGBs.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-color: saddlebrown;
+				height: 150px;
+				width: 100%;
+				display: flex;
+   				justify-content: space-between;
+   				position: fixed;	
+			}
+			.automsg {
+				margin: 0 5px 0 5px;
+				background: linear-gradient(to right, red, white);
+    			-webkit-background-clip: text !important;
+    			-webkit-text-fill-color: transparent !important;
+   			}
+   			main {
+   				margin: 50px 0 0 5px;
+   				display: flex;
+   				justify-content: space-between;
+   			}
+   			.razmer {
+   				color: white;
+   				background-image: url(ListEnd.png);
+   			}
+   			h3 {
+   			 	color: white;
+   			}
+   			div {
+   			 	margin: 0 auto;
+   			 	padding: 3px 0px 3px 0px;
+   			 	cursor: pointer;
+   			 	text-align: center;
+   			 	font-size: 20px;
+   			}
+   			/*======================================================*/
+   			.mmenuu, .ssubmenuu {
+			    /* Убираю маркеры у списка*/
+			    list-style: none;
+			    /* Делаю элементы блочными. */
+			    display: block;
+			    /* Убираю отступы. */
+			    margin:0px;
+			    /* Убираю еще отступы! */
+			    padding:0px;
+			}
+			ul:after {
+			    /* Делаю элементы блочными. */
+			    display: block;
+			    /* Убираю выравнивание. */
+			    float: none;
+			    content: ' ';
+			    clear: both;
+			}
+			ul.mmenuu > li {
+			    /* Задаю выравнивание и позиционирование. */
+			    float: left;
+			    /* Считаем координаты относительно исходного места*/
+			    position: relative;
+			}
+			ul.mmenuu > li > a {
+			    /* Делаю элементы блочными: */
+			    display: block;
+			    /* Задаю белый цвет. */
+			    color: #fff;
+			    /* Задаю отступ 10px. */
+			    padding: 10px;
+			    /* Убираю форматирование*/
+			    text-decoration: none;
+			    /* Задаю цвет. */
+			    /*background-color: #da570f;*/
+			}
+			ul.mmenuu > li > a:hover {
+			    /* Задаю цвет при наведении. */
+			    /*background-color: #eb9316;*/
+			}
+			ul.ssubmenuu {
+			    position: absolute;
+			    width: 140px;
+			    top: 37px;
+			    left:0px;
+			    /* Делаю субменю скрытыми. */
+			    display: none;
+			    /* Цвет — белый. */
+			    background-color: rgba(255, 255, 255, 0);
+			}
+			ul.ssubmenuu > li {
+			    /* Блочное расположение элементов*/
+			    display: block;
+			}
+			ul.ssubmenuu > li > a {
+			    /* Делаю элементы блочными. */
+			    display: block;
+			    /* Убираю форматирование*/
+			    text-decoration: none;
+			    /* Задаю отступ. */
+			    padding: 10px;
+			    /* Задаю цвет. */
+			    color: #ffffff;
+			    /* Еще цвет. */
+			    background-color: rgba(0, 0, 0, 0.5);
+			}
+			ul.ssubmenuu > li > a:hover {
+			    /* Цвет бэкграунда при наведении. */
+			    background-color: rgba(0, 255, 255, 0.3);
+			    /* Задаю подчеркивание*/
+			    text-decoration: underline;
+			}
+			ul.mmenuu > li:hover > ul.ssubmenuu {
+			    /* Делаю элементы блочными. */
+			    display: block;
+			}
+			/*Источник: https://blogwork.ru/vypadayushhij-spisok-html/*/
+   		</style>
+   		<style type="text/css" id='play'>
+   			.play_1 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_2 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_3 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_4 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_5 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_6 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_7 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_8 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_9 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_10 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_11 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_12 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_13 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_14 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_15 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_16 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_17 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   			.play_18 {
+   				display: none;
+   				justify-content: space-between;
+   			}
+   		</style>
+   		<style type="text/css" id='#1'>
+   			.Omolon {
+   				background: linear-gradient(to right, #091E3A, #2F80ED, #2D9EE0)
+   			}
+   			.Farhan {
+   				background: linear-gradient(to right, #9400D3, #4B0082)
+   			}
+   			.Purple {
+   				background: linear-gradient(to right, #c84e89, #F15F79)
+   			}
+   			.Ibtesam {
+   				background: linear-gradient(to right, #00F5A0, #00D9F5)
+   			}
+   			.Radioactive_Heat {
+   				background: linear-gradient(to right, #F7941E, #72C6EF, #00A651)
+   			}
+   			.The_Sky_And_The_Sea {
+   				background: linear-gradient(to right, #F7941E, #004E8F)
+   			}
+   			.From_Ice_To_Fire {
+   				background: linear-gradient(to right, #72C6EF, #004E8F)
+   			}
+   			.Blue_Orange {
+   				background: linear-gradient(to right, #FD8112, #0085CA)
+   			}
+   			.Purple_Dream {
+   				background: linear-gradient(to right, #bf5ae0, #a811da)
+   			}
+   			.Blu {
+   				background: linear-gradient(to right, #00416A, #E4E5E6)
+   			}
+   			.Summer_Breeze {
+   				background: linear-gradient(to right, #fbed96, #abecd6)
+   			}
+   			.Ver {
+   				background: linear-gradient(to right, #FFE000, #799F0C)
+   			}
+   			.Ver_Black {
+   				background: linear-gradient(to right, #F7F8F8, #ACBB78)
+   			}
+   			.Combi {
+   				background: linear-gradient(to right, #00416A, #799F0C, #FFE000)
+   			}
+   			.Anwar {
+   				background: linear-gradient(to right, #334d50, #cbcaa5)
+   			}
+   			.Bluelagoo {
+   				background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC)
+   			}
+   			.Lunada {
+   				background: linear-gradient(to right, #5433FF, #20BDFF, #A5FECB)
+   			}
+   			.Reaqua {
+   				background: linear-gradient(to right, #799F0C, #ACBB78)
+   			}
+   			.Mango {
+   				background: linear-gradient(to right, #ffe259, #ffa751)
+   			}
+   			.Bupe {
+   				background: linear-gradient(to right, #00416A, #E4E5E6)
+   			}
+   			.Windy {
+   				background: linear-gradient(to right, #acb6e5, #86fde8)
+   			}
+		</style>
+		<style type="text/css" id='#2'>
+			.Royal_Blue {
+   			 	background: linear-gradient(to right, #536976, #292E49)
+   			}
+   			.Royal_Blue_Petrol {
+   				background: linear-gradient(to right, #BBD2C5, #536976, #292E49)
+   			}
+   			.Copper {
+   				background: linear-gradient(to right, #B79891, #94716B)
+   			}
+   			.Anamnisar {
+   				background: linear-gradient(to right, #9796f0, #fbc7d4)
+   			}
+   			.Petrol {
+   				background: linear-gradient(to right, #BBD2C5, #536976)
+   			}
+   			.Sky {
+   				background: linear-gradient(to right, #076585, #fff)
+   			}
+   			.Sel {
+   				background: linear-gradient(to right, #00467F, #A5CC82)
+   			}
+   			.Afternoon {
+   				background: linear-gradient(to right, #000C40, #607D8B)
+   			}
+   			.Skyline {
+   				background: linear-gradient(to right, #1488CC, #2B32B2)
+   			}
+   			.DIMIGO {
+   				background: linear-gradient(to right, #ec008c, #fc6767)
+   			}
+   			.Purple_Love {
+   				background: linear-gradient(to right, #cc2b5e, #753a88)
+   			}
+   			.Sexy_Blue {
+   				background: linear-gradient(to right, #2193b0, #6dd5ed)
+   			}
+   			.Blooker20 {
+   				background: linear-gradient(to right, #e65c00, #F9D423)
+   			}
+   			.Sea_Blue {
+   				background: linear-gradient(to right, #2b5876, #4e4376)
+   			}
+   			.Nimvelo {
+   				background: linear-gradient(to right, #314755, #26a0da)
+   			}
+   			.Hazel {
+   				background: linear-gradient(to right, #77A1D3, #79CBCA, #E684AE)
+   			}
+   			.Noon_to_Dusk {
+   				background: linear-gradient(to right, #ff6e7f, #bfe9ff)
+   			}
+   			.YouTube {
+   				background: linear-gradient(to right, #e52d27, #b31217)
+   			}
+   			.Cool_Brown {
+   				background: linear-gradient(to right, #603813, #b29f94)
+   			}
+   			.Harmonic_Energy {
+   				background: linear-gradient(to right, #16A085, #F4D03F)
+   			}
+   			.Playing_with_Reds {
+   				background: linear-gradient(to right, #D31027, #EA384D)
+   			}
+		</style>
+		<style type="text/css" id='#3'>
+			.Sunny_Days {
+   				background: linear-gradient(to right, #EDE574, #E1F5C4)
+   			}
+   			.Green_Beach {
+   				background: linear-gradient(to right, #02AAB0, #00CDAC)
+   			}
+   			.Intuitive_Purple {
+   				background: linear-gradient(to right, #DA22FF, #9733EE)
+   			}
+   			.Emerald_Water {
+   				background: linear-gradient(to right, #348F50, #56B4D3)
+   			}
+   			.Lemon_Twist {
+   				background: linear-gradient(to right, #3CA55C, #B5AC49)
+   			}
+   			.Monte_Carlo {
+   				background: linear-gradient(to right, #CC95C0, #DBD4B4, #7AA1D2)
+   			}
+   			.Horizon {
+   				background: linear-gradient(to right, #003973, #E5E5BE)
+   			}
+   			.Rose_Water {
+   				background: linear-gradient(to right, #E55D87, #5FC3E4)
+   			}
+   			.Frozen {
+   				background: linear-gradient(to right, #403B4A, #E7E9BB)
+   			}
+   			.Mango_Pulp {
+   				background: linear-gradient(to right, #F09819, #EDDE5D)
+   			}
+   			.Bloody_Mary {
+   				background: linear-gradient(to right, #FF512F, #DD2476)
+   			}
+   			.Aubergine {
+   				background: linear-gradient(to right, #AA076B, #61045F)
+   			}
+   			.Aqua_Marine {
+   				background: linear-gradient(to right, #1A2980, #26D0CE)
+   			}
+   			.Sunrise {
+   				background: linear-gradient(to right, #FF512F, #F09819)
+   			}
+   			.Purple_Paradise {
+   				background: linear-gradient(to right, #1D2B64, #F8CDDA)
+   			}
+   			.Stripe {
+   				background: linear-gradient(to right, #1FA2FF, #12D8FA, #A6FFCB)
+   			}
+   			.Sea_Weed {
+   				background: linear-gradient(to right, #4CB8C4, #3CD3AD)
+   			}
+   			.Pinky {
+   				background: linear-gradient(to right, #DD5E89, #F7BB97)
+   			}
+   			.Cherry {
+   				background: linear-gradient(to right, #EB3349, #F45C43)
+   			}
+   			.Mojito {
+   				background: linear-gradient(to right, #1D976C, #93F9B9)
+   			}
+   			.Juicy_Orange {
+   				background: linear-gradient(to right, #FF8008, #FFC837)
+   			}
+		</style>
+		<style type="text/css" id='#4'>
+			.Mirage {
+   				background: linear-gradient(to right, #16222A, #3A6073)
+   			}
+   			.Steel_Gray {
+   				background: linear-gradient(to right, #1F1C2C, #928DAB)
+   			}
+   			.Kashmir {
+   				background: linear-gradient(to right, #614385, #516395)
+   			}
+   			.Electric_Violet {
+   				background: linear-gradient(to right, #4776E6, #8E54E9)
+   			}
+   			.Venice_Blue {
+   				background: linear-gradient(to right, #085078, #85D8CE)
+   			}
+   			.BoraBora {
+   				background: linear-gradient(to right, #2BC0E4, #EAECC6)
+   			}
+   			.Moss {
+   				background: linear-gradient(to right, #134E5E, #71B280)
+   			}
+   			.Shroom_Haze {
+   				background: linear-gradient(to right, #5C258D, #4389A2)
+   			}
+   			.Mystic {
+   				background: linear-gradient(to right, #757F9A, #D7DDE8)
+   			}
+   			.Sea_Blizz {
+   				background: linear-gradient(to right, #1CD8D2, #93EDC7)
+   			}
+   			.Opa {
+   				background: linear-gradient(to right, #3D7EAA, #FFE47A)
+   			}
+   			.Titanium {
+   				background: linear-gradient(to right, #283048, #859398)
+   			}
+   			.Mantle {
+   				background: linear-gradient(to right, #24C6DC, #514A9D)
+   			}
+   			.Dracula {
+   				background: linear-gradient(to right, #DC2424, #4A569D)
+   			}
+   			.Peach {
+   				background: linear-gradient(to right, #ED4264, #FFEDBC)
+   			}
+   			.Moonrise {
+   				background: linear-gradient(to right, #DAE2F8, #D6A4A4)
+   			}
+   			.Clouds {
+   				background: linear-gradient(to right, #ECE9E6, #FFFFFF)
+   			}
+   			.Stellar {
+   				background: linear-gradient(to right, #7474BF, #348AC7)
+   			}
+   			.Bourbon {
+   				background: linear-gradient(to right, #EC6F66, #F3A183)
+   			}
+   			.Calm_Darya {
+   				background: linear-gradient(to right, #5f2c82, #49a09d)
+   			}
+   			.Influenza {
+   				background: linear-gradient(to right, #C04848, #480048)
+   			}
+		</style>
+		<style type="text/css" id='#5'>
+			.Shrimpy {
+   				background: linear-gradient(to right, #e43a15, #e65245)
+   			}
+   			.Army {
+   				background: linear-gradient(to right, #414d0b, #727a17)
+   			}
+   			.Miaka {
+   				background: linear-gradient(to right, #FC354C, #0ABFBC)
+   			}
+   			.Pinot_Noir {
+   				background: linear-gradient(to right, #4b6cb7, #182848)
+   			}
+   			.Day_Tripper {
+   				background: linear-gradient(to right, #f857a6, #ff5858)
+   			}
+   			.Namn {
+   				background: linear-gradient(to right, #a73737, #7a2828)
+   			}
+   			.Blurry_Beach {
+   				background: linear-gradient(to right, #d53369, #cbad6d)
+   			}
+   			.Vasily {
+   				background: linear-gradient(to right, #e9d362, #333333)
+   			}
+   			.A_Lost_Memory {
+   				background: linear-gradient(to right, #DE6262, #FFB88C)
+   			}
+   			.Petrichor {
+   				background: linear-gradient(to right, #666600, #999966)
+   			}
+   			.Jonquil {
+   				background: linear-gradient(to right, #FFEEEE, #DDEFBB)
+   			}
+   			.Sirius_Tamed {
+   				background: linear-gradient(to right, #EFEFBB, #D4D3DD)
+   			}
+   			.Kyoto {
+   				background: linear-gradient(to right, #c21500, #ffc500)
+   			}
+   			.Misty_Meadow {
+   				background: linear-gradient(to right, #215f00, #e4e4d9)
+   			}
+   			.Aqualicious {
+   				background: linear-gradient(to right, #50C9C3, #96DEDA)
+   			}
+   			.Moor {
+   				background: linear-gradient(to right, #616161, #9bc5c3)
+   			}
+   			.Almost {
+   				background: linear-gradient(to right, #ddd6f3, #faaca8)
+   			}
+   			.Forever_Lost {
+   				background: linear-gradient(to right, #5D4157, #A8CABA)
+   			}
+   			.Winter {
+   				background: linear-gradient(to right, #E6DADA, #274046)
+   			}
+   			.Nelson {
+   				background: linear-gradient(to right, #f2709c, #ff9472)
+   			}
+   			.Autumn {
+   				background: linear-gradient(to right, #DAD299, #B0DAB9)
+   			}
+		</style>
+		<style type="text/css" id='#6'>
+			.Candy {
+   			 	background: linear-gradient(to right, #D3959B, #BFE6BA)
+   			}
+   			.Reef {
+   				background: linear-gradient(to right, #00d2ff, #3a7bd5)
+   			}
+   			.The_Strain {
+   				background: linear-gradient(to right, #870000, #190A05)
+   			}
+   			.Dirty_Fog {
+   				background: linear-gradient(to right, #B993D6, #8CA6DB)
+   			}
+   			.Earthly {
+   				background: linear-gradient(to right, #649173, #DBD5A4)
+   			}
+   			.Virgin {
+   				background: linear-gradient(to right, #C9FFBF, #FFAFBD)
+   			}
+   			.Ash {
+   				background: linear-gradient(to right, #606c88, #3f4c6b)
+   			}
+   			.Cherryblossoms {
+   				background: linear-gradient(to right, #FBD3E9, #BB377D)
+   			}
+   			.Parklife {
+   				background: linear-gradient(to right, #ADD100, #7B920A)
+   			}
+   			.Dance_To_Forget {
+   				background: linear-gradient(to right, #FF4E50, #F9D423)
+   			}
+   			.Starfall {
+   				background: linear-gradient(to right, #F0C27B, #4B1248)
+   			}
+   			.Teal_Love {
+   				background: linear-gradient(to right, #AAFFA9, #11FFBD)
+   			}
+   			.Neon_Life {
+   				background: linear-gradient(to right, #B3FFAB, #12FFF7)
+   			}
+   			.Man_of_Steel {
+   				background: linear-gradient(to right, #780206, #061161)
+   			}
+   			.Amethyst {
+   				background: linear-gradient(to right, #9D50BB, #6E48AA)
+   			}
+   			.Cheer_Up_Emo_Kid {
+   				background: linear-gradient(to right, #556270, #FF6B6B)
+   			}
+   			.Shore {
+   				background: linear-gradient(to right, #70e1f5, #ffd194)
+   			}
+   			.Facebook_Messenger {
+   				background: linear-gradient(to right, #00c6ff, #0072ff)
+   			}
+   			.SoundCloud {
+   				background: linear-gradient(to right, #fe8c00, #f83600)
+   			}
+   			.Behongo {
+   				background: linear-gradient(to right, #52c234, #061700)
+   			}
+   			.ServQuick {
+   				background: linear-gradient(to right, #485563, #29323c)
+   			}
+		</style>
+		<style type="text/css" id='#7'>
+			.Friday {
+   			 	background: linear-gradient(to right, #83a4d4, #b6fbff)
+   			}
+   			.Martini {
+   				background: linear-gradient(to right, #FDFC47, #24FE41)
+   			}
+   			.Metallic_Toad {
+   				background: linear-gradient(to right, #abbaab, #ffffff)
+   			}
+   			.Between_The_Clouds {
+   				background: linear-gradient(to right, #73C8A9, #373B44)
+   			}
+   			.Crazy_Orange_I {
+   				background: linear-gradient(to right, #D38312, #A83279)
+   			}
+   			.Hersheys {
+   				background: linear-gradient(to right, #1e130c, #9a8478)
+   			}
+   			.Talking_To_Mice_Elf {
+   				background: linear-gradient(to right, #948E99, #2E1437)
+   			}
+   			.Purple_Bliss {
+   				background: linear-gradient(to right, #360033, #0b8793)
+   			}
+   			.Predawn {
+   				background: linear-gradient(to right, #FFA17F, #00223E)
+   			}
+   			.Endless_River {
+   				background: linear-gradient(to right, #43cea2, #185a9d)
+   			}
+   			.Pastel_Orange_at_the_Sun {
+   				background: linear-gradient(to right, #ffb347, #ffcc33)
+   			}
+   			.Twitch {
+   				background: linear-gradient(to right, #6441A5, #2a0845)
+   			}
+   			.Atlas {
+   				background: linear-gradient(to right, #FEAC5E, #C779D0, #4BC0C8)
+   			}
+   			.Instagram {
+   				background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)
+   			}
+   			.Flickr {
+   				background: linear-gradient(to right, #ff0084, #33001b)
+   			}
+   			.Vine {
+   				background: linear-gradient(to right, #00bf8f, #001510)
+   			}
+   			.Turquoise_flow {
+   				background: linear-gradient(to right, #136a8a, #267871)
+   			}
+   			.Portrait {
+   				background: linear-gradient(to right, #8e9eab, #eef2f3)
+   			}
+   			.Virgin_America {
+   				background: linear-gradient(to right, #7b4397, #dc2430)
+   			}
+   			.Koko_Caramel {
+   				background: linear-gradient(to right, #D1913C, #FFD194)
+   			}
+   			.Fresh_Turboscent {
+   				background: linear-gradient(to right, #F1F2B5, #135058)
+   			}
+		</style>
+		<style type="text/css" id='#8'>
+			.Green_to_dark {
+   			 	background: linear-gradient(to right, #6A9113, #141517)
+   			}
+   			.Ukraine {
+   				background: linear-gradient(to right, #004FF9, #FFF94C)
+   			}
+   			.Curiosity_blue {
+   				background: linear-gradient(to right, #525252, #3d72b4)
+   			}
+   			.Dark_Knight {
+   				background: linear-gradient(to right, #BA8B02, #181818)
+   			}
+   			.Piglet {
+   				background: linear-gradient(to right, #ee9ca7, #ffdde1)
+   			}
+   			.Lizard {
+   				background: linear-gradient(to right, #304352, #d7d2cc)
+   			}
+   			.Sage_Persuasion {
+   				background: linear-gradient(to right, #CCCCB2, #757519)
+   			}
+   			.Between_Night_and_Day {
+   				background: linear-gradient(to right, #2c3e50, #3498db)
+   			}
+   			.Timber {
+   				background: linear-gradient(to right, #fc00ff, #00dbde)
+   			}
+   			.Passion {
+   				background: linear-gradient(to right, #e53935, #e35d5b)
+   			}
+   			.Clear_Sky {
+   				background: linear-gradient(to right, #005C97, #363795)
+   			}
+   			.Master_Card {
+   				background: linear-gradient(to right, #f46b45, #eea849)
+   			}
+   			.Back_To_Earth {
+   				background: linear-gradient(to right, #00C9FF, #92FE9D)
+   			}
+   			.Deep_Purple {
+   				background: linear-gradient(to right, #673AB7, #512DA8)
+   			}
+   			.Little_Leaf {
+   				background: linear-gradient(to right, #76b852, #8DC26F)
+   			}
+   			.Netflix {
+   				background: linear-gradient(to right, #8E0E00, #1F1C18)
+   			}
+   			.Light_Orange {
+   				background: linear-gradient(to right, #FFB75E, #ED8F03)
+   			}
+   			.Green_and_Blue {
+   				background: linear-gradient(to right, #c2e59c, #64b3f4)
+   			}
+   			.Poncho {
+   				background: linear-gradient(to right, #403A3E, #BE5869)
+   			}
+   			.Back_to_the_Future {
+   				background: linear-gradient(to right, #C02425, #F0CB35)
+   			}
+   			.Blush {
+   				background: linear-gradient(to right, #B24592, #F15F79)
+   			}
+		</style>
+		<style type="text/css" id='#9'>
+			.Inbox {
+   			 	background: linear-gradient(to right, #457fca, #5691c8)
+   			}
+   			.Purplin {
+   				background: linear-gradient(to right, #6a3093, #a044ff)
+   			}
+   			.Pale_Wood {
+   				background: linear-gradient(to right, #eacda3, #d6ae7b)
+   			}
+   			.Haikus {
+   				background: linear-gradient(to right, #fd746c, #ff9068)
+   			}
+   			.Pizelex {
+   				background: linear-gradient(to right, #114357, #F29492)
+   			}
+   			.Joomla {
+   				background: linear-gradient(to right, #1e3c72, #2a5298)
+   			}
+   			.Christmas {
+   				background: linear-gradient(to right, #2F7336, #AA3A38)
+   			}
+   			.Minnesota_Vikings {
+   				background: linear-gradient(to right, #5614B0, #DBD65C)
+   			}
+   			.Miami_Dolphins {
+   				background: linear-gradient(to right, #4DA0B0, #D39D38)
+   			}
+   			.Forest {
+   				background: linear-gradient(to right, #5A3F37, #2C7744)
+   			}
+   			.Nighthawk {
+   				background: linear-gradient(to right, #2980b9, #2c3e50)
+   			}
+   			.Superman {
+   				background: linear-gradient(to right, #0099F7, #F11712)
+   			}
+   			.Suzy {
+   				background: linear-gradient(to right, #834d9b, #d04ed6)
+   			}
+   			.Dark_Skies {
+   				background: linear-gradient(to right, #4B79A1, #283E51)
+   			}
+   			.Decent {
+   				background: linear-gradient(to right, #4CA1AF, #C4E0E5)
+   			}
+   			.Colors_Of_Sky {
+   				background: linear-gradient(to right, #E0EAFC, #CFDEF3)
+   			}
+   			.Purple_White {
+   				background: linear-gradient(to right, #BA5370, #F4E2D8)
+   			}
+   			.Ali {
+   				background: linear-gradient(to right, #ff4b1f, #1fddff)
+   			}
+   			.Alihossein {
+   				background: linear-gradient(to right, #f7ff00, #db36a4)
+   			}
+   			.Shahabi {
+   				background: linear-gradient(to right, #a80077, #66ff00)
+   			}
+   			.Red_Ocean {
+   				background: linear-gradient(to right, #1D4350, #A43931)
+   			}
+		</style>
+		<style type="text/css" id='#10'>
+			.Tranquil {
+   			 	background: linear-gradient(to right, #EECDA3, #EF629F)
+   			}
+   			.Transfile {
+   				background: linear-gradient(to right, #16BFFD, #CB3066)
+   			}
+   			.Sylvia {
+   				background: linear-gradient(to right, #ff4b1f, #ff9068)
+   			}
+   			.Sweet_Morning {
+   				background: linear-gradient(to right, #FF5F6D, #FFC371)
+   			}
+   			.Politics {
+   				background: linear-gradient(to right, #2196f3, #f44336)
+   			}
+   			.Bright_Vault {
+   				background: linear-gradient(to right, #00d2ff, #928DAB)
+   			}
+   			.Solid_Vault {
+   				background: linear-gradient(to right, #3a7bd5, #3a6073)
+   			}
+   			.Sunset {
+   				background: linear-gradient(to right, #0B486B, #F56217)
+   			}
+   			.Grapefruit_Sunset {
+   				background: linear-gradient(to right, #e96443, #904e95)
+   			}
+   			.Deep_Sea_Space {
+   				background: linear-gradient(to right, #2C3E50, #4CA1AF)
+   			}
+   			.Dusk {
+   				background: linear-gradient(to right, #2C3E50, #FD746C)
+   			}
+   			.Minimal_Red {
+   				background: linear-gradient(to right, #F00000, #DC281E)
+   			}
+   			.Royal {
+   				background: linear-gradient(to right, #141E30, #243B55)
+   			}
+   			.Mauve {
+   				background: linear-gradient(to right, #42275a, #734b6d)
+   			}
+   			.Frost {
+   				background: linear-gradient(to right, #000428, #004e92)
+   			}
+   			.Lush {
+   				background: linear-gradient(to right, #56ab2f, #a8e063)
+   			}
+   			.Firewatch {
+   				background: linear-gradient(to right, #cb2d3e, #ef473a)
+   			}
+   			.Sherbert {
+   				background: linear-gradient(to right, #f79d00, #64f38c)
+   			}
+   			.Blood_Red {
+   				background: linear-gradient(to right, #f85032, #e73827)
+   			}
+   			.Sun_on_the_Horizon {
+   				background: linear-gradient(to right, #fceabb, #f8b500)
+   			}
+   			.IIIT_Delhi {
+   				background: linear-gradient(to right, #808080, #3fada8)
+   			}
+		</style>
+		<style type="text/css" id='#11'>
+			.Jupiter {
+   			 	background: linear-gradient(to right, #ffd89b, #19547b)
+   			}
+   			._50_Shades_of_Grey {
+   				background: linear-gradient(to right, #bdc3c7, #2c3e50)
+   			}
+   			.Dania {
+   				background: linear-gradient(to right, #BE93C5, #7BC6CC)
+   			}
+   			.Limeade {
+   				background: linear-gradient(to right, #A1FFCE, #FAFFD1)
+   			}
+   			.Disco {
+   				background: linear-gradient(to right, #4ECDC4, #556270)
+   			}
+   			.Love_Couple {
+   				background: linear-gradient(to right, #3a6186, #89253e)
+   			}
+   			.Azure_Pop {
+   				background: linear-gradient(to right, #ef32d9, #89fffd)
+   			}
+   			.Nepal {
+   				background: linear-gradient(to right, #de6161, #2657eb)
+   			}
+   			.Cosmic_Fusion {
+   				background: linear-gradient(to right, #ff00cc, #333399)
+   			}
+   			.Snapchat {
+   				background: linear-gradient(to right, #fffc00, #ffffff)
+   			}
+   			.Eds_Sunset_Gradient {
+   				background: linear-gradient(to right, #ff7e5f, #feb47b)
+   			}
+   			.Brady_Brady_Fun_Fun {
+   				background: linear-gradient(to right, #00c3ff, #ffff1c)
+   			}
+   			.Black_Rosé {
+   				background: linear-gradient(to right, #f4c4f3, #fc67fa)
+   			}
+   			._80s_Purple {
+   				background: linear-gradient(to right, #41295a, #2F0743)
+   			}
+   			.Radar {
+   				background: linear-gradient(to right, #A770EF, #CF8BF3, #FDB99B)
+   			}
+   			.Ibiza_Sunset {
+   				background: linear-gradient(to right, #ee0979, #ff6a00)
+   			}
+   			.Dawn {
+   				background: linear-gradient(to right, #F3904F, #3B4371)
+   			}
+   			.Mild {
+   				background: linear-gradient(to right, #67B26F, #4ca2cd)
+   			}
+   			.Vice_City {
+   				background: linear-gradient(to right, #3494E6, #EC6EAD)
+   			}
+   			.Jaipur {
+   				background: linear-gradient(to right, #DBE6F6, #C5796D)
+   			}
+   			.Jodhpur {
+   				background: linear-gradient(to right, #9CECFB, #65C7F7, #0052D4)
+   			}
+		</style>
+		<style type="text/css" id='#12'>
+			.Cocoaa_Ice {
+   			 	background: linear-gradient(to right, #c0c0aa, #1cefff)
+   			}
+   			.EasyMed {
+   				background: linear-gradient(to right, #DCE35B, #45B649)
+   			}
+   			.Rose_Colored_Lenses {
+   				background: linear-gradient(to right, #E8CBC0, #636FA4)
+   			}
+   			.What_lies_Beyond {
+   				background: linear-gradient(to right, #F0F2F0, #000C40)
+   			}
+   			.Roseanna {
+   				background: linear-gradient(to right, #FFAFBD, #ffc3a0)
+   			}
+   			.Honey_Dew {
+   				background: linear-gradient(to right, #43C6AC, #F8FFAE)
+   			}
+   			.Under_the_Lake {
+   				background: linear-gradient(to right, #093028, #237A57)
+   			}
+   			.The_Blue_Lagoon {
+   				background: linear-gradient(to right, #43C6AC, #191654)
+   			}
+   			.Love_Tonight {
+   				background: linear-gradient(to right, #4568DC, #B06AB3)
+   			}
+   			.Very_Blue {
+   				background: linear-gradient(to right, #0575E6, #021B79)
+   			}
+   			.Love_and_Liberty {
+   				background: linear-gradient(to right, #200122, #6f0000)
+   			}
+   			.Orca {
+   				background: linear-gradient(to right, #44A08D, #093637)
+   			}
+   			.Venice {
+   				background: linear-gradient(to right, #6190E8, #A7BFE8)
+   			}
+   			.Pacific_Dream {
+   				background: linear-gradient(to right, #34e89e, #0f3443)
+   			}
+   			.Learning_and_Leading {
+   				background: linear-gradient(to right, #F7971E, #FFD200)
+   			}
+   			.Celestial {
+   				background: linear-gradient(to right, #C33764, #1D2671)
+   			}
+   			.Purplepine {
+   				background: linear-gradient(to right, #20002c, #cbb4d4)
+   			}
+   			.Sha_la_la {
+   				background: linear-gradient(to right, #D66D75, #E29587)
+   			}
+   			.Mini {
+   				background: linear-gradient(to right, #30E8BF, #FF8235)
+   			}
+   			.Maldives {
+   				background: linear-gradient(to right, #B2FEFA, #0ED2F7)
+   			}
+   			.Cinnamint {
+   				background: linear-gradient(to right, #4AC29A, #BDFFF3)
+   			}
+		</style>
+		<style type="text/css" id='#13'>
+			.Html {
+   			 	background: linear-gradient(to right, #E44D26, #F16529)
+   			}
+   			.Sunkist {
+   				background: linear-gradient(to right, #F2994A, #F2C94C)
+   			}
+   			.Blue_Skies {
+   				background: linear-gradient(to right, #56CCF2, #2F80ED)
+   			}
+   			.Chitty_Bang {
+   				background: linear-gradient(to right, #007991, #78ffd6)
+   			}
+   			.Visions_of_Grandeur {
+   				background: linear-gradient(to right, #000046, #1CB5E0)
+   			}
+   			.Crystal_Clear {
+   				background: linear-gradient(to right, #159957, #155799)
+   			}
+   			.Mello {
+   				background: linear-gradient(to right, #c0392b, #8e44ad)
+   			}
+   			.Compare_Now {
+   				background: linear-gradient(to right, #EF3B36, #FFFFFF)
+   			}
+   			.Meridian {
+   				background: linear-gradient(to right, #283c86, #45a247)
+   			}
+   			.Relay {
+   				background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B)
+   			}
+   			.Alive {
+   				background: linear-gradient(to right, #CB356B, #BD3F32)
+   			}
+   			.Scooter {
+   				background: linear-gradient(to right, #36D1DC, #5B86E5)
+   			}
+   			.Telegram {
+   				background: linear-gradient(to right, #1c92d2, #f2fcfe)
+   			}
+   			.Crimson_Tide {
+   				background: linear-gradient(to right, #642B73, #C6426E)
+   			}
+   			.Socialive {
+   				background: linear-gradient(to right, #06beb6, #48b1bf)
+   			}
+   			.Subu {
+   				background: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6)
+   			}
+   			.Broken_Hearts {
+   				background: linear-gradient(to right, #d9a7c7, #fffcdc)
+   			}
+   			.Kimoby_Is_The_New_Blue {
+   				background: linear-gradient(to right, #396afc, #2948ff)
+   			}
+   			.Dull {
+   				background: linear-gradient(to right, #C9D6FF, #E2E2E2)
+   			}
+   			.Purpink {
+   				background: linear-gradient(to right, #7F00FF, #E100FF)
+   			}
+   			.Orange_Coral {
+   				background: linear-gradient(to right, #ff9966, #ff5e62)
+   			}
+		</style>
+		<style type="text/css" id='#14'>
+			.Summer {
+   			 	background: linear-gradient(to right, #22c1c3, #fdbb2d)
+   			}
+   			.King_Yna {
+   				background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d)
+   			}
+   			.Velvet_Sun {
+   				background: linear-gradient(to right, #e1eec3, #f05053)
+   			}
+   			.Zinc {
+   				background: linear-gradient(to right, #ADA996, #F2F2F2, #DBDBDB, #EAEAEA)
+   			}
+   			.Hydrogen {
+   				background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6)
+   			}
+   			.Argon {
+   				background: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9)
+   			}
+   			.Lithium {
+   				background: linear-gradient(to right, #6D6027, #D3CBB8)
+   			}
+   			.Digital_Water {
+   				background: linear-gradient(to right, #74ebd5,#ACB6E5)
+   			}
+   			.Orange_Fun {
+   				background: linear-gradient(to right, #fc4a1a, #f7b733)
+   			}
+   			.Rainbow_Blue {
+   				background: linear-gradient(to right, #00F260, #0575E6)
+   			}
+   			.Pink_Flavour {
+   				background: linear-gradient(to right, #800080, #ffc0cb)
+   			}
+   			.Sulphur {
+   				background: linear-gradient(to right, #CAC531, #F3F9A7)
+   			}
+   			.Selenium {
+   				background: linear-gradient(to right, #3C3B3F, #605C3C)
+   			}
+   			.Delicate {
+   				background: linear-gradient(to right, #D3CCE3, #E9E4F0)
+   			}
+   			.Ohhappiness {
+   				background: linear-gradient(to right, #00b09b, #96c93d)
+   			}
+   			.Lawrencium {
+   				background: linear-gradient(to right, #0f0c29, #302b63, #24243e)
+   			}
+   			.Relaxing_red {
+   				background: linear-gradient(to right, #fffbd5, #b20a2c)
+   			}
+   			.Taran_Tado {
+   				background: linear-gradient(to right, #23074d, #cc5333)
+   			}
+   			.Bighead {
+   				background: linear-gradient(to right, #c94b4b, #4b134f)
+   			}
+   			.Sublime_Vivid {
+   				background: linear-gradient(to right, #FC466B, #3F5EFB)
+   			}
+   			.Sublime_Light {
+   				background: linear-gradient(to right, #FC5C7D, #6A82FB)
+   			}
+		</style>
+		<style type="text/css" id='#15'>
+			.Pun_Yeta {
+   			 	background: linear-gradient(to right, #108dc7, #ef8e38)
+   			}
+   			.Quepal {
+   				background: linear-gradient(to right, #11998e, #38ef7d)
+   			}
+   			.Sand_to_Blue {
+   				background: linear-gradient(to right, #3E5151, #DECBA4)
+   			}
+   			.Wedding_Day_Blues {
+   				background: linear-gradient(to right, #40E0D0, #FF8C00, #FF0080)
+   			}
+   			.Shifter {
+   				background: linear-gradient(to right, #bc4e9c, #f80759)
+   			}
+   			.Red_Sunset {
+   				background: linear-gradient(to right, #355C7D, #6C5B7B, #C06C84)
+   			}
+   			.Moon_Purple {
+   				background: linear-gradient(to right, #4e54c8, #8f94fb)
+   			}
+   			.Pure_Lust {
+   				background: linear-gradient(to right, #333333, #dd1818)
+   			}
+   			.Slight_Ocean_View {
+   				background: linear-gradient(to right, #a8c0ff, #3f2b96)
+   			}
+   			.eXpresso {
+   				background: linear-gradient(to right, #ad5389, #3c1053)
+   			}
+   			.Shifty {
+   				background: linear-gradient(to right, #636363, #a2ab58)
+   			}
+   			.Vanusa {
+   				background: linear-gradient(to right, #DA4453, #89216B)
+   			}
+   			.Evening_Night {
+   				background: linear-gradient(to right, #005AA7, #FFFDE4)
+   			}
+   			.Magic {
+   				background: linear-gradient(to right, #59C173, #a17fe0, #5D26C1)
+   			}
+   			.Margo {
+   				background: linear-gradient(to right, #FFEFBA, #FFFFFF)
+   			}
+   			.Blue_Raspberry {
+   				background: linear-gradient(to right, #00B4DB, #0083B0)
+   			}
+   			.Citrus_Peel {
+   				background: linear-gradient(to right, #FDC830, #F37335)
+   			}
+   			.Sin_City_Red {
+   				background: linear-gradient(to right, #ED213A, #93291E)
+   			}
+   			.Rastafari {
+   				background: linear-gradient(to right, #1E9600, #FFF200, #FF0000)
+   			}
+   			.Summer_Dog {
+   				background: linear-gradient(to right, #a8ff78, #78ffd6)
+   			}
+   			.Wiretap {
+   				background: linear-gradient(to right, #8A2387, #E94057, #F27121)
+   			}
+		</style>
+		<style type="text/css" id='#16'>
+			.Burning_Orange {
+   			 	background: linear-gradient(to right, #FF416C, #FF4B2B)
+   			}
+   			.Ultra_Voilet {
+   				background: linear-gradient(to right, #654ea3, #eaafc8)
+   			}
+   			.By_Design {
+   				background: linear-gradient(to right, #009FFF, #ec2F4B)
+   			}
+   			.Kyoo_Tah {
+   				background: linear-gradient(to right, #544a7d, #ffd452)
+   			}
+   			.Kye_Meh {
+   				background: linear-gradient(to right, #8360c3, #2ebf91)
+   			}
+   			.Kyoo_Pal {
+   				background: linear-gradient(to right, #dd3e54, #6be585)
+   			}
+   			.Metapolis {
+   				background: linear-gradient(to right, #659999, #f4791f)
+   			}
+   			.Flare {
+   				background: linear-gradient(to right, #f12711, #f5af19)
+   			}
+   			.Witching_Hour {
+   				background: linear-gradient(to right, #c31432, #240b36)
+   			}
+   			.Azur_Lane {
+   				background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4)
+   			}
+   			.Neuromancer {
+   				background: linear-gradient(to right, #f953c6, #b91d73)
+   			}
+   			.Harvey {
+   				background: linear-gradient(to right, #1f4037, #99f2c8)
+   			}
+   			.Amin {
+   				background: linear-gradient(to right, #8E2DE2, #4A00E0)
+   			}
+   			.Memariani {
+   				background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99)
+   			}
+   			.Yoda {
+   				background: linear-gradient(to right, #FF0099, #493240)
+   			}
+   			.Cool_Sky {
+   				background: linear-gradient(to right, #2980B9, #6DD5FA, #FFFFFF)
+   			}
+   			.Dark_Ocean {
+   				background: linear-gradient(to right, #373B44, #4286f4)
+   			}
+   			.Evening_Sunshine {
+   				background: linear-gradient(to right, #b92b27, #1565C0)
+   			}
+   			.JShine {
+   				background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59)
+   			}
+   			.Moonlit_Asteroid {
+   				background: linear-gradient(to right, #0F2027, #203A43, #2C5364)
+   			}
+   			.MegaTron {
+   				background: linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)
+   			}
+		</style>
+		<style type="text/css" id='#17'>
+			.Cool_Blues {
+   			 	background: linear-gradient(to right, #2193b0, #6dd5ed)
+   			}
+   			.Piggy_Pink {
+   				background: linear-gradient(to right, #ee9ca7, #ffdde1)
+   			}
+   			.Grade_Grey {
+   				background: linear-gradient(to right, #bdc3c7,#2c3e50)
+   			}
+   			.Telko {
+   				background: linear-gradient(to right, #F36222, #5CB644, #007FC3)
+   			}
+   			.Zenta {
+   				background: linear-gradient(to right, #2A2D3E,#FECB6E)
+   			}
+   			.Electric_Peacock {
+   				background: linear-gradient(to right, #8a2be2,#0000cd,#228b22,#ccff00)
+   			}
+   			.Lensod {
+   				background: linear-gradient(to right, #6025F5,#FF5555)
+   			}
+   			.Newspaper {
+   				background: linear-gradient(to right, #8a2be2,#ffa500,#f8f8ff)
+   			}
+   			.Dark_Blue_Gradient {
+   				background: linear-gradient(to right, #2774ae, #002E5D, #002E5D)
+   			}
+   			.Dark_Blu_Two {
+   				background: linear-gradient(to right, #004680,#4484BA)
+   			}
+   			.Lemon_Lime {
+   				background: linear-gradient(to right, #7ec6bc,#ebe717)
+   			}
+   			.Beleko {
+   				background: linear-gradient(to right, #ff1e56, #f9c942, #1e90ff)
+   			}
+   			.Mango_Papaya {
+   				background: linear-gradient(to right, #de8a41,#2ada53)
+   			}
+   			.Unicorn_Rainbow {
+   				background: linear-gradient(to right, #f7f0ac,#acf7f0,#f0acf7)
+   			}
+   			.Flame {
+   				background: linear-gradient(to right, #ff0000, #fdcf58)
+   			}
+   			.Blue_Red {
+   				background: linear-gradient(to right, #36B1C7, #960B33)
+   			}
+   			.Twitter {
+   				background: linear-gradient(to right, #1DA1F2, #009ffc)
+   			}
+   			.Blooze {
+   				background: linear-gradient(to right, #6da6be, #4b859e, #6da6be)
+   			}
+   			.Blue_Slate {
+   				background: linear-gradient(to right, #B5B9FF, #2B2C49)
+   			}
+   			.Space_Light_Green {
+   				background: linear-gradient(to right, #9FA0A8, #5C7852)
+   			}
+   			.Flower {
+   				background: linear-gradient(to right, #DCFFBD, #CC86D1)
+   			}
+		</style>
+		<style type="text/css" id='#18'>
+			.Peach_Sea {
+   			 	background: linear-gradient(to right, #E6AE8C, #A8CECF)
+   			}
+   			.Abbas {
+   				background: linear-gradient(to right, #00fff0,#0083fe)
+   			}
+   			.Winter_Woods {
+   				background: linear-gradient(to right, #333333, #a2ab58, #A43931)
+   			}
+   			.Emerald_Sea {
+   				background: linear-gradient(to right, #05386b,#5cdb95)
+   			}
+   			.Bleem {
+   				background: linear-gradient(to right, #4284DB, #29EAC4)
+   			}
+   			.Coffee_Gold {
+   				background: linear-gradient(to right, #554023, #c99846)
+   			}
+   			.Compass {
+   				background: linear-gradient(to right, #516b8b, #056b3b)
+   			}
+   			.Andreuzzas {
+   				background: linear-gradient(to right, #D70652, #FF025E)
+   			}
+   			.Hyper_Blue {
+   				background: linear-gradient(to right, #59CDE9, #0A2A88)
+   			}
+   			.Racker {
+   				background: linear-gradient(to right, #EB0000,#95008A,#3300FC)
+   			}
+   			.Neon_Green {
+   				background: linear-gradient(to right, #81ff8a, #64965e)
+   			}
+   			.Dusty_Grass {
+   				background: linear-gradient(to right, #d4fc79, #96e6a1)
+   			}
+   			.Visual_Blue {
+   				background: linear-gradient(to right, #003d4d, #00c996)
+   			}
+		</style>	
+	</head>
+	<body class='body'>
+		<header class='header'>
+			<div class='imgPrefix'>
+				<main>
+					<p style='color:lime; font-size: 10px; margin: 5px 0 0 5px;'>&#9658;</p>
+    				<p class='automsg'><span class='status'></span><span class=nickname>alwin</span></p>
+					<p style='color: orange; margin: 0;'>зашел на сервер</p>
+				</main>
+				<ul class="mmenuu">
+				    <li><a href=#>Статусы &#128270;</a>
+				        <ul class="ssubmenuu">
+				            <li><a href='#' class='PLAYER'>PLAYER</a></li>
+				            <li><a href='#' class='GOLD'>GOLD</a></li>
+				            <li><a href='#' class='DIAMOND'>DIAMOND</a></li>
+				            <li><a href='#' class='EMERALD'>EMERALD</a></li>
+				            <li><a href='#' class='MAGMA'>MAGMA</a></li>
+				            <li><a href='#' class='SHULKER'>SHULKER</a></li>
+				            <li><a href='#' class='YOUTUBE'>YOUTUBE</a></li>
+				            <li><a href='#' class='JUNIOR'>JUNIOR</a></li>
+				            <li><a href='#' class='BUILDER'>BUILDER</a></li>
+				            <li><a href='#' class='HELPER'>HELPER</a></li>
+				            <li><a href='#' class='MODER'>MODER</a></li>
+				            <li><a href='#' class='ADMIN'>ADMIN</a></li>
+				            <li><a href='#' class='NITR0'>NITR0</a></li>
+				            <li><a href='#' class='TESTER'>TESTER</a></li>
+				        </ul>
+				    </li>
+				</ul>
+			</div>
+		</header>
+		<section>
+			<div class="razmer">
+				<h2 class='head_1'>1 страница</h2>
+				<div class='play_1'>
+					<div>
+						<div class='Omolon'><h3>Omolon</h3></div>
+					</div>
+					<div>	
+						<div class="Farhan"><h3>Farhan</h3></div>
+					</div>
+					<div>	
+						<div class="Purple"><h3>Purple</h3></div>
+					</div>
+					<div>	
+						<div class="Ibtesam"><h3>Ibtesam</h3></div>
+					</div>
+					<div>	
+						<div class="Radioactive_Heat"><h3>Radioactive Heat</h3></div>
+					</div>
+					<div>	
+						<div class="The_Sky_And_The_Sea"><h3>The Sky And The Sea</h3></div>
+					</div>
+					<div>	
+						<div class="From_Ice_To_Fire"><h3>From Ice To Fire</h3></div>
+					</div>
+					<div>	
+						<div class="Blue_Orange"><h3>Blue & Orange</h3></div>
+					</div>
+					<div>	
+						<div class="Purple_Dream"><h3>Purple Dream</h3></div>
+					</div>
+					<div>	
+						<div class="Blu"><h3>Blu</h3></div>
+					</div>
+					<div>	
+						<div class="Summer_Breeze"><h3>Summer Breeze</h3></div>
+					</div>
+					<div>	
+						<div class="Ver"><h3>Ver</h3></div>
+					</div>
+					<div>	
+						<div class="Ver_Black"><h3>Ver Black</h3></div>
+					</div>
+					<div>	
+						<div class="Combi"><h3>Combi</h3></div>
+					</div>
+					<div>	
+						<div class="Anwar"><h3>Anwar</h3></div>
+					</div>
+					<div>	
+						<div class="Bluelagoo"><h3>Bluelagoo</h3></div>
+					</div>	
+					<div>	
+						<div class="Lunada"><h3>Lunada</h3></div>
+					</div>
+					<div>	
+						<div class="Reaqua"><h3>Reaqua</h3></div>
+					</div>
+					<div>	
+						<div class="Mango"><h3>Mango</h3></div>
+					</div>
+					<div>	
+						<div class="Bupe"><h3>Bupe</h3></div>
+					</div>
+					<div>	
+						<div class="Windy"><h3>Windy</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_2'>2 страница</h2>
+				<div class='play_2'>
+					<div>
+						<div class='Royal_Blue'><h3>Royal Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Royal_Blue_Petrol"><h3>Royal Blue + Petrol</h3></div>
+					</div>
+					<div>	
+						<div class="Copper"><h3>Copper</h3></div>
+					</div>
+					<div>	
+						<div class="Anamnisar"><h3>Anamnisar</h3></div>
+					</div>
+					<div>	
+						<div class="Petrol"><h3>Petrol</h3></div>
+					</div>
+					<div>	
+						<div class="Sky"><h3>Sky</h3></div>
+					</div>
+					<div>	
+						<div class="Sel"><h3>Sel</h3></div>
+					</div>
+					<div>	
+						<div class="Afternoon"><h3>Afternoon</h3></div>
+					</div>
+					<div>	
+						<div class="Skyline"><h3>Skyline</h3></div>
+					</div>
+					<div>	
+						<div class="DIMIGO"><h3>DIMIGO</h3></div>
+					</div>
+					<div>	
+						<div class="Purple_Love"><h3>Purple Love</h3></div>
+					</div>
+					<div>	
+						<div class="Sexy_Blue"><h3>Sexy Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Blooker20"><h3>Blooker20</h3></div>
+					</div>
+					<div>	
+						<div class="Sea_Blue"><h3>Sea Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Nimvelo"><h3>Nimvelo</h3></div>
+					</div>
+					<div>	
+						<div class="Hazel"><h3>Hazel</h3></div>
+					</div>	
+					<div>	
+						<div class="Noon_to_Dusk"><h3>Noon to Dusk</h3></div>
+					</div>
+					<div>	
+						<div class="YouTube"><h3>YouTube</h3></div>
+					</div>
+					<div>	
+						<div class="Cool_Brown"><h3>Cool Brown</h3></div>
+					</div>
+					<div>	
+						<div class="Harmonic_Energy"><h3>Harmonic Energy</h3></div>
+					</div>
+					<div>	
+						<div class="Playing_with_Reds"><h3>Playing with Reds</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_3'>3 страница</h2>
+				<div class='play_3'>
+					<div>
+						<div class='Sunny_Days'><h3>Sunny Days</h3></div>
+					</div>
+					<div>	
+						<div class="Green_Beach"><h3>Green Beach</h3></div>
+					</div>
+					<div>	
+						<div class="Intuitive_Purple"><h3>Intuitive Purple</h3></div>
+					</div>
+					<div>	
+						<div class="Emerald_Water"><h3>Emerald Water</h3></div>
+					</div>
+					<div>	
+						<div class="Lemon_Twist"><h3>Lemon Twist</h3></div>
+					</div>
+					<div>	
+						<div class="Monte_Carlo"><h3>Monte Carlo</h3></div>
+					</div>
+					<div>	
+						<div class="Horizon"><h3>Horizon</h3></div>
+					</div>
+					<div>	
+						<div class="Rose_Water"><h3>Rose Water</h3></div>
+					</div>
+					<div>	
+						<div class="Frozen"><h3>Frozen</h3></div>
+					</div>
+					<div>	
+						<div class="Mango_Pulp"><h3>Mango Pulp</h3></div>
+					</div>
+					<div>	
+						<div class="Bloody_Mary"><h3>Bloody Mary</h3></div>
+					</div>
+					<div>	
+						<div class="Aubergine"><h3>Aubergine</h3></div>
+					</div>
+					<div>	
+						<div class="Aqua_Marine"><h3>Aqua Marine</h3></div>
+					</div>
+					<div>	
+						<div class="Sunrise"><h3>Sunrise</h3></div>
+					</div>
+					<div>	
+						<div class="Purple_Paradise"><h3>Purple Paradise</h3></div>
+					</div>
+					<div>	
+						<div class="Stripe"><h3>Stripe</h3></div>
+					</div>	
+					<div>	
+						<div class="Sea_Weed"><h3>Sea Weed</h3></div>
+					</div>
+					<div>	
+						<div class="Pinky"><h3>Pinky</h3></div>
+					</div>
+					<div>	
+						<div class="Cherry"><h3>Cherry</h3></div>
+					</div>
+					<div>	
+						<div class="Mojito"><h3>Mojito</h3></div>
+					</div>
+					<div>	
+						<div class="Juicy_Orange"><h3>Juicy Orange</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_4'>4 страница</h2>
+				<div class='play_4'>
+					<div>
+						<div class='Mirage'><h3>Mirage</h3></div>
+					</div>
+					<div>	
+						<div class="Steel_Gray"><h3>Steel Gray</h3></div>
+					</div>
+					<div>	
+						<div class="Kashmir"><h3>Kashmir</h3></div>
+					</div>
+					<div>	
+						<div class="Electric_Violet"><h3>Electric Violet</h3></div>
+					</div>
+					<div>	
+						<div class="Venice_Blue"><h3>Venice Blue</h3></div>
+					</div>
+					<div>	
+						<div class="BoraBora"><h3>Bora Bora</h3></div>
+					</div>
+					<div>	
+						<div class="Moss"><h3>Moss</h3></div>
+					</div>
+					<div>	
+						<div class="Shroom_Haze"><h3>Shroom Haze</h3></div>
+					</div>
+					<div>	
+						<div class="Mystic"><h3>Mystic</h3></div>
+					</div>
+					<div>	
+						<div class="Sea_Blizz"><h3>Sea Blizz</h3></div>
+					</div>
+					<div>	
+						<div class="Opa"><h3>Opa</h3></div>
+					</div>
+					<div>	
+						<div class="Titanium"><h3>Titanium</h3></div>
+					</div>
+					<div>	
+						<div class="Mantle"><h3>Mantle</h3></div>
+					</div>
+					<div>	
+						<div class="Dracula"><h3>Dracula</h3></div>
+					</div>
+					<div>	
+						<div class="Peach"><h3>Peach</h3></div>
+					</div>
+					<div>	
+						<div class="Moonrise"><h3>Moonrise</h3></div>
+					</div>	
+					<div>	
+						<div class="Clouds"><h3>Clouds</h3></div>
+					</div>
+					<div>	
+						<div class="Stellar"><h3>Stellar</h3></div>
+					</div>
+					<div>	
+						<div class="Bourbon"><h3>Bourbon</h3></div>
+					</div>
+					<div>	
+						<div class="Calm_Darya"><h3>Calm Darya</h3></div>
+					</div>
+					<div>	
+						<div class="Influenza"><h3>Influenza</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_5'>5 страница</h2>
+				<div class='play_5'>
+					<div>
+						<div class='Shrimpy'><h3>Shrimpy</h3></div>
+					</div>
+					<div>	
+						<div class="Army"><h3>Army</h3></div>
+					</div>
+					<div>	
+						<div class="Miaka"><h3>Miaka</h3></div>
+					</div>
+					<div>	
+						<div class="Pinot_Noir"><h3>Pinot Noir</h3></div>
+					</div>
+					<div>	
+						<div class="Day_Tripper"><h3>Day Tripper</h3></div>
+					</div>
+					<div>	
+						<div class="Namn"><h3>Namn</h3></div>
+					</div>
+					<div>	
+						<div class="Blurry_Beach"><h3>Blurry Beach</h3></div>
+					</div>
+					<div>	
+						<div class="Vasily"><h3>Vasily</h3></div>
+					</div>
+					<div>	
+						<div class="A_Lost_Memory"><h3>A Lost Memory</h3></div>
+					</div>
+					<div>	
+						<div class="Petrichor"><h3>Petrichor</h3></div>
+					</div>
+					<div>	
+						<div class="Jonquil"><h3>Jonquil</h3></div>
+					</div>
+					<div>	
+						<div class="Sirius_Tamed"><h3>Sirius Tamed</h3></div>
+					</div>
+					<div>	
+						<div class="Kyoto"><h3>Kyoto</h3></div>
+					</div>
+					<div>	
+						<div class="Misty_Meadow"><h3>Misty Meadow</h3></div>
+					</div>
+					<div>	
+						<div class="Aqualicious"><h3>Aqualicious</h3></div>
+					</div>
+					<div>	
+						<div class="Moor"><h3>Moor</h3></div>
+					</div>	
+					<div>	
+						<div class="Almost"><h3>Almost</h3></div>
+					</div>
+					<div>	
+						<div class="Forever_Lost"><h3>Forever Lost</h3></div>
+					</div>
+					<div>	
+						<div class="Winter"><h3>Winter</h3></div>
+					</div>
+					<div>	
+						<div class="Nelson"><h3>Nelson</h3></div>
+					</div>
+					<div>	
+						<div class="Autumn"><h3>Autumn</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_6'>6 страница</h2>
+				<div class='play_6'>
+					<div>
+						<div class='Candy'><h3>Candy</h3></div>
+					</div>
+					<div>	
+						<div class="Reef"><h3>Reef</h3></div>
+					</div>
+					<div>	
+						<div class="The_Strain"><h3>The Strain</h3></div>
+					</div>
+					<div>	
+						<div class="Dirty_Fog"><h3>Dirty Fog</h3></div>
+					</div>
+					<div>	
+						<div class="Earthly"><h3>Earthly</h3></div>
+					</div>
+					<div>	
+						<div class="Virgin"><h3>Virgin</h3></div>
+					</div>
+					<div>	
+						<div class="Ash"><h3>Ash</h3></div>
+					</div>
+					<div>	
+						<div class="Cherryblossoms"><h3>Cherryblossoms</h3></div>
+					</div>
+					<div>	
+						<div class="Parklife"><h3>Parklife</h3></div>
+					</div>
+					<div>	
+						<div class="Dance_To_Forget"><h3>Dance To Forget</h3></div>
+					</div>
+					<div>	
+						<div class="Starfall"><h3>Starfall</h3></div>
+					</div>
+					<div>	
+						<div class="Teal_Love"><h3>Teal Love</h3></div>
+					</div>
+					<div>	
+						<div class="Neon_Life"><h3>Neon Life</h3></div>
+					</div>
+					<div>	
+						<div class="Man_of_Steel"><h3>Man of Steel</h3></div>
+					</div>
+					<div>	
+						<div class="Amethyst"><h3>Amethyst</h3></div>
+					</div>
+					<div>	
+						<div class="Cheer_Up_Emo_Kid"><h3>Cheer Up Emo Kid</h3></div>
+					</div>	
+					<div>	
+						<div class="Shore"><h3>Shore</h3></div>
+					</div>
+					<div>	
+						<div class="Facebook_Messenger"><h3>Facebook Messenger</h3></div>
+					</div>
+					<div>	
+						<div class="SoundCloud"><h3>SoundCloud</h3></div>
+					</div>
+					<div>	
+						<div class="Behongo"><h3>Behongo</h3></div>
+					</div>
+					<div>	
+						<div class="ServQuick"><h3>ServQuick</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_7'>7 страница</h2>
+				<div class='play_7'>
+					<div>
+						<div class='Friday'><h3>Friday</h3></div>
+					</div>
+					<div>	
+						<div class="Martini"><h3>Martini</h3></div>
+					</div>
+					<div>	
+						<div class="Metallic_Toad"><h3>Metallic Toad</h3></div>
+					</div>
+					<div>	
+						<div class="Between_The_Clouds"><h3>Between The Clouds</h3></div>
+					</div>
+					<div>	
+						<div class="Crazy_Orange_I"><h3>Crazy Orange I</h3></div>
+					</div>
+					<div>	
+						<div class="Hersheys"><h3>Hersheys</h3></div>
+					</div>
+					<div>	
+						<div class="Talking_To_Mice_Elf"><h3>Talking To Mice Elf</h3></div>
+					</div>
+					<div>	
+						<div class="Purple_Bliss"><h3>Purple Bliss</h3></div>
+					</div>
+					<div>	
+						<div class="Predawn"><h3>Predawn</h3></div>
+					</div>
+					<div>	
+						<div class="Endless_River"><h3>Endless River</h3></div>
+					</div>
+					<div>	
+						<div class="Pastel_Orange_at_the_Sun"><h3>Pastel Orange at the Sun</h3></div>
+					</div>
+					<div>	
+						<div class="Twitch"><h3>Twitch</h3></div>
+					</div>
+					<div>	
+						<div class="Atlas"><h3>Atlas</h3></div>
+					</div>
+					<div>	
+						<div class="Instagram"><h3>Instagram</h3></div>
+					</div>
+					<div>	
+						<div class="Flickr"><h3>Flickr</h3></div>
+					</div>
+					<div>	
+						<div class="Vine"><h3>Vine</h3></div>
+					</div>	
+					<div>	
+						<div class="Turquoise_flow"><h3>Turquoise flow</h3></div>
+					</div>
+					<div>	
+						<div class="Portrait"><h3>Portrait</h3></div>
+					</div>
+					<div>	
+						<div class="Virgin_America"><h3>Virgin America</h3></div>
+					</div>
+					<div>	
+						<div class="Koko_Caramel"><h3>Koko Caramel</h3></div>
+					</div>
+					<div>	
+						<div class="Fresh_Turboscent"><h3>Fresh Turboscent</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_8'>8 страница</h2>
+				<div class='play_8'>
+					<div>
+						<div class='Green_to_dark'><h3>Green to dark</h3></div>
+					</div>
+					<div>	
+						<div class="Ukraine"><h3>Ukraine</h3></div>
+					</div>
+					<div>	
+						<div class="Curiosity_blue"><h3>Curiosity blue</h3></div>
+					</div>
+					<div>	
+						<div class="Dark_Knight"><h3>Dark Knight</h3></div>
+					</div>
+					<div>	
+						<div class="Piglet"><h3>Piglet</h3></div>
+					</div>
+					<div>	
+						<div class="Lizard"><h3>Lizard</h3></div>
+					</div>
+					<div>	
+						<div class="Sage_Persuasion"><h3>Sage Persuasion</h3></div>
+					</div>
+					<div>	
+						<div class="Between_Night_and_Day"><h3>Between Night and Day</h3></div>
+					</div>
+					<div>	
+						<div class="Timber"><h3>Timber</h3></div>
+					</div>
+					<div>	
+						<div class="Passion"><h3>Passion</h3></div>
+					</div>
+					<div>	
+						<div class="Clear_Sky"><h3>Clear Sky</h3></div>
+					</div>
+					<div>	
+						<div class="Master_Card"><h3>Master Card</h3></div>
+					</div>
+					<div>	
+						<div class="Back_To_Earth"><h3>Back To Earth</h3></div>
+					</div>
+					<div>	
+						<div class="Deep_Purple"><h3>Deep Purple</h3></div>
+					</div>
+					<div>	
+						<div class="Little_Leaf"><h3>Little Leaf</h3></div>
+					</div>
+					<div>	
+						<div class="Netflix"><h3>Netflix</h3></div>
+					</div>	
+					<div>	
+						<div class="Light_Orange"><h3>Light Orange</h3></div>
+					</div>
+					<div>	
+						<div class="Green_and_Blue"><h3>Green and Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Poncho"><h3>Poncho</h3></div>
+					</div>
+					<div>	
+						<div class="Back_to_the_Future"><h3>Back to the Future</h3></div>
+					</div>
+					<div>	
+						<div class="Blush"><h3>Blush</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_9'>9 страница</h2>
+				<div class='play_9'>
+					<div>
+						<div class='Inbox'><h3>Inbox</h3></div>
+					</div>
+					<div>	
+						<div class="Purplin"><h3>Purplin</h3></div>
+					</div>
+					<div>	
+						<div class="Pale_Wood"><h3>Pale Wood</h3></div>
+					</div>
+					<div>	
+						<div class="Haikus"><h3>Haikus</h3></div>
+					</div>
+					<div>	
+						<div class="Pizelex"><h3>Pizelex</h3></div>
+					</div>
+					<div>	
+						<div class="Joomla"><h3>Joomla</h3></div>
+					</div>
+					<div>	
+						<div class="Christmas"><h3>Christmas</h3></div>
+					</div>
+					<div>	
+						<div class="Minnesota_Vikings"><h3>Minnesota Vikings</h3></div>
+					</div>
+					<div>	
+						<div class="Miami_Dolphins"><h3>Miami Dolphins</h3></div>
+					</div>
+					<div>	
+						<div class="Forest"><h3>Forest</h3></div>
+					</div>
+					<div>	
+						<div class="Nighthawk"><h3>Nighthawk</h3></div>
+					</div>
+					<div>	
+						<div class="Superman"><h3>Superman</h3></div>
+					</div>
+					<div>	
+						<div class="Suzy"><h3>Suzy</h3></div>
+					</div>
+					<div>	
+						<div class="Dark_Skies"><h3>Dark Skies</h3></div>
+					</div>
+					<div>	
+						<div class="Decent"><h3>Decent</h3></div>
+					</div>	
+					<div>	
+						<div class="Colors_Of_Sky"><h3>Colors Of Sky</h3></div>
+					</div>
+					<div>	
+						<div class="Purple_White"><h3>Purple White</h3></div>
+					</div>
+					<div>	
+						<div class="Ali"><h3>Ali</h3></div>
+					</div>
+					<div>	
+						<div class="Alihossein"><h3>Alihossein</h3></div>
+					</div>
+					<div>	
+						<div class="Shahabi"><h3>Shahabi</h3></div>
+					</div>
+					<div>	
+						<div class="Red_Ocean"><h3>Red Ocean</h3></div>
+					</div>
+				</div>
+				<h2 class='head_10'>10 страница</h2>
+				<div class='play_10'>
+					<div>
+						<div class='Tranquil'><h3>Tranquil</h3></div>
+					</div>
+					<div>	
+						<div class="Transfile"><h3>Transfile</h3></div>
+					</div>
+					<div>	
+						<div class="Sylvia"><h3>Sylvia</h3></div>
+					</div>
+					<div>	
+						<div class="Sweet_Morning"><h3>Sweet Morning</h3></div>
+					</div>
+					<div>	
+						<div class="Politics"><h3>Politics</h3></div>
+					</div>
+					<div>	
+						<div class="Bright_Vault"><h3>Bright Vault</h3></div>
+					</div>
+					<div>	
+						<div class="Solid_Vault"><h3>Solid Vault</h3></div>
+					</div>
+					<div>	
+						<div class="Sunset"><h3>Sunset</h3></div>
+					</div>
+					<div>	
+						<div class="Grapefruit_Sunset"><h3>Grapefruit Sunset</h3></div>
+					</div>
+					<div>	
+						<div class="Deep_Sea_Space"><h3>Deep Sea Space</h3></div>
+					</div>
+					<div>	
+						<div class="Dusk"><h3>Dusk</h3></div>
+					</div>
+					<div>	
+						<div class="Minimal_Red"><h3>Minimal Red</h3></div>
+					</div>
+					<div>	
+						<div class="Royal"><h3>Royal</h3></div>
+					</div>
+					<div>	
+						<div class="Mauve"><h3>Mauve</h3></div>
+					</div>
+					<div>	
+						<div class="Frost"><h3>Frost</h3></div>
+					</div>
+					<div>	
+						<div class="Lush"><h3>Lush</h3></div>
+					</div>	
+					<div>	
+						<div class="Firewatch"><h3>Firewatch</h3></div>
+					</div>
+					<div>	
+						<div class="Sherbert"><h3>Sherbert</h3></div>
+					</div>
+					<div>	
+						<div class="Blood_Red"><h3>Blood Red</h3></div>
+					</div>
+					<div>	
+						<div class="Sun_on_the_Horizon"><h3>Sun on the Horizon</h3></div>
+					</div>
+					<div>	
+						<div class="IIIT_Delhi"><h3>IIIT Delhi</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_11'>11 страница</h2>
+				<div class='play_11'>
+					<div>
+						<div class='Jupiter'><h3>Jupiter</h3></div>
+					</div>
+					<div>	
+						<div class="_50_Shades_of_Grey"><h3>50 Shades of Grey</h3></div>
+					</div>
+					<div>	
+						<div class="Dania"><h3>Dania</h3></div>
+					</div>
+					<div>	
+						<div class="Limeade"><h3>Limeade</h3></div>
+					</div>
+					<div>	
+						<div class="Disco"><h3>Disco</h3></div>
+					</div>
+					<div>	
+						<div class="Love_Couple"><h3>Love Couple</h3></div>
+					</div>
+					<div>	
+						<div class="Azure_Pop"><h3>Azure Pop</h3></div>
+					</div>
+					<div>	
+						<div class="Nepal"><h3>Nepal</h3></div>
+					</div>
+					<div>	
+						<div class="Cosmic_Fusion"><h3>Cosmic Fusion</h3></div>
+					</div>
+					<div>	
+						<div class="Snapchat"><h3>Snapchat</h3></div>
+					</div>
+					<div>	
+						<div class="Eds_Sunset_Gradient"><h3>Ed's Sunset Gradient</h3></div>
+					</div>
+					<div>	
+						<div class="Brady_Brady_Fun_Fun"><h3>Brady Brady Fun Fun</h3></div>
+					</div>
+					<div>	
+						<div class="Black_Rosé"><h3>Black Rosé</h3></div>
+					</div>
+					<div>	
+						<div class="_80s_Purple"><h3>80's Purple</h3></div>
+					</div>
+					<div>	
+						<div class="Radar"><h3>Radar</h3></div>
+					</div>
+					<div>	
+						<div class="Ibiza_Sunset"><h3>Ibiza Sunset</h3></div>
+					</div>	
+					<div>	
+						<div class="Dawn"><h3>Dawn</h3></div>
+					</div>
+					<div>	
+						<div class="Mild"><h3>Mild</h3></div>
+					</div>
+					<div>	
+						<div class="Vice_City"><h3>Vice City</h3></div>
+					</div>
+					<div>	
+						<div class="Jaipur"><h3>Jaipur</h3></div>
+					</div>
+					<div>	
+						<div class="Jodhpur"><h3>Jodhpur</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_12'>12 страница</h2>
+				<div class='play_12'>
+					<div>
+						<div class='Cocoaa_Ice'><h3>Cocoaa Ice</h3></div>
+					</div>
+					<div>	
+						<div class="EasyMed"><h3>EasyMed</h3></div>
+					</div>
+					<div>	
+						<div class="Rose_Colored_Lenses"><h3>Rose Colored Lenses</h3></div>
+					</div>
+					<div>	
+						<div class="What_lies_Beyond"><h3>What lies Beyond</h3></div>
+					</div>
+					<div>	
+						<div class="Roseanna"><h3>Roseanna</h3></div>
+					</div>
+					<div>	
+						<div class="Honey_Dew"><h3>Honey Dew</h3></div>
+					</div>
+					<div>	
+						<div class="Under_the_Lake"><h3>Under the Lake</h3></div>
+					</div>
+					<div>	
+						<div class="The_Blue_Lagoon"><h3>The Blue Lagoon</h3></div>
+					</div>
+					<div>	
+						<div class="Love_Tonight"><h3>Love Tonight</h3></div>
+					</div>
+					<div>	
+						<div class="Very_Blue"><h3>Very Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Love_and_Liberty"><h3>Love and Liberty</h3></div>
+					</div>
+					<div>	
+						<div class="Orca"><h3>Orca</h3></div>
+					</div>
+					<div>	
+						<div class="Venice"><h3>Venice</h3></div>
+					</div>
+					<div>	
+						<div class="Pacific_Dream"><h3>Pacific Dream</h3></div>
+					</div>
+					<div>	
+						<div class="Learning_and_Leading"><h3>Learning and Leading</h3></div>
+					</div>
+					<div>	
+						<div class="Celestial"><h3>Celestial</h3></div>
+					</div>	
+					<div>	
+						<div class="Purplepine"><h3>Purplepine</h3></div>
+					</div>
+					<div>	
+						<div class="Sha_la_la"><h3>Sha la la</h3></div>
+					</div>
+					<div>	
+						<div class="Mini"><h3>Mini</h3></div>
+					</div>
+					<div>	
+						<div class="Maldives"><h3>Maldives</h3></div>
+					</div>
+					<div>	
+						<div class="Cinnamint"><h3>Cinnamint</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_13'>13 страница</h2>
+				<div class='play_13'>
+					<div>
+						<div class='Html'><h3>Html</h3></div>
+					</div>
+					<div>	
+						<div class="Sunkist"><h3>Sunkist</h3></div>
+					</div>
+					<div>	
+						<div class="Blue_Skies"><h3>Blue Skies</h3></div>
+					</div>
+					<div>	
+						<div class="Chitty_Bang"><h3>Chitty Bang</h3></div>
+					</div>
+					<div>	
+						<div class="Visions_of_Grandeur"><h3>Visions of Grandeur</h3></div>
+					</div>
+					<div>	
+						<div class="Crystal_Clear"><h3>Crystal Clear</h3></div>
+					</div>
+					<div>	
+						<div class="Mello"><h3>Mello</h3></div>
+					</div>
+					<div>	
+						<div class="Compare_Now"><h3>Compare Now</h3></div>
+					</div>
+					<div>	
+						<div class="Meridian"><h3>Meridian</h3></div>
+					</div>
+					<div>	
+						<div class="Relay"><h3>Relay</h3></div>
+					</div>
+					<div>	
+						<div class="Alive"><h3>Alive</h3></div>
+					</div>
+					<div>	
+						<div class="Scooter"><h3>Scooter</h3></div>
+					</div>
+					<div>	
+						<div class="Telegram"><h3>Telegram</h3></div>
+					</div>
+					<div>	
+						<div class="Crimson_Tide"><h3>Crimson Tide</h3></div>
+					</div>
+					<div>	
+						<div class="Socialive"><h3>Socialive</h3></div>
+					</div>
+					<div>	
+						<div class="Subu"><h3>Subu</h3></div>
+					</div>	
+					<div>	
+						<div class="Broken_Hearts"><h3>Broken Hearts</h3></div>
+					</div>
+					<div>	
+						<div class="Kimoby_Is_The_New_Blue"><h3>Kimoby Is The New Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Dull"><h3>Dull</h3></div>
+					</div>
+					<div>	
+						<div class="Purpink"><h3>Purpink</h3></div>
+					</div>
+					<div>	
+						<div class="Orange_Coral"><h3>Orange Coral</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_14'>14 страница</h2>
+				<div class='play_14'>
+					<div>
+						<div class='Summer'><h3>Summer</h3></div>
+					</div>
+					<div>	
+						<div class="King_Yna"><h3>King Yna</h3></div>
+					</div>
+					<div>	
+						<div class="Velvet_Sun"><h3>Velvet Sun</h3></div>
+					</div>
+					<div>	
+						<div class="Zinc"><h3>Zinc</h3></div>
+					</div>
+					<div>	
+						<div class="Hydrogen"><h3>Hydrogen</h3></div>
+					</div>
+					<div>	
+						<div class="Argon"><h3>Argon</h3></div>
+					</div>
+					<div>	
+						<div class="Lithium"><h3>Lithium</h3></div>
+					</div>
+					<div>	
+						<div class="Digital_Water"><h3>Digital Water</h3></div>
+					</div>
+					<div>	
+						<div class="Orange_Fun"><h3>Orange Fun</h3></div>
+					</div>
+					<div>	
+						<div class="Rainbow_Blue"><h3>Rainbow Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Pink_Flavour"><h3>Pink Flavour</h3></div>
+					</div>
+					<div>	
+						<div class="Sulphur"><h3>Sulphur</h3></div>
+					</div>
+					<div>	
+						<div class="Selenium"><h3>Selenium</h3></div>
+					</div>
+					<div>	
+						<div class="Delicate"><h3>Delicate</h3></div>
+					</div>
+					<div>	
+						<div class="Ohhappiness"><h3>Ohhappiness</h3></div>
+					</div>
+					<div>	
+						<div class="Lawrencium"><h3>Lawrencium</h3></div>
+					</div>	
+					<div>	
+						<div class="Relaxing_red"><h3>Relaxing red</h3></div>
+					</div>
+					<div>	
+						<div class="Taran_Tado"><h3>Taran Tado</h3></div>
+					</div>
+					<div>	
+						<div class="Bighead"><h3>Bighead</h3></div>
+					</div>
+					<div>	
+						<div class="Sublime_Vivid"><h3>Sublime Vivid</h3></div>
+					</div>
+					<div>	
+						<div class="Sublime_Light"><h3>Sublime Light</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_15'>15 страница</h2>
+				<div class='play_15'>
+					<div>
+						<div class='Pun_Yeta'><h3>Pun Yeta</h3></div>
+					</div>
+					<div>	
+						<div class="Quepal"><h3>Quepal</h3></div>
+					</div>
+					<div>	
+						<div class="Sand_to_Blue"><h3>Sand to Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Wedding_Day_Blues"><h3>Wedding Day Blues</h3></div>
+					</div>
+					<div>	
+						<div class="Shifter"><h3>Shifter</h3></div>
+					</div>
+					<div>	
+						<div class="Red_Sunset"><h3>Red Sunset</h3></div>
+					</div>
+					<div>	
+						<div class="Moon_Purple"><h3>Moon Purple</h3></div>
+					</div>
+					<div>	
+						<div class="Pure_Lust"><h3>Pure Lust</h3></div>
+					</div>
+					<div>	
+						<div class="Slight_Ocean_View"><h3>Slight Ocean View</h3></div>
+					</div>
+					<div>	
+						<div class="eXpresso"><h3>eXpresso</h3></div>
+					</div>
+					<div>	
+						<div class="Shifty"><h3>Shifty</h3></div>
+					</div>
+					<div>	
+						<div class="Vanusa"><h3>Vanusa</h3></div>
+					</div>
+					<div>	
+						<div class="Evening_Night"><h3>Evening Night</h3></div>
+					</div>
+					<div>	
+						<div class="Magic"><h3>Magic</h3></div>
+					</div>
+					<div>	
+						<div class="Margo"><h3>Margo</h3></div>
+					</div>
+					<div>	
+						<div class="Blue_Raspberry"><h3>Blue Raspberry</h3></div>
+					</div>	
+					<div>	
+						<div class="Citrus_Peel"><h3>Citrus Peel</h3></div>
+					</div>
+					<div>	
+						<div class="Sin_City_Red"><h3>Sin City Red</h3></div>
+					</div>
+					<div>	
+						<div class="Rastafari"><h3>Rastafari</h3></div>
+					</div>
+					<div>	
+						<div class="Summer_Dog"><h3>Summer Dog</h3></div>
+					</div>
+					<div>	
+						<div class="Wiretap"><h3>Wiretap</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_16'>16 страница</h2>
+				<div class='play_16'>
+					<div>
+						<div class='Burning_Orange'><h3>Burning Orange</h3></div>
+					</div>
+					<div>	
+						<div class="Ultra_Voilet"><h3>Ultra Voilet</h3></div>
+					</div>
+					<div>	
+						<div class="By_Design"><h3>By Design</h3></div>
+					</div>
+					<div>	
+						<div class="Kyoo_Tah"><h3>Kyoo Tah</h3></div>
+					</div>
+					<div>	
+						<div class="Kye_Meh"><h3>Kye Meh</h3></div>
+					</div>
+					<div>	
+						<div class="Kyoo_Pal"><h3>Kyoo Pal</h3></div>
+					</div>
+					<div>	
+						<div class="Metapolis"><h3>Metapolis</h3></div>
+					</div>
+					<div>	
+						<div class="Flare"><h3>Flare</h3></div>
+					</div>
+					<div>	
+						<div class="Witching_Hour"><h3>Witching Hour</h3></div>
+					</div>
+					<div>	
+						<div class="Azur_Lane"><h3>Azur Lane</h3></div>
+					</div>
+					<div>	
+						<div class="Neuromancer"><h3>Neuromancer</h3></div>
+					</div>
+					<div>	
+						<div class="Harvey"><h3>Harvey</h3></div>
+					</div>
+					<div>	
+						<div class="Amin"><h3>Amin</h3></div>
+					</div>
+					<div>	
+						<div class="Memariani"><h3>Memariani</h3></div>
+					</div>
+					<div>	
+						<div class="Yoda"><h3>Yoda</h3></div>
+					</div>
+					<div>	
+						<div class="Cool_Sky"><h3>Cool Sky</h3></div>
+					</div>	
+					<div>	
+						<div class="Dark_Ocean"><h3>Dark Ocean</h3></div>
+					</div>
+					<div>	
+						<div class="Evening_Sunshine"><h3>Evening Sunshine</h3></div>
+					</div>
+					<div>	
+						<div class="JShine"><h3>JShine</h3></div>
+					</div>
+					<div>	
+						<div class="Moonlit_Asteroid"><h3>Moonlit Asteroid</h3></div>
+					</div>
+					<div>	
+						<div class="MegaTron"><h3>MegaTron</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_17'>17 страница</h2>
+				<div class='play_17'>
+					<div>
+						<div class='Cool_Blues'><h3>Cool Blues</h3></div>
+					</div>
+					<div>	
+						<div class="Piggy_Pink"><h3>Piggy Pink</h3></div>
+					</div>
+					<div>	
+						<div class="Grade_Grey"><h3>Grade Grey</h3></div>
+					</div>
+					<div>	
+						<div class="Telko"><h3>Telko</h3></div>
+					</div>
+					<div>	
+						<div class="Zenta"><h3>Zenta</h3></div>
+					</div>
+					<div>	
+						<div class="Electric_Peacock"><h3>Electric Peacock</h3></div>
+					</div>
+					<div>	
+						<div class="Lensod"><h3>Lensod</h3></div>
+					</div>
+					<div>	
+						<div class="Newspaper"><h3>Newspaper</h3></div>
+					</div>
+					<div>	
+						<div class="Dark_Blue_Gradient"><h3>Dark Blue Gradient</h3></div>
+					</div>
+					<div>	
+						<div class="Dark_Blu_Two"><h3>Dark Blu Two</h3></div>
+					</div>
+					<div>	
+						<div class="Lemon_Lime"><h3>Lemon Lime</h3></div>
+					</div>
+					<div>	
+						<div class="Beleko"><h3>Beleko</h3></div>
+					</div>
+					<div>	
+						<div class="Mango_Papaya"><h3>Mango Papaya</h3></div>
+					</div>
+					<div>	
+						<div class="Unicorn_Rainbow"><h3>Unicorn Rainbow</h3></div>
+					</div>
+					<div>	
+						<div class="Flame"><h3>Flame</h3></div>
+					</div>
+					<div>	
+						<div class="Blue_Red"><h3>Blue Red</h3></div>
+					</div>	
+					<div>	
+						<div class="Twitter"><h3>Twitter</h3></div>
+					</div>
+					<div>	
+						<div class="Blooze"><h3>Blooze</h3></div>
+					</div>
+					<div>	
+						<div class="Blue_Slate"><h3>Blue Slate</h3></div>
+					</div>
+					<div>	
+						<div class="Space_Light_Green"><h3>Space Light Green</h3></div>
+					</div>
+					<div>	
+						<div class="Flower"><h3>Flower</h3></div>
+					</div>	
+				</div>
+				<h2 class='head_18'>18 страница</h2>
+				<div class='play_18'>
+					<div>
+						<div class='Peach_Sea'><h3>Peach Sea</h3></div>
+					</div>
+					<div>	
+						<div class="Abbas"><h3>Abbas</h3></div>
+					</div>
+					<div>	
+						<div class="Winter_Woods"><h3>Winter Woods</h3></div>
+					</div>
+					<div>	
+						<div class="Emerald_Sea"><h3>Emerald Sea</h3></div>
+					</div>
+					<div>	
+						<div class="Bleem"><h3>Bleem</h3></div>
+					</div>
+					<div>	
+						<div class="Coffee_Gold"><h3>Coffee Gold</h3></div>
+					</div>
+					<div>	
+						<div class="Compass"><h3>Compass</h3></div>
+					</div>
+					<div>
+						<div class="Andreuzzas"><h3>Andreuzza's</h3></div>
+					</div>
+					<div>	
+						<div class="Hyper_Blue"><h3>Hyper Blue</h3></div>
+					</div>
+					<div>	
+						<div class="Racker"><h3>Racker</h3></div>
+					</div>
+					<div>	
+						<div class="Neon_Green"><h3>Neon Green</h3></div>
+					</div>
+					<div>	
+						<div class="Dusty_Grass"><h3>Dusty Grass</h3></div>
+					</div>
+					<div>	
+						<div class="Visual_Blue"><h3>Visual Blue</h3></div>
+					</div>	
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+			let status = document.querySelector('.status')
+			let nickname = document.querySelector('.nickname')
+			let PLAYER = document.querySelector('.PLAYER')
+			let GOLD = document.querySelector('.GOLD')
+			let DIAMOND = document.querySelector('.DIAMOND')
+			let EMERALD = document.querySelector('.EMERALD')
+			let MAGMA = document.querySelector('.MAGMA')
+			let SHULKER = document.querySelector('.SHULKER')
+			let YOUTUBE = document.querySelector('.YOUTUBE')
+			let JUNIOR = document.querySelector('.JUNIOR')
+			let BUILDER = document.querySelector('.BUILDER')
+			let HELPER = document.querySelector('.HELPER')
+			let MODER = document.querySelector('.MODER')
+			let ADMIN = document.querySelector('.ADMIN')
+			let NITR0 = document.querySelector('.NITR0')
+			let TESTER = document.querySelector('.TESTER')
+			// Первая страница
+			let Omolon = document.querySelector('.Omolon')
+			let Farhan = document.querySelector('.Farhan')
+			let Purple = document.querySelector('.Purple')
+			let Ibtesam = document.querySelector('.Ibtesam')
+			let Radioactive_Heat = document.querySelector('.Radioactive_Heat')
+			let The_Sky_And_The_Sea = document.querySelector('.The_Sky_And_The_Sea')
+			let From_Ice_To_Fire = document.querySelector('.From_Ice_To_Fire')
+			let Blue_Orange = document.querySelector('.Blue_Orange')
+			let Purple_Dream = document.querySelector('.Purple_Dream')
+			let Blu = document.querySelector('.Blu')
+			let Summer_Breeze = document.querySelector('.Summer_Breeze')
+			let Ver = document.querySelector('.Ver')
+			let Ver_Black = document.querySelector('.Ver_Black')
+			let Combi = document.querySelector('.Combi')
+			let Anwar = document.querySelector('.Anwar')
+			let Bluelagoo = document.querySelector('.Bluelagoo')
+			let Lunada = document.querySelector('.Lunada')
+			let Reaqua = document.querySelector('.Reaqua')
+			let Mango = document.querySelector('.Mango')
+			let Bupe = document.querySelector('.Bupe')
+			let Windy = document.querySelector('.Windy')
+			// Вторая страница 
+			let Royal_Blue = document.querySelector('.Royal_Blue')
+			let Royal_Blue_Petrol = document.querySelector('.Royal_Blue_Petrol')
+			let Copper = document.querySelector('.Copper')
+			let Anamnisar = document.querySelector('.Anamnisar')
+			let Petrol = document.querySelector('.Petrol')
+			let Sky = document.querySelector('.Sky')
+			let Sel = document.querySelector('.Sel')
+			let Afternoon = document.querySelector('.Afternoon')
+			let Skyline = document.querySelector('.Skyline')
+			let DIMIGO = document.querySelector('.DIMIGO')
+			let Purple_Love = document.querySelector('.Purple_Love')
+			let Sexy_Blue = document.querySelector('.Sexy_Blue')
+			let Blooker20 = document.querySelector('.Blooker20')
+			let Sea_Blue = document.querySelector('.Sea_Blue')
+			let Nimvelo = document.querySelector('.Nimvelo')
+			let Hazel = document.querySelector('.Hazel')
+			let Noon_to_Dusk = document.querySelector('.Noon_to_Dusk')
+			let YouTube = document.querySelector('.YouTube')
+			let Cool_Brown = document.querySelector('.Cool_Brown')
+			let Harmonic_Energy = document.querySelector('.Harmonic_Energy')
+			let Playing_with_Reds = document.querySelector('.Playing_with_Reds')
+			// Третья страница 
+			let Sunny_Days = document.querySelector('.Sunny_Days')
+			let Green_Beach = document.querySelector('.Green_Beach')
+			let Intuitive_Purple = document.querySelector('.Intuitive_Purple')
+			let Emerald_Water = document.querySelector('.Emerald_Water')
+			let Lemon_Twist = document.querySelector('.Lemon_Twist')
+			let Monte_Carlo = document.querySelector('.Monte_Carlo')
+			let Horizon = document.querySelector('.Horizon')
+			let Rose_Water = document.querySelector('.Rose_Water')
+			let Frozen = document.querySelector('.Frozen')
+			let Mango_Pulp = document.querySelector('.Mango_Pulp')
+			let Bloody_Mary = document.querySelector('.Bloody_Mary')
+			let Aubergine = document.querySelector('.Aubergine')
+			let Aqua_Marine = document.querySelector('.Aqua_Marine')
+			let Sunrise = document.querySelector('.Sunrise')
+			let Purple_Paradise = document.querySelector('.Purple_Paradise')
+			let Stripe = document.querySelector('.Stripe')
+			let Sea_Weed = document.querySelector('.Sea_Weed')
+			let Pinky = document.querySelector('.Pinky')
+			let Cherry = document.querySelector('.Cherry')
+			let Mojito = document.querySelector('.Mojito')
+			let Juicy_Orange = document.querySelector('.Juicy_Orange')
+			// Четвертая страница
+			let Mirage = document.querySelector('.Mirage')
+			let Steel_Gray = document.querySelector('.Steel_Gray')
+			let Kashmir = document.querySelector('.Kashmir')
+			let Electric_Violet = document.querySelector('.Electric_Violet')
+			let Venice_Blue = document.querySelector('.Venice_Blue')
+			let BoraBora = document.querySelector('.BoraBora')
+			let Moss = document.querySelector('.Moss')
+			let Shroom_Haze = document.querySelector('.Shroom_Haze')
+			let Mystic = document.querySelector('.Mystic')
+			let Sea_Blizz = document.querySelector('.Sea_Blizz')
+			let Opa = document.querySelector('.Opa')
+			let Titanium = document.querySelector('.Titanium')
+			let Mantle = document.querySelector('.Mantle')
+			let Dracula = document.querySelector('.Dracula')
+			let Peach = document.querySelector('.Peach')
+			let Moonrise = document.querySelector('.Moonrise')
+			let Clouds = document.querySelector('.Clouds')
+			let Stellar = document.querySelector('.Stellar')
+			let Bourbon = document.querySelector('.Bourbon')
+			let Calm_Darya = document.querySelector('.Calm_Darya')
+			let Influenza = document.querySelector('.Influenza')
+			// Пятая страница 
+			let Shrimpy = document.querySelector('.Shrimpy')
+			let Army = document.querySelector('.Army')
+			let Miaka = document.querySelector('.Miaka')
+			let Pinot_Noir = document.querySelector('.Pinot_Noir')
+			let Day_Tripper = document.querySelector('.Day_Tripper')
+			let Namn = document.querySelector('.Namn')
+			let Blurry_Beach = document.querySelector('.Blurry_Beach')
+			let Vasily = document.querySelector('.Vasily')
+			let A_Lost_Memory = document.querySelector('.A_Lost_Memory')
+			let Petrichor = document.querySelector('.Petrichor')
+			let Jonquil = document.querySelector('.Jonquil')
+			let Sirius_Tamed = document.querySelector('.Sirius_Tamed')
+			let Kyoto = document.querySelector('.Kyoto')
+			let Misty_Meadow = document.querySelector('.Misty_Meadow')
+			let Aqualicious = document.querySelector('.Aqualicious')
+			let Moor = document.querySelector('.Moor')
+			let Almost = document.querySelector('.Almost')
+			let Forever_Lost = document.querySelector('.Forever_Lost')
+			let Winter = document.querySelector('.Winter')
+			let Nelson = document.querySelector('.Nelson')
+			let Autumn = document.querySelector('.Autumn')
+			// Шестая страница
+			let Candy = document.querySelector('.Candy')
+			let Reef = document.querySelector('.Reef')
+			let The_Strain = document.querySelector('.The_Strain')
+			let Dirty_Fog = document.querySelector('.Dirty_Fog')
+			let Earthly = document.querySelector('.Earthly')
+			let Virgin = document.querySelector('.Virgin')
+			let Ash = document.querySelector('.Ash')
+			let Cherryblossoms = document.querySelector('.Cherryblossoms')
+			let Parklife = document.querySelector('.Parklife')
+			let Dance_To_Forget = document.querySelector('.Dance_To_Forget')
+			let Starfall = document.querySelector('.Starfall')
+			let Teal_Love = document.querySelector('.Teal_Love')
+			let Neon_Life = document.querySelector('.Neon_Life')
+			let Man_of_Steel = document.querySelector('.Man_of_Steel')
+			let Amethyst = document.querySelector('.Amethyst')
+			let Cheer_Up_Emo_Kid = document.querySelector('.Cheer_Up_Emo_Kid')
+			let Shore = document.querySelector('.Shore')
+			let Facebook_Messenger = document.querySelector('.Facebook_Messenger')
+			let SoundCloud = document.querySelector('.SoundCloud')
+			let Behongo= document.querySelector('.Behongo')
+			let ServQuick = document.querySelector('.ServQuick') 
+			// Седьмая страница
+			let Friday = document.querySelector('.Friday')
+			let Martini = document.querySelector('.Martini')
+			let Metallic_Toad = document.querySelector('.Metallic_Toad')
+			let Between_The_Clouds = document.querySelector('.Between_The_Clouds')
+			let Crazy_Orange_I = document.querySelector('.Crazy_Orange_I')
+			let Hersheys = document.querySelector('.Hersheys')
+			let Talking_To_Mice_Elf = document.querySelector('.Talking_To_Mice_Elf')
+			let Purple_Bliss = document.querySelector('.Purple_Bliss')
+			let Predawn = document.querySelector('.Predawn')
+			let Endless_River = document.querySelector('.Endless_River')
+			let Pastel_Orange_at_the_Sun = document.querySelector('.Pastel_Orange_at_the_Sun')
+			let Twitch = document.querySelector('.Twitch')
+			let Atlas = document.querySelector('.Atlas')
+			let Instagram = document.querySelector('.Instagram')
+			let Flickr = document.querySelector('.Flickr')
+			let Vine = document.querySelector('.Vine')
+			let Turquoise_flow = document.querySelector('.Turquoise_flow')
+			let Portrait = document.querySelector('.Portrait')
+			let Virgin_America = document.querySelector('.Virgin_America')
+			let Koko_Caramel = document.querySelector('.Koko_Caramel')
+			let Fresh_Turboscent = document.querySelector('.Fresh_Turboscent') 
+			// Восьмая страница
+			let Green_to_dark = document.querySelector('.Green_to_dark')
+			let Ukraine = document.querySelector('.Ukraine')
+			let Curiosity_blue = document.querySelector('.Curiosity_blue')
+			let Dark_Knight = document.querySelector('.Dark_Knight')
+			let Piglet = document.querySelector('.Piglet')
+			let Lizard = document.querySelector('.Lizard')
+			let Sage_Persuasion = document.querySelector('.Sage_Persuasion')
+			let Between_Night_and_Day = document.querySelector('.Between_Night_and_Day')
+			let Timber = document.querySelector('.Timber')
+			let Passion = document.querySelector('.Passion')
+			let Clear_Sky = document.querySelector('.Clear_Sky')
+			let Master_Card = document.querySelector('.Master_Card')
+			let Back_To_Earth = document.querySelector('.Back_To_Earth')
+			let Deep_Purple = document.querySelector('.Deep_Purple')
+			let Little_Leaf = document.querySelector('.Little_Leaf')
+			let Netflix = document.querySelector('.Netflix')
+			let Light_Orange = document.querySelector('.Light_Orange')
+			let Green_and_Blue = document.querySelector('.Green_and_Blue')
+			let Poncho = document.querySelector('.Poncho')
+			let Back_to_the_Future = document.querySelector('.Back_to_the_Future')
+			let Blush = document.querySelector('.Blush') 
+			// Девятая страница
+			let Inbox = document.querySelector('.Inbox')
+			let Purplin = document.querySelector('.Purplin')
+			let Pale_Wood = document.querySelector('.Pale_Wood')
+			let Haikus = document.querySelector('.Haikus')
+			let Pizelex = document.querySelector('.Pizelex')
+			let Joomla = document.querySelector('.Joomla')
+			let Christmas = document.querySelector('.Christmas')
+			let Minnesota_Vikings = document.querySelector('.Minnesota_Vikings')
+			let Miami_Dolphins = document.querySelector('.Miami_Dolphins')
+			let Forest = document.querySelector('.Forest')
+			let Nighthawk = document.querySelector('.Nighthawk')
+			let Superman = document.querySelector('.Superman')
+			let Suzy = document.querySelector('.Suzy')
+			let Dark_Skies = document.querySelector('.Dark_Skies')
+			let Decent = document.querySelector('.Decent')
+			let Colors_Of_Sky = document.querySelector('.Colors_Of_Sky')
+			let Purple_White = document.querySelector('.Purple_White')
+			let Ali = document.querySelector('.Ali')
+			let Alihossein = document.querySelector('.Alihossein')
+			let Shahabi = document.querySelector('.Shahabi')
+			let Red_Ocean = document.querySelector('.Red_Ocean') 
+			// Десятая страница
+			let Tranquil = document.querySelector('.Tranquil')
+			let Transfile = document.querySelector('.Transfile')
+			let Sylvia = document.querySelector('.Sylvia ')
+			let Sweet_Morning = document.querySelector('.Sweet_Morning')
+			let Politics = document.querySelector('.Politics')
+			let Bright_Vault = document.querySelector('.Bright_Vault')
+			let Solid_Vault = document.querySelector('.Solid_Vault')
+			let Sunset = document.querySelector('.Sunset')
+			let Grapefruit_Sunset = document.querySelector('.Grapefruit_Sunset')
+			let Deep_Sea_Space = document.querySelector('.Deep_Sea_Space')
+			let Dusk = document.querySelector('.Dusk')
+			let Minimal_Red = document.querySelector('.Minimal_Red')
+			let Royal = document.querySelector('.Royal')
+			let Mauve = document.querySelector('.Mauve')
+			let Frost = document.querySelector('.Frost')
+			let Lush = document.querySelector('.Lush')
+			let Firewatch = document.querySelector('.Firewatch')
+			let Sherbert = document.querySelector('.Sherbert')
+			let Blood_Red = document.querySelector('.Blood_Red')
+			let Sun_on_the_Horizon = document.querySelector('.Sun_on_the_Horizon')
+			let IIIT_Delhi = document.querySelector('.IIIT_Delhi')
+			// Одиннадцатая страница
+			let Jupiter = document.querySelector('.Jupiter')
+			let _50_Shades_of_Grey = document.querySelector('._50_Shades_of_Grey')
+			let Dania = document.querySelector('.Dania')
+			let Limeade = document.querySelector('.Limeade')
+			let Disco = document.querySelector('.Disco')
+			let Love_Couple = document.querySelector('.Love_Couple')
+			let Azure_Pop = document.querySelector('.Azure_Pop')
+			let Nepal = document.querySelector('.Nepal')
+			let Cosmic_Fusion = document.querySelector('.Cosmic_Fusion')
+			let Snapchat = document.querySelector('.Snapchat')
+			let Eds_Sunset_Gradient = document.querySelector('.Eds_Sunset_Gradient')
+			let Brady_Brady_Fun_Fun = document.querySelector('.Brady_Brady_Fun_Fun')
+			let Black_Rosé = document.querySelector('.Black_Rosé')
+			let _80s_Purple = document.querySelector('._80s_Purple')
+			let Radar = document.querySelector('.Radar')
+			let Ibiza_Sunset = document.querySelector('.Ibiza_Sunset')
+			let Dawn = document.querySelector('.Dawn')
+			let Mild = document.querySelector('.Mild')
+			let Vice_City = document.querySelector('.Vice_City')
+			let Jaipur = document.querySelector('.Jaipur')
+			let Jodhpur = document.querySelector('.Jodhpur')
+			// Двенадцатая страница
+			let Cocoaa_Ice = document.querySelector('.Cocoaa_Ice')
+			let EasyMed = document.querySelector('.EasyMed')
+			let Rose_Colored_Lenses = document.querySelector('.Rose_Colored_Lenses')
+			let What_lies_Beyond = document.querySelector('.What_lies_Beyond')
+			let Roseanna = document.querySelector('.Roseanna')
+			let Honey_Dew = document.querySelector('.Honey_Dew')
+			let Under_the_Lake = document.querySelector('.Under_the_Lake')
+			let The_Blue_Lagoon = document.querySelector('.The_Blue_Lagoon')
+			let Love_Tonight = document.querySelector('.Love_Tonight')
+			let Very_Blue = document.querySelector('.Very_Blue')
+			let Love_and_Liberty = document.querySelector('.Love_and_Liberty')
+			let Orca = document.querySelector('.Orca')
+			let Venice = document.querySelector('.Venice')
+			let Pacific_Dream = document.querySelector('.Pacific_Dream')
+			let Learning_and_Leading = document.querySelector('.Learning_and_Leading')
+			let Celestial = document.querySelector('.Celestial')
+			let Purplepine = document.querySelector('.Purplepine')
+			let Sha_la_la = document.querySelector('.Sha_la_la')
+			let Mini = document.querySelector('.Mini')
+			let Maldives = document.querySelector('.Maldives')
+			let Cinnamint = document.querySelector('.Cinnamint')
+			// Тринадцатая страница
+			let Html = document.querySelector('.Html')
+			let Sunkist = document.querySelector('.Sunkist')
+			let Blue_Skies = document.querySelector('.Blue_Skies')
+			let Chitty_Bang = document.querySelector('.Chitty_Bang')
+			let Visions_of_Grandeur = document.querySelector('.Visions_of_Grandeur')
+			let Crystal_Clear = document.querySelector('.Crystal_Clear')
+			let Mello = document.querySelector('.Mello')
+			let Compare_Now = document.querySelector('.Compare_Now')
+			let Meridian = document.querySelector('.Meridian')
+			let Relay = document.querySelector('.Relay')
+			let Alive = document.querySelector('.Alive')
+			let Scooter = document.querySelector('.Scooter')
+			let Telegram = document.querySelector('.Telegram')
+			let Crimson_Tide = document.querySelector('.Crimson_Tide')
+			let Socialive = document.querySelector('.Socialive')
+			let Subu = document.querySelector('.Subu')
+			let Broken_Hearts = document.querySelector('.Broken_Hearts')
+			let Kimoby_Is_The_New_Blue = document.querySelector('.Kimoby_Is_The_New_Blue')
+			let Dull = document.querySelector('.Dull')
+			let Purpink = document.querySelector('.Purpink')
+			let Orange_Coral = document.querySelector('.Orange_Coral')
+			// Четырнадцатая страница
+			let Summer = document.querySelector('.Summer')
+			let King_Yna = document.querySelector('.King_Yna')
+			let Velvet_Sun = document.querySelector('.Velvet_Sun')
+			let Zinc = document.querySelector('.Zinc')
+			let Hydrogen = document.querySelector('.Hydrogen')
+			let Argon = document.querySelector('.Argon')
+			let Lithium = document.querySelector('.Lithium')
+			let Digital_Water = document.querySelector('.Digital_Water')
+			let Orange_Fun = document.querySelector('.Orange_Fun')
+			let Rainbow_Blue = document.querySelector('.Rainbow_Blue')
+			let Pink_Flavour = document.querySelector('.Pink_Flavour')
+			let Sulphur = document.querySelector('.Sulphur')
+			let Selenium = document.querySelector('.Selenium')
+			let Delicate = document.querySelector('.Delicate')
+			let Ohhappiness = document.querySelector('.Ohhappiness')
+			let Lawrencium = document.querySelector('.Lawrencium')
+			let Relaxing_red = document.querySelector('.Relaxing_red')
+			let Taran_Tado = document.querySelector('.Taran_Tado')
+			let Bighead = document.querySelector('.Bighead')
+			let Sublime_Vivid = document.querySelector('.Sublime_Vivid')
+			let Sublime_Light = document.querySelector('.Sublime_Light')
+			// Пятнадцатая страница
+			let Pun_Yeta = document.querySelector('.Pun_Yeta')
+			let Quepal = document.querySelector('.Quepal')
+			let Sand_to_Blue = document.querySelector('.Sand_to_Blue')
+			let Wedding_Day_Blues = document.querySelector('.Wedding_Day_Blues')
+			let Shifter = document.querySelector('.Shifter')
+			let Red_Sunset = document.querySelector('.Red_Sunset')
+			let Moon_Purple = document.querySelector('.Moon_Purple')
+			let Pure_Lust = document.querySelector('.Pure_Lust')
+			let Slight_Ocean_View = document.querySelector('.Slight_Ocean_View')
+			let eXpresso = document.querySelector('.eXpresso')
+			let Shifty = document.querySelector('.Shifty')
+			let Vanusa = document.querySelector('.Vanusa')
+			let Evening_Night = document.querySelector('.Evening_Night')
+			let Magic = document.querySelector('.Magic')
+			let Margo = document.querySelector('.Margo')
+			let Blue_Raspberry = document.querySelector('.Blue_Raspberry')
+			let Citrus_Peel = document.querySelector('.Citrus_Peel')
+			let Sin_City_Red = document.querySelector('.Sin_City_Red')
+			let Rastafari = document.querySelector('.Rastafari')
+			let Summer_Dog = document.querySelector('.Summer_Dog')
+			let Wiretap = document.querySelector('.Wiretap')
+			// Шестнадцатая страница
+			let Burning_Orange = document.querySelector('.Burning_Orange')
+			let Ultra_Voilet = document.querySelector('.Ultra_Voilet')
+			let By_Design = document.querySelector('.By_Design')
+			let Kyoo_Tah = document.querySelector('.Kyoo_Tah')
+			let Kye_Meh = document.querySelector('.Kye_Meh')
+			let Kyoo_Pal = document.querySelector('.Kyoo_Pal')
+			let Metapolis = document.querySelector('.Metapolis')
+			let Flare = document.querySelector('.Flare')
+			let Witching_Hour = document.querySelector('.Witching_Hour')
+			let Azur_Lane = document.querySelector('.Azur_Lane')
+			let Neuromancer = document.querySelector('.Neuromancer')
+			let Harvey = document.querySelector('.Harvey')
+			let Amin = document.querySelector('.Amin')
+			let Memariani = document.querySelector('.Memariani')
+			let Yoda = document.querySelector('.Yoda')
+			let Cool_Sky = document.querySelector('.Cool_Sky')
+			let Dark_Ocean = document.querySelector('.Dark_Ocean')
+			let Evening_Sunshine = document.querySelector('.Evening_Sunshine')
+			let JShine = document.querySelector('.JShine')
+			let Moonlit_Asteroid = document.querySelector('.Moonlit_Asteroid')
+			let MegaTron = document.querySelector('.MegaTron')
+			// Семнадцатая страница
+			let Cool_Blues = document.querySelector('.Cool_Blues')
+			let Piggy_Pink = document.querySelector('.Piggy_Pink')
+			let Grade_Grey = document.querySelector('.Grade_Grey')
+			let Telko = document.querySelector('.Telko')
+			let Zenta = document.querySelector('.Zenta')
+			let Electric_Peacock = document.querySelector('.Electric_Peacock')
+			let Lensod = document.querySelector('.Lensod')
+			let Newspaper = document.querySelector('.Newspaper')
+			let Dark_Blue_Gradient = document.querySelector('.Dark_Blue_Gradient')
+			let Dark_Blu_Two = document.querySelector('.Dark_Blu_Two')
+			let Lemon_Lime = document.querySelector('.Lemon_Lime')
+			let Beleko = document.querySelector('.Beleko')
+			let Mango_Papaya = document.querySelector('.Mango_Papaya')
+			let Unicorn_Rainbow = document.querySelector('.Unicorn_Rainbow')
+			let Flame = document.querySelector('.Flame')
+			let Blue_Red = document.querySelector('.Blue_Red')
+			let Twitter = document.querySelector('.Twitter')
+			let Blooze = document.querySelector('.Blooze')
+			let Blue_Slate = document.querySelector('.Blue_Slate')
+			let Space_Light_Green = document.querySelector('.Space_Light_Green')
+			let Flower = document.querySelector('.Flower')
+			// Восемнадцатая страница
+			let Peach_Sea = document.querySelector('.Peach_Sea')
+			let Abbas = document.querySelector('.Abbas')
+			let Winter_Woods = document.querySelector('.Winter_Woods')
+			let Emerald_Sea = document.querySelector('.Emerald_Sea')
+			let Bleem = document.querySelector('.Bleem')
+			let Coffee_Gold = document.querySelector('.Coffee_Gold')
+			let Compass = document.querySelector('.Compass')
+			let Andreuzzas = document.querySelector('.Andreuzzas')
+			let Hyper_Blue = document.querySelector('.Hyper_Blue')
+			let Racker = document.querySelector('.Racker')
+			let Neon_Green = document.querySelector('.Neon_Green')
+			let Dusty_Grass = document.querySelector('.Dusty_Grass')
+			let Visual_Blue = document.querySelector('.Visual_Blue')
+
+			let head_1 = document.querySelector('.head_1')
+			let head_2 = document.querySelector('.head_2')
+			let head_3 = document.querySelector('.head_3')
+			let head_4 = document.querySelector('.head_4')
+			let head_5 = document.querySelector('.head_5')
+			let head_6 = document.querySelector('.head_6')
+			let head_7 = document.querySelector('.head_7')
+			let head_8 = document.querySelector('.head_8')
+			let head_9 = document.querySelector('.head_9')
+			let head_10 = document.querySelector('.head_10')
+			let head_11 = document.querySelector('.head_11')
+			let head_12 = document.querySelector('.head_12')
+			let head_13 = document.querySelector('.head_13')
+			let head_14 = document.querySelector('.head_14')
+			let head_15 = document.querySelector('.head_15')
+			let head_16 = document.querySelector('.head_16')
+			let head_17 = document.querySelector('.head_17')
+			let head_18 = document.querySelector('.head_18')
+
+			let play_1 = document.querySelector('.play_1')
+			let play_2 = document.querySelector('.play_2')
+			let play_3 = document.querySelector('.play_3')
+			let play_4 = document.querySelector('.play_4')
+			let play_5 = document.querySelector('.play_5')
+			let play_6 = document.querySelector('.play_6')
+			let play_7 = document.querySelector('.play_7')
+			let play_8 = document.querySelector('.play_8')
+			let play_9 = document.querySelector('.play_9')
+			let play_10 = document.querySelector('.play_10')
+			let play_11 = document.querySelector('.play_11')
+			let play_12 = document.querySelector('.play_12')
+			let play_13 = document.querySelector('.play_13')
+			let play_14 = document.querySelector('.play_14')
+			let play_15 = document.querySelector('.play_15')
+			let play_16 = document.querySelector('.play_16')
+			let play_17 = document.querySelector('.play_17')
+			let play_18 = document.querySelector('.play_18')
+
+			let automsg = document.querySelector('.automsg')
+		</script>
+		<script type="text/javascript">
+
+    		let person = prompt('Введите Ваш никнейм. Например: LeCLassique_')
+    		nickname.textContent = person
+    		nickname.style.margin = '0 0 0 5px'
+
+    		PLAYER.onclick = () => {
+    			status.textContent = ''
+    		}
+			GOLD.onclick = () => {
+				status.textContent = 'GOLD'
+			}
+			DIAMOND.onclick = () => {
+				status.textContent = 'DIAMOND'
+			}
+			EMERALD.onclick = () => {
+				status.textContent = 'EMERALD'
+			}
+			MAGMA.onclick = () => {
+				status.textContent = 'MAGMA'
+			}
+			SHULKER.onclick = () => {
+				status.textContent = 'SHULKER'
+			}
+			YOUTUBE.onclick = () => {
+				status.textContent = 'YOUTUBE'
+			}
+			JUNIOR.onclick = () => {
+				status.textContent = 'JUNIOR'
+			}
+			BUILDER.onclick = () => {
+				status.textContent = 'BUILDER'
+			}
+			HELPER.onclick = () => {
+				status.textContent = 'HELPER'
+			}
+			MODER.onclick = () => {
+				status.textContent = 'MODER'
+			}
+			ADMIN.onclick = () => {
+				status.textContent = 'ADMIN'
+			}
+			NITR0.onclick = () => {
+				status.textContent = 'NITR0'
+			}
+			TESTER.onclick = () => {
+				status.textContent = 'TESTER'
+			}
+			PLAYER.style.color = 'white' 
+			GOLD.style.color = 'yellow' 
+			DIAMOND.style.color = 'deepskyblue' 
+			EMERALD.style.color = 'springgreen' 
+			MAGMA.style.color = 'crimson' 
+			SHULKER.style.color = 'gray' 
+			YOUTUBE.style.color = 'orange' 
+			JUNIOR.style.color = 'limegreen' 
+			BUILDER.style.color = 'turquoise' 
+			HELPER.style.color = 'limegreen' 
+			MODER.style.color = 'blue' 
+			ADMIN.style.color = 'red' 
+			NITR0.style.color = 'indigo' 
+			TESTER.style.color = 'orangered' 
+
+			let arrColor = ['yellow', 'deepskyblue', 'springgreen', 'crimson', 'gray', 'orange', 'limegreen', 'turquoise', 'fuchsia', 'indigo']
+			let masColor = 0
+			setInterval(() => {
+				SHULKER.style.color = arrColor[masColor]
+				masColor++
+				if(masColor >= arrColor.length)
+				masColor = 0
+			},1000)
+
+    		head_1.style.margin = '170px 0 0 0'
+    		play_1.style.display = 'none'
+    		play_2.style.display = 'none'
+    		play_3.style.display = 'none'
+    		play_4.style.display = 'none'
+    		play_5.style.display = 'none'
+    		play_6.style.display = 'none'
+    		play_7.style.display = 'none'
+    		play_8.style.display = 'none'
+    		play_9.style.display = 'none'
+    		play_10.style.display = 'none'
+    		play_11.style.display = 'none'
+    		play_12.style.display = 'none'
+    		play_13.style.display = 'none'
+    		play_14.style.display = 'none'
+    		play_15.style.display = 'none'
+    		play_16.style.display = 'none'
+    		play_17.style.display = 'none'
+    		play_18.style.display = 'none'
+
+    		head_1.onclick = () => {
+    			if (play_1.style.display === 'none') {
+    				play_1.style.display = 'block'
+    			} else if (play_1.style.display === 'block') {
+    				play_1.style.display = 'none'
+    			}
+    		}
+    		head_2.onclick = () => {
+    			if (play_2.style.display === 'none') {
+    				play_2.style.display = 'block'
+    			} else if (play_2.style.display === 'block') {
+    				play_2.style.display = 'none'
+    			}
+    		}
+    		head_3.onclick = () => {
+    			if (play_3.style.display === 'none') {
+    				play_3.style.display = 'block'
+    			} else if (play_3.style.display === 'block') {
+    				play_3.style.display = 'none'
+    			}
+    		}
+    		head_4.onclick = () => {
+    			if (play_4.style.display === 'none') {
+    				play_4.style.display = 'block'
+    			} else if (play_4.style.display === 'block') {
+    				play_4.style.display = 'none'
+    			}
+    		}
+    		head_5.onclick = () => {
+    			if (play_5.style.display === 'none') {
+    				play_5.style.display = 'block'
+    			} else if (play_5.style.display === 'block') {
+    				play_5.style.display = 'none'
+    			}
+    		}
+    		head_6.onclick = () => {
+    			if (play_6.style.display === 'none') {
+    				play_6.style.display = 'block'
+    			} else if (play_6.style.display === 'block') {
+    				play_6.style.display = 'none'
+    			}
+    		}
+    		head_7.onclick = () => {
+    			if (play_7.style.display === 'none') {
+    				play_7.style.display = 'block'
+    			} else if (play_7.style.display === 'block') {
+    				play_7.style.display = 'none'
+    			}
+    		}
+    		head_8.onclick = () => {
+    			if (play_8.style.display === 'none') {
+    				play_8.style.display = 'block'
+    			} else if (play_8.style.display === 'block') {
+    				play_8.style.display = 'none'
+    			}
+    		}
+    		head_9.onclick = () => {
+    			if (play_9.style.display === 'none') {
+    				play_9.style.display = 'block'
+    			} else if (play_9.style.display === 'block') {
+    				play_9.style.display = 'none'
+    			}
+    		}
+    		head_10.onclick = () => {
+    			if (play_10.style.display === 'none') {
+    				play_10.style.display = 'block'
+    			} else if (play_10.style.display === 'block') {
+    				play_10.style.display = 'none'
+    			}
+    		}
+    		head_11.onclick = () => {
+    			if (play_11.style.display === 'none') {
+    				play_11.style.display = 'block'
+    			} else if (play_11.style.display === 'block') {
+    				play_11.style.display = 'none'
+    			}
+    		}
+    		head_12.onclick = () => {
+    			if (play_12.style.display === 'none') {
+    				play_12.style.display = 'block'
+    			} else if (play_12.style.display === 'block') {
+    				play_12.style.display = 'none'
+    			}
+    		}
+    		head_13.onclick = () => {
+    			if (play_13.style.display === 'none') {
+    				play_13.style.display = 'block'
+    			} else if (play_13.style.display === 'block') {
+    				play_13.style.display = 'none'
+    			}
+    		}
+    		head_14.onclick = () => {
+    			if (play_14.style.display === 'none') {
+    				play_14.style.display = 'block'
+    			} else if (play_14.style.display === 'block') {
+    				play_14.style.display = 'none'
+    			}
+    		}
+    		head_15.onclick = () => {
+    			if (play_15.style.display === 'none') {
+    				play_15.style.display = 'block'
+    			} else if (play_15.style.display === 'block') {
+    				play_15.style.display = 'none'
+    			}
+    		}
+    		head_16.onclick = () => {
+    			if (play_16.style.display === 'none') {
+    				play_16.style.display = 'block'
+    			} else if (play_16.style.display === 'block') {
+    				play_16.style.display = 'none'
+    			}
+    		}
+    		head_17.onclick = () => {
+    			if (play_17.style.display === 'none') {
+    				play_17.style.display = 'block'
+    			} else if (play_17.style.display === 'block') {
+    				play_17.style.display = 'none'
+    			}
+    		}
+    		head_18.onclick = () => {
+    			if (play_18.style.display === 'none') {
+    				play_18.style.display = 'block'
+    			} else if (play_18.style.display === 'block') {
+    				play_18.style.display = 'none'
+    			}
+    		}
+    		// Первая страница
+			Omolon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #091E3A, #2F80ED, #2D9EE0)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Farhan.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #9400D3, #4B0082)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c84e89, #F15F79)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ibtesam.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00F5A0, #00D9F5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Radioactive_Heat.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F7941E, #72C6EF, #00A651)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			The_Sky_And_The_Sea.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F7941E, #004E8F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			From_Ice_To_Fire.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #72C6EF, #004E8F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blue_Orange.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FD8112, #0085CA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple_Dream.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #bf5ae0, #a811da)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blu.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00416A, #E4E5E6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Summer_Breeze.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fbed96, #abecd6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ver.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFE000, #799F0C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ver_Black.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F7F8F8, #ACBB78)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Combi.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00416A, #799F0C, #FFE000)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Anwar.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #334d50, #cbcaa5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bluelagoo.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0052D4, #4364F7, #6FB1FC)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lunada.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5433FF, #20BDFF, #A5FECB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Reaqua.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #799F0C, #ACBB78)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mango.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ffe259, #ffa751)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bupe.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00416A, #E4E5E6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Windy.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #acb6e5, #86fde8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Вторая страница
+			Royal_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #536976, #292E49)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Royal_Blue_Petrol.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #BBD2C5, #536976, #292E49)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Copper.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B79891, #94716B)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Anamnisar.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #9796f0, #fbc7d4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Petrol.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #BBD2C5, #536976)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sky.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #076585, #fff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sel.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00467F, #A5CC82)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Afternoon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #000C40, #607D8B)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Skyline.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1488CC, #2B32B2)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			DIMIGO.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ec008c, #fc6767)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple_Love.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #cc2b5e, #753a88)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sexy_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2193b0, #6dd5ed)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blooker20.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e65c00, #F9D423)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sea_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2b5876, #4e4376)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Nimvelo.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #314755, #26a0da)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Hazel.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #77A1D3, #79CBCA, #E684AE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Noon_to_Dusk.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff6e7f, #bfe9ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			YouTube.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e52d27, #b31217)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cool_Brown.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #603813, #b29f94)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Harmonic_Energy.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #16A085, #F4D03F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Playing_with_Reds.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D31027, #EA384D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Третья страница
+			Sunny_Days.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EDE574, #E1F5C4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Green_Beach.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #02AAB0, #00CDAC)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Intuitive_Purple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DA22FF, #9733EE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Emerald_Water.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #348F50, #56B4D3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lemon_Twist.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3CA55C, #B5AC49)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Monte_Carlo.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #CC95C0, #DBD4B4, #7AA1D2)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Horizon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #003973, #E5E5BE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Rose_Water.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E55D87, #5FC3E4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Frozen.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #403B4A, #E7E9BB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mango_Pulp.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F09819, #EDDE5D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bloody_Mary.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF512F, #DD2476)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Aubergine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #AA076B, #61045F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Aqua_Marine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1A2980, #26D0CE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sunrise.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF512F, #F09819)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple_Paradise.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1D2B64, #F8CDDA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Stripe.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1FA2FF, #12D8FA, #A6FFCB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sea_Weed.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4CB8C4, #3CD3AD)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pinky.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DD5E89, #F7BB97)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cherry.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EB3349, #F45C43)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mojito.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1D976C, #93F9B9)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Juicy_Orange.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF8008, #FFC837)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Четвертая страница
+			Mirage.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #16222A, #3A6073)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Steel_Gray.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1F1C2C, #928DAB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kashmir.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #614385, #516395)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Electric_Violet.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4776E6, #8E54E9)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Venice_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #085078, #85D8CE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			BoraBora.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2BC0E4, #EAECC6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Moss.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #134E5E, #71B280)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Shroom_Haze.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5C258D, #4389A2)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mystic.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #757F9A, #D7DDE8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sea_Blizz.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1CD8D2, #93EDC7)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Opa.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3D7EAA, #FFE47A)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Titanium.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #283048, #859398)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mantle.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #24C6DC, #514A9D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dracula.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DC2424, #4A569D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Peach.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ED4264, #FFEDBC)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Moonrise.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DAE2F8, #D6A4A4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Clouds.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ECE9E6, #FFFFFF)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Stellar.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #7474BF, #348AC7)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bourbon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EC6F66, #F3A183)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Calm_Darya.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5f2c82, #49a09d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Influenza.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C04848, #480048)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Пятая страница
+			Shrimpy.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e43a15, #e65245)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Army.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #414d0b, #727a17)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Miaka.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FC354C, #0ABFBC)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pinot_Noir.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4b6cb7, #182848)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Day_Tripper.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f857a6, #ff5858)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Namn.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #a73737, #7a2828)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blurry_Beach.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #d53369, #cbad6d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Vasily.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e9d362, #333333)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			A_Lost_Memory.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DE6262, #FFB88C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Petrichor.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #666600, #999966)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Jonquil.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFEEEE, #DDEFBB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sirius_Tamed.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EFEFBB, #D4D3DD)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kyoto.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c21500, #ffc500)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Misty_Meadow.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #215f00, #e4e4d9)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Aqualicious.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #50C9C3, #96DEDA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Moor.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #616161, #9bc5c3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Almost.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ddd6f3, #faaca8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Forever_Lost.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5D4157, #A8CABA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Winter.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E6DADA, #274046)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Nelson.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f2709c, #ff9472)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Autumn.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DAD299, #B0DAB9)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Шестая страница
+			Candy.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D3959B, #BFE6BA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Reef.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00d2ff, #3a7bd5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			The_Strain.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #870000, #190A05)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dirty_Fog.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B993D6, #8CA6DB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Earthly.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #649173, #DBD5A4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Virgin.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C9FFBF, #FFAFBD)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ash.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #606c88, #3f4c6b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cherryblossoms.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FBD3E9, #BB377D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Parklife.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ADD100, #7B920A)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dance_To_Forget.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF4E50, #F9D423)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Starfall.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F0C27B, #4B1248)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Teal_Love.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #AAFFA9, #11FFBD)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Neon_Life.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B3FFAB, #12FFF7)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Man_of_Steel.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #780206, #061161)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Amethyst.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #9D50BB, #6E48AA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cheer_Up_Emo_Kid.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #556270, #FF6B6B)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Shore.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #70e1f5, #ffd194)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Facebook_Messenger.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00c6ff, #0072ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			SoundCloud.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fe8c00, #f83600)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Behongo.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #52c234, #061700)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			ServQuick.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #485563, #29323c)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Седьмая страница
+			Friday.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #83a4d4, #b6fbff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Martini.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FDFC47, #24FE41)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Metallic_Toad.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #abbaab, #ffffff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Between_The_Clouds.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #73C8A9, #373B44)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Crazy_Orange_I.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D38312, #A83279)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Hersheys.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1e130c, #9a8478)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Talking_To_Mice_Elf.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #948E99, #2E1437)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple_Bliss.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #360033, #0b8793)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Predawn.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFA17F, #00223E)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Endless_River.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #43cea2, #185a9d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pastel_Orange_at_the_Sun.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ffb347, #ffcc33)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Twitch.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6441A5, #2a0845)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Atlas.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FEAC5E, #C779D0, #4BC0C8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Instagram.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #833ab4, #fd1d1d, #fcb045)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Flickr.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff0084, #33001b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Vine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00bf8f, #001510)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Turquoise_flow.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #136a8a, #267871)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Portrait.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8e9eab, #eef2f3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Virgin_America.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #7b4397, #dc2430)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Koko_Caramel.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D1913C, #FFD194)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Fresh_Turboscent.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F1F2B5, #135058)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Восьмая страница
+			Green_to_dark.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6A9113, #141517)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ukraine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #004FF9, #FFF94C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Curiosity_blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #525252, #3d72b4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dark_Knight.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #BA8B02, #181818)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Piglet.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ee9ca7, #ffdde1)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lizard.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #304352, #d7d2cc)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sage_Persuasion.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #CCCCB2, #757519)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Between_Night_and_Day.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2c3e50, #3498db)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Timber.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fc00ff, #00dbde)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Passion.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e53935, #e35d5b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Clear_Sky.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #005C97, #363795)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Master_Card.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f46b45, #eea849)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Back_To_Earth.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00C9FF, #92FE9D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Deep_Purple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #673AB7, #512DA8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Little_Leaf.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #76b852, #8DC26F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Netflix.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8E0E00, #1F1C18)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Light_Orange.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFB75E, #ED8F03)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Green_and_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c2e59c, #64b3f4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Poncho.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #403A3E, #BE5869)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Back_to_the_Future.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C02425, #F0CB35)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blush.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B24592, #F15F79)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Девятая страница
+			Inbox.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #457fca, #5691c8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purplin.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6a3093, #a044ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pale_Wood.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #eacda3, #d6ae7b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Haikus.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fd746c, #ff9068)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pizelex.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #114357, #F29492)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Joomla.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1e3c72, #2a5298)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Christmas.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2F7336, #AA3A38)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Minnesota_Vikings.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5614B0, #DBD65C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Miami_Dolphins.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4DA0B0, #D39D38)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Forest.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #5A3F37, #2C7744)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Nighthawk.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2980b9, #2c3e50)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Superman.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0099F7, #F11712)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Suzy.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #834d9b, #d04ed6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dark_Skies.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4B79A1, #283E51)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Decent.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4CA1AF, #C4E0E5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Colors_Of_Sky.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E0EAFC, #CFDEF3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purple_White.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #BA5370, #F4E2D8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ali.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff4b1f, #1fddff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Alihossein.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f7ff00, #db36a4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Shahabi.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #a80077, #66ff00)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Red_Ocean.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1D4350, #A43931)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Десятая страница
+			Tranquil.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EECDA3, #EF629F)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Transfile.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #16BFFD, #CB3066)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sylvia.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff4b1f, #ff9068)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sweet_Morning.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF5F6D, #FFC371)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Politics.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2196f3, #f44336)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bright_Vault.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00d2ff, #928DAB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Solid_Vault.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3a7bd5, #3a6073)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sunset.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0B486B, #F56217)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Grapefruit_Sunset.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e96443, #904e95)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Deep_Sea_Space.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2C3E50, #4CA1AF)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dusk.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2C3E50, #FD746C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Minimal_Red.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F00000, #DC281E)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Royal.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #141E30, #243B55)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mauve.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #42275a, #734b6d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Frost.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #000428, #004e92)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lush.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #56ab2f, #a8e063)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Firewatch.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #cb2d3e, #ef473a)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sherbert.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f79d00, #64f38c)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blood_Red.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f85032, #e73827)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sun_on_the_Horizon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fceabb, #f8b500)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			IIIT_Delhi.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #808080, #3fada8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Одиннадцатая страница
+			Jupiter.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ffd89b, #19547b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			_50_Shades_of_Grey.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #bdc3c7, #2c3e50)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dania.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #BE93C5, #7BC6CC)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Limeade.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #A1FFCE, #FAFFD1)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Disco.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4ECDC4, #556270)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Love_Couple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3a6186, #89253e)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Azure_Pop.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ef32d9, #89fffd)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Nepal.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #de6161, #2657eb)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cosmic_Fusion.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff00cc, #333399)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Snapchat.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fffc00, #ffffff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Eds_Sunset_Gradient.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Brady_Brady_Fun_Fun.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00c3ff, #ffff1c)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Black_Rosé.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f4c4f3, #fc67fa)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			_80s_Purple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #41295a, #2F0743)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Radar.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #A770EF, #CF8BF3, #FDB99B)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ibiza_Sunset.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ee0979, #ff6a00)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dawn.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F3904F, #3B4371)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mild.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #67B26F, #4ca2cd)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Vice_City.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3494E6, #EC6EAD)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Jaipur.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DBE6F6, #C5796D)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Jodhpur.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #9CECFB, #65C7F7, #0052D4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Двенадцатая страница
+			Cocoaa_Ice.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c0c0aa, #1cefff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			EasyMed.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DCE35B, #45B649)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Rose_Colored_Lenses.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E8CBC0, #636FA4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			What_lies_Beyond.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F0F2F0, #000C40)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Roseanna.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFAFBD, #ffc3a0)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Honey_Dew.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #43C6AC, #F8FFAE)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Under_the_Lake.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #093028, #237A57)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			The_Blue_Lagoon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #43C6AC, #191654)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Love_Tonight.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4568DC, #B06AB3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Very_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0575E6, #021B79)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Love_and_Liberty.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #200122, #6f0000)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Orca.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #44A08D, #093637)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Venice.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6190E8, #A7BFE8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pacific_Dream.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #34e89e, #0f3443)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Learning_and_Leading.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F7971E, #FFD200)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Celestial.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C33764, #1D2671)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purplepine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #20002c, #cbb4d4)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sha_la_la.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D66D75, #E29587)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mini.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #30E8BF, #FF8235)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Maldives.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B2FEFA, #0ED2F7)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cinnamint.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4AC29A, #BDFFF3)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Тринадцатая страница
+			Html.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E44D26, #F16529)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sunkist.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F2994A, #F2C94C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blue_Skies.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #56CCF2, #2F80ED)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Chitty_Bang.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #007991, #78ffd6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Visions_of_Grandeur.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #000046, #1CB5E0)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Crystal_Clear.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #159957, #155799)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mello.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c0392b, #8e44ad)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Compare_Now.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EF3B36, #FFFFFF)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Meridian.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #283c86, #45a247)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Relay.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Alive.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #CB356B, #BD3F32)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Scooter.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #36D1DC, #5B86E5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Telegram.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1c92d2, #f2fcfe)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Crimson_Tide.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #642B73, #C6426E)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Socialive.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #06beb6, #48b1bf)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Subu.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Broken_Hearts.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #d9a7c7, #fffcdc)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kimoby_Is_The_New_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #396afc, #2948ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dull.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C9D6FF, #E2E2E2)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Purpink.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #7F00FF, #E100FF)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Orange_Coral.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff9966, #ff5e62)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Четырнадцатая страница
+			Summer.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #22c1c3, #fdbb2d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			King_Yna.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Velvet_Sun.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #e1eec3, #f05053)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Zinc.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ADA996, #F2F2F2, #DBDBDB, #EAEAEA)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Hydrogen.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Argon.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lithium.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6D6027, #D3CBB8)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Digital_Water.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #74ebd5, #ACB6E5)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Orange_Fun.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fc4a1a, #f7b733)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Rainbow_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00F260, #0575E6)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pink_Flavour.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #800080, #ffc0cb)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sulphur.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #CAC531, #F3F9A7)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Selenium.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3C3B3F, #605C3C)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Delicate.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D3CCE3, #E9E4F0)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ohhappiness.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00b09b, #96c93d)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lawrencium.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, 0f0c29, #302b63, #24243e)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Relaxing_red.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #fffbd5, #b20a2c)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Taran_Tado.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #23074d, #cc5333)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bighead.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c94b4b, #4b134f)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sublime_Vivid.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FC466B, #3F5EFB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sublime_Light.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FC5C7D, #6A82FB)'
+				automsg.style.webkitBackgroundClip = 'text'
+    			automsg.style.webkitTextFillColor = 'transparent'
+			}
+			// Пятнадцатая страница
+			Pun_Yeta.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #108dc7, #ef8e38)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Quepal.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #11998e, #38ef7d)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sand_to_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #3E5151, #DECBA4)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Wedding_Day_Blues.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #40E0D0, #FF8C00, #FF0080)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Shifter.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #bc4e9c, #f80759)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Red_Sunset.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #355C7D, #6C5B7B, #C06C84)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Moon_Purple.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4e54c8, #8f94fb)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Pure_Lust.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #333333, #dd1818)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Slight_Ocean_View.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #a8c0ff, #3f2b96)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			eXpresso.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ad5389, #3c1053)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Shifty.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #636363, #a2ab58)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Vanusa.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DA4453, #89216B)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Evening_Night.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #005AA7, #FFFDE4)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Magic.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #59C173, #a17fe0, #5D26C1)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Margo.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FFEFBA, #FFFFFF)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blue_Raspberry.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00B4DB, #0083B0)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Citrus_Peel.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FDC830, #F37335)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Sin_City_Red.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ED213A, #93291E)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Rastafari.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1E9600, #FFF200, #FF0000)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Summer_Dog.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #a8ff78, #78ffd6)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Wiretap.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8A2387, #E94057, #F27121)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Burning_Orange.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF416C, #FF4B2B)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Ultra_Voilet.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #654ea3, #eaafc8)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			By_Design.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #009FFF, #ec2F4B)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kyoo_Tah.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #544a7d, #ffd452)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kye_Meh.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8360c3, #2ebf91)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Kyoo_Pal.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #dd3e54, #6be585)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Metapolis.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #659999, #f4791f)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Flare.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f12711, #f5af19)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Witching_Hour.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #c31432, #240b36)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Azur_Lane.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Neuromancer.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f953c6, #b91d73)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Harvey.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1f4037, #99f2c8)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Amin.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8E2DE2, #4A00E0)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Memariani.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Yoda.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #FF0099, #493240)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cool_Sky.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2980B9, #6DD5FA, #FFFFFF)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dark_Ocean.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #373B44, #4286f4)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Evening_Sunshine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #b92b27, #1565C0)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			JShine.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Moonlit_Asteroid.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #0F2027, #203A43, #2C5364)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			MegaTron.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Cool_Blues.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2193b0, #6dd5ed)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Piggy_Pink.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ee9ca7, #ffdde1)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Grade_Grey.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #bdc3c7,#2c3e50)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Telko.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #F36222, #5CB644, #007FC3)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Zenta.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2A2D3E,#FECB6E)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Electric_Peacock.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8a2be2,#0000cd,#228b22,#ccff00)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lensod.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6025F5,#FF5555)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Newspaper.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #8a2be2,#ffa500,#f8f8ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dark_Blue_Gradient.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #2774ae, #002E5D, #002E5D)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dark_Blu_Two.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #004680,#4484BA)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Lemon_Lime.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #7ec6bc,#ebe717)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Beleko.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff1e56, #f9c942, #1e90ff)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Mango_Papaya.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #de8a41,#2ada53)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Unicorn_Rainbow .onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #f7f0ac,#acf7f0,#f0acf7)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Flame.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #ff0000, #fdcf58)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blue_Red.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #36B1C7, #960B33)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Twitter.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #1DA1F2, #009ffc)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blooze.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #6da6be, #4b859e, #6da6be)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Blue_Slate.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #B5B9FF, #2B2C49)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Space_Light_Green.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #9FA0A8, #5C7852)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Flower.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #DCFFBD, #CC86D1)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			 
+			Peach_Sea.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #E6AE8C, #A8CECF)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Abbas.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #00fff0,#0083fe)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Winter_Woods.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #333333, #a2ab58, #A43931)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Emerald_Sea.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #05386b,#5cdb95)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Bleem.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #4284DB, #29EAC4)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Coffee_Gold.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #554023, #c99846)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Compass.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #516b8b, #056b3b)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Andreuzzas.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #D70652, #FF025E)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Hyper_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #59CDE9, #0A2A88)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Racker.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #EB0000,#95008A,#3300FC)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Neon_Green.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #81ff8a, #64965e)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Dusty_Grass.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #d4fc79, #96e6a1)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+			Visual_Blue.onclick = () => {
+				automsg.style.background = 'linear-gradient(to right, #003d4d, #00c996)'
+				automsg.style.webkitBackgroundClip = 'text'
+				automsg.style.webkitTextFillColor = 'transparent'
+			}
+		</script>
+	</body>
+</html>	
