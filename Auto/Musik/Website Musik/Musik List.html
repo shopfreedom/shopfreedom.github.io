@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AudioS</title>
+	<link rel="icon" type="image" href="https://icon-icons.com/icons2/2567/PNG/64/music_musical_note_icon_153673.png">
+	<style type="text/css">
+		body {
+			background-color: orange;
+			background: linear-gradient(to top right, gold, orange);
+			color: blue;
+			margin: 0 15% 0 15%;
+		}
+		audio {
+			width: 560px;
+			margin: 20px 0 0 0;
+			outline: none;
+		}
+		ol li{
+			font-weight: 600;
+			margin: 0;
+		}
+		h2 {
+			margin: 5px 0 0 5%;
+		}
+	</style>
+</head>
+<body>
+		<h2>Слушай песни на LastCraft FM, сидя в своей машине c: </h2>
+		<ol>
+			<li><audio controls="controls" src="../Calvin, DAVA, MIA BOYKA - Пикник.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Cvetocek7 - Этой ночью я умру.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../GONE.Fludd - САХАРНЫЙ ЧЕЛОВЕК (PROD. BY SWIFTNESS2H).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../MIA BOYKA - АУФ.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../NILETTO - Молодым.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Sasha Stone - До безумия.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../adioss.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Перфе, Tenderlybae - Не верю.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Dabro - Юность (EDscore Radio Remix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Клава Кока feat. Niletto - Краш (Hardphol Remix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Gayo_-_Nejna_Remix_.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Миша Марвин & Ханна - Французский Поцелуй (RASEVAN Remix) (www.hotplayer.ru).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Jawsh 685 & Jason Derulo - Savage Love (Laxed - Siren Beat) (Vadim Adamov & Hardphol Remix)(Radio Edit) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Korel - Кис-кис.mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Shawn Mendes, Camila Cabello - Señorita (Rakurs & Major Extended Remix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Егор Крид, The Limba - Coco LEau (Lavrushkin & Sasha First Radio mix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Ava Max - Salt (Amice Remix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Big Baby Tape - Trap Luv (Rakurs & Major Extended Remix) (promodj.com).mp3" type="media"></audio></li>
+			<li><audio controls="controls" src="../Black Eyed Peas, Ozuna & J Rey Soul - MAMACITA (Amice Remix) (promodj.com).mp3" type="media"></audio></li>
+		</ol>
+	<script type="text/javascript">
+		const audioList = document.querySelectorAll('audio')
+		let currentAudio
+		
+		Array.prototype.forEach.call(audioList, audio => {
+		  	audio.addEventListener('play', e => {
+		    	if (currentAudio) 
+		    	currentAudio.pause()
+		    	currentAudio = e.target
+		  	})
+		})
+	</script>
+</body>
+</html>
