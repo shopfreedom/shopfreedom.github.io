@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>randomize for grusha</title>
+	<style type="text/css">
+		body {
+			margin: 0 auto;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-image: url(Foto/LastTitle.png);
+			background-position-x: center;
+			background-position-y: center;
+			color: rgba(255, 255, 255, 0.7); 
+		}
+		audio {
+			display: none;
+		}
+		h1 {
+			text-align: center;
+			margin: 20% 15% 25% 15%;
+			font-size: 72px;
+		}
+		p {
+			margin-top: 25px;
+			text-align: center;
+		}
+		button {
+			font-size: 18px;
+			width: 200px;
+			height: 50px;
+			border: 1px solid yellow;
+			cursor: pointer;
+			border-radius: 13px;
+			color: orange;
+			background-color: gainsboro;
+			outline: none;
+		}
+		button:hover {
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<audio autoplay='autoplay'>
+		<source src="Егор Крид - Потрачу.mp3" type="audio/mpeg">
+	</audio>
+	<p><button>Жмякни меня, малыш</button></p>
+	<h1>*0_о*</h1>
+	<script type="text/javascript">
+		let body = document.querySelector('body')
+		let audio = document.querySelector('audio')
+		let source = document.querySelector('source')
+		let h1 = document.querySelector('h1')
+		let button = document.querySelector('button')
+		let nickname = [
+			{text:"MODER SlaV1k", color:'linear-gradient(to right, blue, blue)', url:"url(Foto/SlaV1k.png)", src:"Audio/Егор Крид - Потрачу.mp3"},
+			{text:"MODER Loads_", color:'linear-gradient(to right, blue, blue)', url:"url(Foto/Loads_.png)", src:"Audio/Егор Крид - Потрачу.mp3"},
+			{text:"MODER alwinvanburen", color:'linear-gradient(to right, red, yellow, red)', url:"url(Foto/alwinvanburen.png)", src:"Audio/Daniel Blume - Kardashian.mp3"},
+			{text:"MODER xX_egorkatop_Xx", color:'linear-gradient(to right, blue, blue)', url:"url(Foto/xX_egorkatop_Xx.png)", src:"Audio/Егор Крид - Потрачу.mp3"},
+			{text:"HELPER HomoUrsus", color:'linear-gradient(to right, #004ff9, #fff94c)', url:"url(Foto/HomoUrsus.gif)", src:"Audio/Korn - Twist.mp3"},
+			{text:"HELPER Meduzzaa", color:'linear-gradient(to right, green, green)', url:"url(Foto/Meduzzaa.png)", src:"Audio/gg - pornhub see you again remake 2.mp3"},
+			{text:"HELPER D1NEST_", color:'linear-gradient(to right, #bf5ae0, #a811da)', url:"url(Foto/D1NEST_.png)", src:"Audio/BADMANE - SHOOT THESE NIAS DOWN.mp3"},
+			{text:"HELPER ItzFcckingSoul_", color:'linear-gradient(to right, green, green)', url:"url(Foto/ItzFcckingSoul_.png)", src:"Audio/Егор Крид - Потрачу.mp3"},
+			{text:"HELPER xkwqlevaa_", color:'linear-gradient(to right, green, green)', url:"url(Foto/xkwqlevaa_.png)", src:"Audio/Егор Крид - Потрачу.mp3"},
+			{text:"HELPER lalalande_", color:'linear-gradient(to right, green, green)', url:"url(Foto/lalalande_.png)", src:"Audio/Егор Крид - Потрачу.mp3"}
+		]
+
+		function getRandomElement(nickname) {
+		  let randIndex = Math.floor(Math.random() * nickname.length);
+		  return nickname[randIndex];
+		}
+
+		button.addEventListener('click', function () {
+			if (h1.textContent === 'HELPER HomoUrsus') {}
+			let randomElement = getRandomElement(nickname); 
+ 			h1.textContent = randomElement.text
+ 			h1.style.background = randomElement.color
+ 			h1.style.webkitBackgroundClip = "text"
+    		h1.style.webkitTextFillColor = "transparent"
+ 			body.style.backgroundImage = randomElement.url
+ 			audio.src = randomElement.src
+ 			h1.title = h1.textContent
+ 			audio.play()
+ 		})
+	</script>
+</body>
+</html>
