@@ -1,0 +1,3872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style title="iO" description="Inspired by iOS" user_selectable="1" export_version="2">
+  <templates>
+    <template title="core_input.less" type="public" addon_id="XF" version_id="2001270" version_string="2.0.12"><![CDATA[// ###################################### INPUTS ##########################
+
+@_input-numberWidth: 150px;
+@_input-numberNarrowWidth: 90px;
+@_input-textColor: xf-default(@xf-input--color, @xf-textColor);
+@_input-elementSpacer: @xf-paddingMedium;
+@_input-checkBoxSpacer: 1.5em;
+.m-inputReadOnly()
+{
+	color: mix(xf-default(@xf-input--color, @xf-textColor), xf-default(@xf-inputDisabled--color, @xf-textColorMuted));
+	background: mix(xf-default(@xf-input--background-color, @xf-contentBg), xf-default(@xf-inputDisabled--background-color, @xf-paletteNeutral1));
+}
+
+.input
+{
+	.xf-input();
+	display: block;
+	width: 100%;
+	line-height: @xf-lineHeightDefault;
+	text-align: left; // this will be flipped in RTL
+	word-wrap: break-word;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	.m-transition();
+	.m-placeholder({color: fade(@_input-textColor, 40%); });
+
+	&:focus,
+	&.is-focused
+	{
+		outline: 0;
+		.xf-inputFocus();
+		.m-placeholder({color: fade(@_input-textColor, 50%); });
+	}
+
+	&[readonly],
+	&.is-readonly
+	{
+		.m-inputReadOnly();
+	}
+
+	&[disabled]
+	{
+		.xf-inputDisabled();
+	}
+
+	&[type=number],
+	&[type=tel],
+	&.input--number
+	{
+		text-align: right;
+		max-width: @_input-numberWidth;
+
+		&.input--numberNarrow
+		{
+			width: @_input-numberNarrowWidth;
+		}
+	}
+
+	&.input--date
+	{
+		max-width: @_input-numberWidth;
+	}
+
+	textarea&
+	{
+		min-height: 0;
+		max-height: 400px;
+		max-height: 75vh;
+		resize: vertical;
+		padding-top: 8px;
+		padding-bottom: 8px;
+
+		&.input--fitHeight
+		{
+			resize: none;
+
+			&.input--fitHeight--short
+			{
+				max-height: 200px;
+				max-height: 35vh;
+			}
+		}
+
+		&.input--code
+		{
+			overflow-x: auto;
+			-ltr-rtl-text-align: left; // force blocks of code back to left align
+		}
+
+		&.input--maxHeight-300px
+		{
+			max-height: 300px;
+		}
+
+		.has-js &[rows="1"][data-single-line]
+		{
+			overflow: hidden;
+			resize: none;
+		}
+
+		.has-js &[rows="1"][data-single-line]
+		{
+			overflow: hidden;
+			resize: none;
+		}
+	}
+
+	// this makes select inputs consistent across all browsers and OSes
+	select&,
+	&.input--select
+	{
+		padding-right: 1em !important;
+		.m-selectGadgetColor(@_input-textColor);
+		background-size: 1em !important;
+		background-repeat: no-repeat !important;
+		-ltr-background-position: 100% !important;
+		white-space: nowrap;
+		word-wrap: normal;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		appearance: none !important;
+
+		overflow-x: hidden; // iOS seems to require this to prevent overflow with long options...
+		overflow-y: auto; // ...and Firefox seems to require this to prevent the above from breaking vertical scroll...
+
+		&[disabled]
+		{
+			.m-selectGadgetColor(xf-default(@xf-inputDisabled--color, @xf-textColor));
+		}
+
+		&[size],
+		&[multiple]
+		{
+			background-image: none !important;
+			padding-right: xf-default(@xf-input--padding, 5px) !important;
+			height: auto;
+		}
+	}
+
+	&.input--autoSize
+	{
+		width: auto;
+	}
+
+	&.input--inline
+	{
+		display: inline;
+		width: auto;
+	}
+
+	&.input--code
+	{
+		font-family: @xf-fontFamilyCode;
+		direction: ltr;
+		//white-space: nowrap;
+		word-wrap: normal;
+	}
+
+	&.input--title
+	{
+		font-size: @xf-fontSizeLargest;
+	}
+
+	&.input--avatarSizeS
+	{
+		min-height: @avatar-s;
+	}
+
+	.m-inputZoomFix();
+}
+
+@controlColor: @xf-textColorMuted;
+@controlColor--hover: xf-intensify(@controlColor, 25%);
+
+label.iconic
+{
+	&:hover > input + i:before
+	{
+		color: @controlColor--hover;
+	}
+
+	> input
+	{
+		.m-visuallyHidden();
+		width: auto;
+		height: auto;
+		opacity: 0;
+
+		+ i:before
+		{
+			.m-faBase();
+			font-size: 18px !important;
+			height: .9em; // this prevents some zoom related issues
+			color: @controlColor;
+			vertical-align: -.1em;
+			visibility: visible;
+			-ltr-rtl-text-align: left;
+		}
+
+		&:focus + i:before
+		{
+			outline: Highlight solid 2px;
+			-moz-outline-radius: 5px;
+
+			@media (-webkit-min-device-pixel-ratio: 0)
+			{
+				outline: -webkit-focus-ring-color auto 5px;
+			}
+		}
+
+		&[readonly] + i:before,
+		&[disabled]:not(.js-disablerExemption) + i:before
+		{
+			color:  @xf-textColorMuted;
+		}
+
+		&[type="checkbox"]
+		{
+			+ i:before { .m-faContent(@fa-var-square-o, .93em); 
+				<xf:macro name="content" template="uix_icons.less" arg-icon="checkbox" />
+			}
+			&:checked + i:before { .m-faContent(@fa-var-check-square-o, .93em); 
+				<xf:macro name="content" template="uix_icons.less" arg-icon="checkbox-checked" />
+			}
+		}
+
+		&[type="radio"]
+		{
+			+ i:before { .m-faContent(@fa-var-circle-o, .86em); 
+				<xf:macro name="content" template="uix_icons.less" arg-icon="radio" />
+			}
+			&:checked + i:before { .m-faContent(@fa-var-check-circle, .86em); 
+				<xf:macro name="content" template="uix_icons.less" arg-icon="radio-selected" />
+			}
+		}
+	}
+
+	&.iconic--toggle > input
+	{
+		+ i:before
+		{
+			color: fade(@controlColor, 50%);
+		}
+
+		&:checked + i:before
+		{
+			color: @controlColor;
+		}
+
+		&:hover + i:before
+		{
+			color: @controlColor--hover;
+		}
+
+		&[type="radio"] + i
+		{
+			width: .86em;
+		}
+
+		&[type="checkbox"]
+		{
+			+ i:before
+			{
+				.m-faContent(@fa-var-toggle-off, 1.15em);
+				<xf:macro template="uix_icons.less" name="content" arg-icon="toggle-off" />
+			}
+			&:checked + i:before
+			{
+				.m-faContent(@fa-var-toggle-on, 1.15em);
+				<xf:macro template="uix_icons.less" name="content" arg-icon="toggle-on" />
+			}
+		}
+	}
+
+	&:not(.inputGroup-text) > input + i
+	{
+		display: inline-block;
+		text-align: left;
+	}
+
+	&.iconic--labelled > input + i
+	{
+		width: @_input-checkBoxSpacer;
+	}
+
+	.inputChoices &
+	{
+		> input,
+		> input + i
+		{
+			position: absolute;
+			left: 0;
+		}
+
+		&:not(.iconic--labelled)
+		{
+			> input,
+			> input + i
+			{
+				top: .4em; // vertical center aligning for the control
+			}
+		}
+	}
+
+	.formRow-hint &,
+	&.cssCustomHighlight,
+	&.iconic--inherit-color
+	{
+		> input + i:before
+		{
+			color: inherit;
+		}
+	}
+}
+
+.dataList-cell.dataList-cell--iconic
+{
+	> label.iconic,
+	> a.dataList-delete
+	{
+		color: @controlColor;
+
+		&.dataList-delete,
+		> i
+		{
+			font-size: 20px;
+		}
+
+		> input + i:before,
+		&:after
+		{
+		}
+
+		&:not(.iconic--toggle) > input[type="checkbox"] + i:before
+		{
+			font-size: 16px;
+		}
+
+		&:hover
+		{
+			color: @controlColor--hover;
+		}
+	}
+
+	.fa
+	{
+		font-size: 16px;
+	}
+}
+
+.u-inputSpacer
+{
+	margin-top: @_input-elementSpacer;
+}
+
+.inputGroup
+{
+	display: flex;
+	align-items: stretch;
+	max-width: 100%;
+
+	.has-no-flexbox &
+	{
+		display: table;
+		width: 100%;
+	}
+
+	.inputGroup-text
+	{
+		flex-grow: 0;
+		display: flex;
+		align-items: center;
+
+		.has-no-flexbox &
+		{
+			display: table-cell;
+			width: 1%;
+		}
+
+		white-space: nowrap;
+		vertical-align: middle;
+		padding: 0 @xf-paddingMedium;
+
+		&:first-child { padding-left: 0; }
+		&:last-child { padding-right: 0; }
+	}
+
+	.inputGroup-splitter
+	{
+		display: inline-block;
+		width: 5px;
+		flex-shrink: 0;
+
+		.has-no-flexbox &
+		{
+			display: table-cell;
+		}
+	}
+
+	.input
+	{
+		flex-shrink: 1;
+		min-width: 0; // firefox bug - https://bugzilla.mozilla.org/show_bug.cgi?id=1021913
+
+		.has-no-flexbox &
+		{
+			display: table-cell;
+			width: 100%;
+		}
+	}
+
+	.button
+	{
+		flex-shrink: 0;
+		.has-no-flexbox &
+		{
+			display: table-cell;
+		}
+	}
+
+	.inputGroup-label
+	{
+		flex-shrink: 1;
+		width: 100%;
+		padding: 0 0 @xf-paddingMedium;
+
+		.m-appendColon();
+
+		.has-no-flexbox &
+		{
+			display: table-cell;
+			width: 100%;
+		}
+	}
+
+	@media (max-width: @xf-formResponsive)
+	{
+		.input:not(.input--autoSize):not(.input--numberNarrow)
+		{
+			width: 100%;
+			min-width: 100px;
+		}
+	}
+
+	.input:not(.input--autoSize):not(.input--numberNarrow)
+	{
+		.menu & {width: 100%;}
+	}
+
+	&.inputGroup--inline
+	{
+		display: inline-flex;
+
+		.has-no-flexbox &
+		{
+			display: inline-table;
+			width: auto;
+		}
+	}
+
+	&.inputGroup--auto
+	{
+		.input
+		{
+			width: auto;
+		}
+	}
+
+	&.inputGroup--joined
+	{
+		.input
+		{
+			border-radius: 0;
+
+			&:first-child
+			{
+				border-top-left-radius: @xf-borderRadiusMedium;
+				border-bottom-left-radius: @xf-borderRadiusMedium;
+				border-right: none;
+			}
+
+			&:last-child
+			{
+				border-top-right-radius: @xf-borderRadiusMedium;
+				border-bottom-right-radius: @xf-borderRadiusMedium;
+				border-left: none;
+			}
+		}
+
+		.inputGroup-text
+		{
+			.xf-input(border);
+			.xf-inputFocus(background);
+			text-align: center;
+			padding: @xf-paddingSmall @xf-paddingMedium;
+
+			&.inputGroup-text--disabled,
+			&.is-disabled,
+			&[disabled]
+			{
+				.xf-inputDisabled();
+
+				a { text-decoration: none; }
+			}
+
+			&:first-child
+			{
+				border-right: 0;
+				border-top-left-radius: @xf-borderRadiusMedium;
+				border-bottom-left-radius: @xf-borderRadiusMedium;
+			}
+
+			&:last-child
+			{
+				border-left: 0;
+				border-top-right-radius: @xf-borderRadiusMedium;
+				border-bottom-right-radius: @xf-borderRadiusMedium;
+			}
+		}
+
+		.input + .inputGroup-text,
+		.input + .input,
+		.inputGroup-text + .input
+		{
+			border-left: @xf-borderSize solid @xf-borderColorLight;
+		}
+
+		.inputGroup-text + .inputGroup-text,
+		.inputGroup-text + select.input
+		{
+			border-left: 0;
+		}
+	}
+}
+
+.inputGroup-container > .inputGroup
+{
+	margin-top: @xf-paddingMedium;
+
+	&:first-child
+	{
+		margin-top: 0;
+	}
+}
+
+.inputNumber
+{
+	.input--number
+	{
+		-moz-appearance: textfield !important;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button
+		{
+			margin: 0 !important;
+			-webkit-appearance: none !important;
+		}
+
+		@media (max-width: @xf-formResponsive)
+		{
+			width: 120px;
+		}
+
+		.menu & {width: 120px;}
+	}
+}
+
+.inputNumber-button
+{
+	position: relative;
+
+	.m-faBase();
+	color: @controlColor;
+	font-size: 1.0em;
+	font-style: normal !important;
+	line-height: .75em;
+	vertical-align: -15%;
+
+	width: 45px;
+	justify-content: center;
+	text-align: center;
+
+	cursor: pointer;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	&.inputNumber-button--smaller
+	{
+		vertical-align: 0;
+		width: 35px;
+	}
+
+	.menu & {
+		vertical-align: 0;
+		width: 25px;
+	}
+
+	&--up::before
+	{
+		.m-faContent(@fa-var-plus, .79em);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="plus" />
+	}
+
+	&--down::before
+	{
+		.m-faContent(@fa-var-minus, .79em);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="minus" />
+	}
+
+	.inputGroup.inputGroup--joined &
+	{
+		&:hover,
+		&:active,
+		&:focus
+		{
+			background-color: saturate(xf-intensify(@xf-paletteColor1, 4%), 12%);
+			color: @controlColor--hover;
+		}
+	}
+
+	.input.input--number[readonly] ~ &
+	{
+		.m-inputReadOnly();
+	}
+
+	.input.input--number[disabled] ~ &
+	{
+		cursor: default;
+		.xf-inputDisabled();
+	}
+}
+
+.inputDate
+{
+	.inputDate-icon
+	{
+		position: relative;
+
+		.m-faBase();
+		color: @xf-linkColor;
+		font-size: 1.0em;
+		font-style: normal !important;
+		line-height: .75em;
+		vertical-align: -15%;
+
+		width: 45px;
+		justify-content: center;
+		text-align: center;
+
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
+		@media (max-width: @xf-formResponsive)
+		{
+			vertical-align: 0;
+			width: 25px;
+		}
+
+		.menu & {
+			vertical-align: 0;
+			width: 25px;
+		}
+
+		&::before
+		{
+			.m-faContent(@fa-var-calendar, .79em);
+		};
+	}
+}
+
+.inputList
+{
+	.m-listPlain();
+
+	> li
+	{
+		margin-top: @xf-paddingMedium;
+
+		&:first-child
+		{
+			margin-top: 0;
+		}
+	}
+}
+
+.inputPair
+{
+	.m-clearFix();
+
+	> .input,
+	.inputPair-input
+	{
+		float: right;
+		width: 49%; // fallback
+		width: ~"calc(50% - 2px)";
+
+		&:first-child
+		{
+			float: left;
+		}
+	}
+}
+
+.inputPair-container > .inputPair
+{
+	margin-top: @xf-paddingMedium;
+
+	&:first-child
+	{
+		margin-top: 0;
+	}
+}
+
+.inputLabelPair
+{
+	.m-clearFix();
+	margin: @xf-paddingMedium 0;
+	padding: 0;
+
+	> dt,
+	> dd
+	{
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	> dt
+	{
+		width: 65%;
+		padding-right: @xf-paddingMedium;
+		padding-top: .6em;
+
+		> label
+		{
+			.m-appendColon();
+		}
+	}
+
+	> dd
+	{
+		width: 35%;
+		text-align: right;
+
+		.input
+		{
+			width: 100%;
+			max-width: none;
+		}
+	}
+
+	@media (max-width: @xf-responsiveNarrow)
+	{
+		> dt,
+		> dd
+		{
+			width: 50%;
+		}
+	}
+}
+
+.inputChoices
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	> .inputChoices-choice
+	{
+		margin-bottom: @_input-elementSpacer;
+		padding-left: @_input-checkBoxSpacer;
+		position: relative;
+
+		&:last-child
+		{
+			margin-bottom: 0;
+		}
+
+		> .inputChoices,
+		.inputChoices-spacer
+		{
+			margin-top: @_input-elementSpacer;
+		}
+	}
+
+	&.inputChoices--noChoice > .inputChoices-choice,
+	.inputChoices-plainChoice
+	{
+		padding-left: 0;
+	}
+
+	&.inputChoices--inline > .inputChoices-choice
+	{
+		display: inline-block;
+		margin-right: @_input-elementSpacer;
+		margin-bottom: 0;
+
+		&:last-child
+		{
+			margin-right: 0;
+		}
+	}
+
+	.inputChoices-label
+	{
+		padding-left: 0;
+		font-size: @xf-fontSizeSmall;
+		color: @xf-textColorMuted;
+	}
+
+	+ .inputChoices:not(.inputChoices--inline)
+	{
+		margin-top: @_input-elementSpacer;
+	}
+}
+
+.inputChoices-group + .inputChoices-group,
+.inputChoices-choice + .inputChoices-group
+{
+	margin-top: (@xf-paddingMedium) * 2;
+}
+
+.inputChoices-spacer + .inputChoices
+{
+	margin-top: @_input-elementSpacer;
+}
+
+.inputChoices-heading
+{
+	color: @xf-textColorMuted;
+	padding-bottom: (@xf-paddingMedium) / 2;
+	border-bottom: @xf-borderSize solid @xf-borderColorFaint;
+	margin-bottom: @xf-paddingMedium;
+	position: relative;
+	label.iconic.inputChoices-heading-checkAll
+	{
+		margin-left: 0;
+		& > input + i
+		{
+			position: absolute;
+			right: 0;
+			left: auto;
+			width: auto;
+		}
+	}
+}
+
+.inputChoices-explain
+{
+	.m-formElementExplain();
+
+	&.inputChoices-explain--after
+	{
+		margin-top: @_input-elementSpacer;
+	}
+}
+
+.inputChoices-dependencies
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	> li
+	{
+		margin-top: @_input-elementSpacer;
+
+		> label
+		{
+			display: block;
+			padding: @xf-paddingSmall 0;
+
+			&.iconic--labelled > input + i
+			{
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+	.input.input--title
+	{
+		font-size: @xf-fontSizeLarge;
+	}
+}]]></template>
+    <template title="core_menu.less" type="public" addon_id="XF" version_id="2001070" version_string="2.0.10"><![CDATA[// ###################################### MENUS ######################
+
+@_menu-arrowSize: 8px;
+@_menu-edgePadding: @xf-pageEdgeSpacer;
+@_menu-paddingH: 12px;
+@_menu-paddingV: 12px;
+
+.menuTrigger
+{
+	cursor: pointer;
+
+	&:after
+	{
+		.m-faBase();
+		.m-faContent(" @{fa-var-caret-down}");
+		unicode-bidi: isolate; // this is needed to ensure correct positioning in RTL with LTR text
+		<xf:macro template="uix_icons.less" name="content" arg-icon="menu-down" />
+	}
+}
+
+.menuOutsideClicker
+{
+	position: fixed;
+	display: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2; // above non set stuff but below anything intentionally set
+
+	&.is-active
+	{
+		display: block;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+}
+
+.menu
+{
+	.m-transitionFade();
+	
+	@media (max-width: @xf-responsiveNarrow) {
+		width: 90% !important;
+		max-width: 90% !important;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	position: absolute;
+	z-index: @zIndex-2;
+	margin: @_menu-arrowSize 0 0;
+	min-width: 240px;
+	max-width: 320px;
+	border-radius: @xf-menuBorderRadius;
+	// .m-dropShadow(0, 5px, 10px, 0, .35);
+	box-shadow: @xf-uix_elevation2;
+	.xf-contentBase();
+	
+	.block-container {
+		box-shadow: none;
+		// border-radius: 0;
+		margin: 0;
+		border: none;
+		padding: 0;
+	}
+
+	&.menu--structural
+	{
+		margin-top: 0;
+		
+		// when menus nudge up against structure, the joined corner should not be radiused
+		&.menu--left
+		{
+			// border-top-left-radius: 0;
+		}
+		&.menu--right
+		{
+			// border-top-right-radius: 0;
+		}
+	}
+
+	&.menu--veryWide
+	{
+		width: 500px;
+		max-width: 100%;
+	}
+
+	&.menu--wide
+	{
+		width: 350px;
+		max-width: 100%;
+	}
+
+	&.menu--medium
+	{
+		width: 300px;
+		max-width: 100%;
+	}
+
+	&.menu--potentialFixed
+	{
+		z-index: @zIndex-4;
+	}
+	
+	.menu-minorHeader--small {
+		padding: @_menu-paddingV @_menu-paddingH;
+		font-size: calc(@xf-menu--font-size + 1);
+	}
+}
+
+.menu-arrow
+{
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 0;
+	border: 0 solid transparent;
+	display: none;
+
+	top: -@_menu-arrowSize;
+	-ltr-rtl-left: 50%;
+	-ltr-rtl-margin-left: -@_menu-arrowSize;
+	.m-triangleUp(@xf-menuFeatureBorderColor, @_menu-arrowSize);
+
+	.menu--structural &
+	{
+		top: -@_menu-arrowSize;
+	}
+
+	.menu--up &
+	{
+		display: none;
+	}
+}
+
+.menu-content
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: left;
+	.xf-menu();
+	border-radius: @xf-menuBorderRadius;
+	// border-top: @xf-borderSizeFeature solid @xf-menuFeatureBorderColor;
+
+	// when menus nudge up against structure, the joined corner should not be radiused
+	.menu--structural.menu--left &
+	{
+		// border-top-left-radius: 0;
+	}
+	.menu--structural.menu--right &
+	{
+		// border-top-right-radius: 0;
+	}
+
+	// potentially fixed menus
+	.menu--potentialFixed &
+	{
+		overflow: auto;
+		max-height: 450px;
+		max-height: 80vh;
+	}
+	> :last-child
+	{
+		border-bottom-left-radius: @xf-menuBorderRadius;
+		border-bottom-right-radius: @xf-menuBorderRadius;
+	}
+}
+
+.menu--pageJump
+{
+	width: auto;
+	min-width: 0;
+}
+
+.menu-header
+{
+	padding: @_menu-paddingH;
+	margin: 0;
+	font-weight: @xf-fontWeightNormal;
+	text-decoration: none;
+	.xf-menuHeader();
+
+	.m-clearFix();
+	.m-hiddenLinks();
+}
+
+.menu-tabHeader
+{
+	padding: 0;
+	margin: 0;
+	font-weight: @xf-fontWeightNormal;
+	text-decoration: none;
+	.xf-menuTabHeader();
+	.m-tabsTogether(xf-default(@xf-menuTabHeader--font-size, @xf-fontSizeNormal));
+
+	.tabs-tab
+	{
+		padding: @xf-blockPaddingV @_menu-paddingH max(0px, @xf-blockPaddingV - @xf-borderSizeFeature);
+		border-bottom: @xf-borderSizeFeature solid transparent;
+
+		&:hover
+		{
+			color: @xf-blockMinorTabHeaderSelected--color;
+		}
+
+		&.is-active
+		{
+			.xf-menuTabHeaderSelected();
+		}
+	}
+
+	.hScroller-action
+	{
+		.m-hScrollerActionColorVariation(
+			xf-default(@xf-menuTabHeader--background-color, transparent),
+			@xf-menuTabHeader--color,
+			@xf-blockMinorTabHeaderSelected--color
+		);
+	}
+}
+
+.menu-scroller
+{
+	overflow: auto;
+	max-height: 300px;
+	max-height: 60vh;
+}
+
+.menu-row
+{
+	margin: 0;
+	padding: @_menu-paddingH;
+	.m-clearFix();
+	
+	// causing issues when menu-row is not the first item
+	// &:not(:first-of-type):not(.menu-row--separated) {padding-top: 0;}
+
+	&.menu-row--alt
+	{
+		.xf-contentAltBase();
+	}
+
+	&.menu-row--highlighted
+	{
+		.xf-contentHighlightBase();
+	}
+
+	&.menu-row--separated
+	{
+		+ .menu-row
+		{
+			border-top: @xf-borderSize solid @xf-borderColorLight;
+		}
+	}
+
+	&.menu-row--clickable:hover
+	{
+		background: @xf-contentHighlightBg;
+	}
+
+	&:empty
+	{
+		padding: 0;
+	}
+}
+
+.menu-linkRow
+{
+	display: block;
+	padding: @_menu-paddingV @_menu-paddingH;
+	// text-indent: @_menu-paddingH;
+	border-left: @xf-borderSizeFeature solid transparent;
+	.xf-menuLinkRow();
+	
+	&.menu-linkRow--alt
+	{
+		.xf-contentAltBase();
+	}
+
+	&.is-selected,
+	&:hover,
+	&:focus
+	{
+		.xf-menuLinkRowSelected();
+
+		// border-left-color: fade(@xf-borderColorFeature, 50%);
+
+		&:focus
+		{
+			outline: 0;
+		}
+
+		&.is-selected
+		{
+			border-left-color: @xf-borderColorFeature;
+		}
+	}
+
+	i[aria-hidden=true]
+	{
+		font-size: @xf-fontSizeSmall;
+		display: inline-block;
+		width: 23px; // about 1.75em at this font size
+
+		&:after
+		{
+			.m-faBase();
+			color: @xf-textColorMuted;
+			left: @xf-blockPaddingH;
+		}
+
+		& ~ .menu-linkRow-hint
+		{
+			padding-left: 23px;
+		}
+	}
+
+	&:hover i[aria-hidden=true]:after
+	{
+		color: @xf-linkHoverColor;
+	}
+}
+
+.menu-linkRow-hint
+{
+	font-style: inherit;
+	font-size: @xf-fontSizeSmallest;
+	color: @xf-textColorMuted;
+	display: block;
+}
+
+.menu-separator
+{
+	margin: 0 (@_menu-paddingH) / 2;
+	padding: 0;
+	border: none;
+	border-top: @xf-borderSize solid @xf-borderColorLight;
+
+	&.menu-separator--hard
+	{
+		margin: 0;
+	}
+
+	& + .menu-separator,
+	&:last-child
+	{
+		display: none;
+	}
+}
+
+.menu-footer
+{
+	padding: @_menu-paddingV @_menu-paddingH;
+	.xf-menuFooter();
+	.m-clearFix();
+
+	&:not(.menu-footer--split)
+	{
+		.menu-footer-counter
+		{
+			float: left;
+		}
+
+		.menu-footer-controls
+		{
+			float: right;
+			
+			.button {.xf-uix_buttonSmall();}
+		}
+	}
+
+	&.menu-footer--split
+	{
+		display: flex;
+		align-items: center;
+
+		.menu-footer-main,
+		.menu-footer-counter
+		{
+			flex-grow: 1;
+
+			.has-no-flexbox &
+			{
+				float: left;
+			}
+		}
+
+		.menu-footer-select:not(:last-child)
+		{
+			margin: 0 1em;
+		}
+
+		.menu-footer-opposite,
+		.menu-footer-controls
+		{
+			margin-left: auto;
+
+			.has-no-flexbox &
+			{
+				float: right;
+			}
+		}
+	}
+}]]></template>
+    <template title="core_pagenav.less" type="public" addon_id="XF" version_id="2001070" version_string="2.0.10"><![CDATA[// ####################################### PAGE NAVIGATION ########################
+
+@_page-paddingV: xf-default(@xf-buttonBase--padding-top, 6px);
+@_page-paddingH: 8px;
+@_page-paddingHSimple: 10px;
+.pageNavWrapper {}
+
+.pageNav {display: flex;}
+
+.pageNav-jump--next {margin-left: 6px;}
+.pageNav-jump--prev {margin-right: 6px;}
+
+.m-pageNavElCore()
+{
+	background: @xf-contentBg;
+	color: @xf-textColorMuted;
+	.xf-blockBorder();
+	// font-size: @xf-fontSizeSmall;
+	border-radius: 0;
+	border: 1px solid @xf-borderColor;
+	white-space: nowrap;
+	height: 24px;
+	line-height: 24px;
+
+	&:hover,
+	&:active
+	{
+		// background: xf-intensify(@xf-contentHighlightBg, 3%);
+		text-decoration: none;
+		color: @xf-textColor;
+	}
+}
+
+.pageNav-jump
+{
+	display: inline-block;
+	.m-pageNavElCore();
+	// border-radius: @xf-borderRadiusSmall;
+	padding: @_page-paddingV @_page-paddingH;
+	height: 26px;
+	line-height: 26px;
+
+	&.pageNav-jump--prev:before,
+	&.pageNav-jump--next:after
+	{
+		.m-faBase();
+		font-size: 80%;
+		word-wrap: normal;
+		unicode-bidi: isolate; // maintain position in RTL with LTR text
+	}
+
+	&.pageNav-jump--prev:before
+	{
+		.m-faContent("@{fa-var-caret-left}\00a0", 0.61em, ltr);
+		.m-faContent("@{fa-var-caret-right}\00a0", 0.61em, rtl);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="menu-left" />
+	}
+
+	&.pageNav-jump--next:after
+	{
+		.m-faContent("\00a0@{fa-var-caret-right}", 0.61em, ltr);
+		.m-faContent("\00a0@{fa-var-caret-left}", 0.61em, rtl);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="menu-right" />
+	}
+}
+
+.pageNav-main
+{
+	.m-listPlain();
+	display: inline-table;
+}
+
+.pageNav-page
+{
+	display: table-cell;
+	.m-pageNavElCore();
+
+	&:not(:last-child)
+	{
+		border-right: none;
+	}
+
+	&:not(:first-child)
+	{
+		border-left-color: @xf-borderColorLight;
+	}
+
+	<xf:comment>
+	&:first-child
+	{
+		.m-borderLeftRadius(@xf-borderRadiusSmall);
+	}
+
+	&:last-child
+	{
+		.m-borderRightRadius(@xf-borderRadiusSmall);
+	}
+	</xf:comment>
+
+	> a
+	{
+		display: block;
+		padding: @_page-paddingV @_page-paddingH;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	&.pageNav-page--current
+	{
+		// background: @xf-contentAccentBg;
+		color: @xf-uix_secondaryColor;
+		box-shadow: 0 -2px @xf-uix_secondaryColor inset;
+		// border: @xf-borderSize solid @xf-borderColorAccentContent;
+		cursor: pointer;
+
+		&:hover,
+		&:active
+		{
+			// background: xf-intensify(@xf-contentAccentBg, 3%);
+		}
+
+		<xf:comment>
+		+ .pageNav-page
+		{
+			border-left: none;
+		}
+		</xf:comment>
+	}
+}
+
+// Hide relative page numbers on narrow devices when we have a skip entry as we don't necessarily have space.
+@media (max-width: @xf-responsiveNarrow)
+{
+	.pageNav--skipStart
+	{
+		.pageNav-page.pageNav-page--earlier
+		{
+			display: none;
+		}
+	}
+	.pageNav--skipEnd
+	{
+		.pageNav-page.pageNav-page--later
+		{
+			display: none;
+		}
+		.pageNav-page.pageNav-page--skipEnd
+		{
+			border-left: none;
+		}
+	}
+}
+// ########################### SIMPLE PAGE NAV VARIANT ########################
+.pageNavSimple
+{
+	display: inline-flex;
+	height: 24px;
+	line-height: 24px;
+}
+.pageNavSimple-el
+{
+	display: inline-block;
+	.xf-blockBorder();
+	border-radius: @xf-borderRadiusSmall;
+	padding: @_page-paddingV @_page-paddingHSimple;
+	font-size: @xf-fontSizeSmall;
+	text-align: center;
+	white-space: nowrap;
+	margin-right: 4px;
+	&:last-child
+	{
+		margin-right: 0;
+	}
+	&.pageNavSimple-el--current
+	{
+		// .xf-contentAccentBase();
+		color: @xf-uix_primaryColor;
+		background-color: none;
+		&:hover,
+		&:active
+		{
+			background: xf-intensify(@xf-contentAccentBg, 3%);
+			text-decoration: none;
+		}
+	}
+	&.pageNavSimple-el--prev,
+	&.pageNavSimple-el--next
+	{
+		background: @xf-uix_primaryColor;
+		color: #fff;
+		min-width: 75px;
+		@media (max-width: 350px)
+		{
+			min-width: 0;
+		}
+		&:hover,
+		&:active
+		{
+			background: xf-intensify(@xf-uix_primaryColor, 5%);
+			text-decoration: none;
+		}
+		i:before
+		{
+			.m-faBase();
+		}
+	}
+	&.pageNavSimple-el--prev i:before
+	{
+		.m-faContent(@fa-var-caret-left, .37em, ltr);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="menu-left" />
+		.m-faContent(@fa-var-caret-right, .37em, rtl);
+	}
+	&.pageNavSimple-el--next i:before
+	{
+		.m-faContent(@fa-var-caret-right, .37em, ltr);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="menu-right" />
+		.m-faContent(@fa-var-caret-left, .37em, rtl);
+	}
+	&.pageNavSimple-el--first,
+	&.pageNavSimple-el--last
+	{
+		border-color: transparent;
+		padding-left: (@_page-paddingHSimple / 2);
+		padding-right: (@_page-paddingHSimple / 2);
+		color: @xf-uix_primaryColor;
+		&:hover,
+		&:active
+		{
+			.xf-blockBorder();
+			background: xf-intensify(@xf-contentHighlightBg, 3%);
+			color: @xf-linkColor;
+			text-decoration: none;
+		}
+		i:before
+		{
+			.m-faBase();
+		}
+	}
+	&.pageNavSimple-el--first i:before
+	{
+		.m-faContent(@fa-var-backward, .93em, ltr);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="arrow-left" />
+		.m-faContent(@fa-var-forward, .93em, rtl);
+		width: auto;
+		font-size: 18px;
+		line-height: inherit;
+	}
+	&.pageNavSimple-el--last i:before
+	{
+		.m-faContent(@fa-var-forward, .93em, ltr);
+		<xf:macro template="uix_icons.less" name="content" arg-icon="arrow-right" />
+		.m-faContent(@fa-var-backward, .93em, rtl);
+		width: auto;
+		font-size: 18px;
+		line-height: inherit;
+	}
+	&.is-disabled
+	{
+		border-color: transparent;
+		background: none;
+		color: @xf-textColorMuted;
+		text-decoration: none;
+		pointer-events: none;
+		&:hover
+		{
+			background: none;
+			color: @xf-textColorMuted;
+		}
+	}
+}
+// #################### DISPLAY VARIANTS #########################
+.pageNavWrapper--simple
+{
+	.pageNav
+	{
+		display: none;
+	}
+}
+.pageNavWrapper--full
+{
+	.pageNavSimple
+	{
+		display: none;
+	}
+}
+.pageNavWrapper--mixed
+{
+	.pageNavSimple
+	{
+		display: none;
+	}
+	@media (max-width: @xf-responsiveMedium)
+	{
+		.pageNav
+		{
+			display: none;
+		}
+		.pageNavSimple
+		{
+			display: inline-flex;
+		}
+	}
+}
+// Hide any block page nav that goes before the block as we will be wasting vertical space.
+@media (max-width: @xf-responsiveNarrow)
+{
+	.block-outer:not(.block-outer--after) .pageNavWrapper:not(.pageNavWrapper--forceShow)
+	{
+		display: none;
+	}
+	// this is a sanity check in case .block-outer--after is forgotten
+	.block-container + .block-outer .pageNavWrapper
+	{
+		display: block;
+	}
+}]]></template>
+    <template title="io.less" type="public" addon_id="" version_id="0" version_string=""><![CDATA[// VARIABLES
+
+@io-primaryGradient: linear-gradient(-270deg, @xf-uix_primaryColor 0%, xf-diminish(@xf-uix_primaryColor, 15%) 100%);
+@io-nodeColor1: desaturate(lighten(@xf-uix_primaryColor, 5%, relative), 30%, relative);
+
+.m-io_catGradient (@color, @spin) {
+	background: linear-gradient(to left, spin(@color, @spin), spin(@color, (@spin + 30%)) );
+}
+
+.m-io_catGradient (@color, @spin) when (luma(spin(@color, @spin)) >= 43%) {
+	@darkColor: darken(@color, 10%);
+	background: linear-gradient(to left, spin(@darkColor, @spin), spin(@darkColor, (@spin + 30%)) );
+}
+
+.m-io_catColor (@color, @spin) {
+	color: spin(@color, @spin);
+}
+
+.m-io_catColor (@color, @spin) when (luma(spin(@color, @spin)) >= 43%) {
+	@darkColor: darken(@color, 20%);
+	color: spin(@darkColor, @spin);
+}
+
+// HEADER
+
+@media (max-width: @xf-responsiveMedium) {
+	.uix_headerContainer--stickyFix {display: none;}
+	.p-nav-inner {height: @xf-uix_stickyNavHeight !important;}
+	.p-header-logo--image img {
+		transition: none !important;
+		max-height: calc(@xf-uix_stickyNavHeight - (@xf-uix_navLogoVertSpacing * 2)) !important;
+	}
+}
+
+.p-account {font-size: @xf-fontSizeSmall;}
+
+.m-io_navLine() {
+	position: absolute;
+	bottom: 10px;
+	left: @xf-publicNavPaddingH - 4px;
+	right: @xf-publicNavPaddingH - 4px;
+	height: 4px;
+	border-radius: @xf-borderRadiusLarge;
+	background: @xf-borderColor;
+	display: block;
+	transition: ease-in .2s right;
+}
+
+.p-nav-list .p-navEl {
+	position: relative;
+	&:after {right: 100%;}
+	
+	&:hover:after {
+		.m-io_navLine();
+	}
+	
+	&.is-selected:after {
+		.m-io_navLine();
+		background: @io-primaryGradient;
+	}
+}
+
+// NODES
+
+.category--collapsed .block-header {
+	border-bottom-left-radius: @xf-borderRadiusLarge;
+	border-bottom-right-radius: @xf-borderRadiusLarge;
+}
+
+.block.block--category {
+	.block-header {
+	    text-shadow: 0 0 1px rgba(0,0,0,.7);
+		position: relative;
+		transition: ease-in .15s border-bottom-left-radius, ease-in .15s border-bottom-right-radius;
+		&:after {
+			content: '';
+			background: url(styles/io/io/images/swirl.png);
+			background-size: cover;
+			background-position: center;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: block;
+			mix-blend-mode: overlay;
+			pointer-events: none;
+		}
+	}
+	<xf:if is="property('io_nodeGradients')">
+	&:nth-child(1n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 0%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 0%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 30%);}
+	}
+	&:nth-child(2n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 60%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 60%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 90%);}
+	}
+	&:nth-child(3n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 120%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 120%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 150%);}
+	}
+	&:nth-child(4n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 180%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 180%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 210%);}
+	}
+	&:nth-child(5n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 240%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 240%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 270%);}
+	}
+	&:nth-child(6n) {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 300%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 300%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 330%);}
+	}
+	<xf:else />
+	&.io-spin1 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 0%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 0%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 30%);}		
+	}
+	&.io-spin2 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 60%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 60%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 90%);}		
+	}
+	&.io-spin3 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 120%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 120%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 150%);}		
+	}
+	&.io-spin4 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 180%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 180%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 210%);}		
+	}
+	&.io-spin5 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 240%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 240%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 270%);}		
+	}
+	&.io-spin6 {
+		.block-header {.m-io_catGradient(@io-nodeColor1, 300%);}
+		.node--unread .node-icon i {.m-io_catGradient(@io-nodeColor1, 300%);}
+		.block-body a:hover {.m-io_catColor(@io-nodeColor1, 330%);}		
+	}
+	</xf:if>
+}
+
+.block-body .node + .node {border: none;}
+
+.node--unread .node-icon i {
+	background: @io-primaryGradient;
+}
+
+.has-flexbox .node .node-body .node-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.block-body .node {
+	&:first-child .node-body {
+		border-top-left-radius: @xf-borderRadiusMedium;
+		border-top-right-radius: @xf-borderRadiusMedium;
+	}
+
+	&:last-child .node-body {
+		border-bottom-left-radius: @xf-borderRadiusMedium;
+		border-bottom-right-radius: @xf-borderRadiusMedium;
+	}
+}
+
+// WELCOME SECTION
+
+body .uix_welcomeSection:before {
+	background-size: cover;
+	background-position: center;
+	mix-blend-mode: overlay;
+}
+
+.uix_welcomeSection .button.button--cta {
+	background: #fff;
+	color: @xf-uix_primaryColor;
+	
+	&:hover, &:active, &:focus {
+		color: #fff;
+	}
+}
+
+// SIDEBAR
+
+.uix_sidebarInner:not(.offCanvasMenu-content) .block {
+	.block-minorHeader, .block-header {
+		position: absolute;
+		transform: translateY(-100%);
+		width: 100%;
+		height: 30px;
+		padding-top: 0;
+
+		+ .block-body {
+			margin-top: 60px;
+		}
+	}
+	&:first-child {
+		.block-minorHeader + .block-body {margin-top: 30px;}
+	}
+}
+
+// FOOTER
+
+.uix_extendedFooter {
+	position: relative;
+
+	&:before {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		content: '';
+		display: block;
+		height: 4px;
+		background: @io-primaryGradient;
+	}
+}
+
+// DISCUSSION LIST
+
+body .structItem {border: none;}
+
+.block-container .structItemContainer {
+	padding: @xf-paddingLarge;
+	display: block;
+	
+	.structItemContainer-group {display: block;}
+}
+
+.block-body .block-minorHeader.uix_threadListSeparator {
+	position: relative;
+	padding-bottom: @xf-uix_structPaddingV + 4px;
+	
+	&:before {
+		content: " ";
+		display: table;
+		background: @io-primaryGradient;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		display: block;
+		border-radius: 8px;
+	}
+}
+
+// Post Comments
+
+.p-body-inner .block--messages .message .thpostcomments_commentsContainer {
+	border-top: none;
+	border-radius: @xf-borderRadiusLarge;
+	background: @xf-contentAltBg;
+	padding: 1px 0 @xf-messagePadding;
+	margin: @xf-messagePadding;
+	margin-top: 0px;
+	
+	.message {background: none;}
+}
+
+.p-body-inner .thpostcomments_commentsContainer .message:after {display: none;}
+
+// MESSAGES
+
+.structItem.structItem--note {margin-bottom: @xf-paddingMedium;}
+
+.block-container .message + .message, .message.message--bordered {border-top: none;}
+
+.message:last-child {padding-bottom: 1px; magin-bottom: -1px;}
+
+.block.block--messages .block-container, .block.js-quickReply .block-container {
+	box-shadow: @xf-uix_elevation1;
+}
+
+.actionBar-action .iconic--checkbox i:before {color: @xf-textColorMuted;}
+
+.message:not(:last-child) {
+	position: relative;
+	padding-bottom: 4px;
+	
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: @xf-messagePadding;
+		right: @xf-messagePadding;
+		height: 4px;
+		border-radius: @xf-borderRadiusLarge;
+		background: @xf-borderColor;
+		display: block;
+	}
+}
+
+.message-responses .message-responseRow {
+	border: none;
+	&:first-child {
+		border-top-left-radius: @xf-borderRadiusLarge;
+		border-top-right-radius: @xf-borderRadiusLarge;
+	}
+	&:last-child {
+		border-bottom-left-radius: @xf-borderRadiusLarge;
+		border-bottom-right-radius: @xf-borderRadiusLarge;
+	}
+	
+	&.toggleTarget {
+		border-radius: @xf-borderRadiusLarge;
+	}
+}
+
+// FOOTER
+
+.uix_extendedFooterRow .blockLink {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.pageNav-page {
+	&:first-child {
+		border-top-left-radius: @xf-borderRadiusSmall;
+		border-bottom-left-radius: @xf-borderRadiusSmall;
+	}
+	
+	&:last-child {
+		border-top-right-radius: @xf-borderRadiusSmall;
+		border-bottom-right-radius: @xf-borderRadiusSmall;
+	}
+}
+
+.pageNav-jump {border-radius: @xf-borderRadiusSmall;}
+
+.pageNav-page.pageNav-page--current {
+	box-shadow: none; 
+	background: @xf-uix_primaryColor; 
+	color: #fff;
+	border-color: @xf-uix_primaryColor;
+}
+
+.p-account .fa.fa-bookmark:before{content: "\f0c3";}
+
+.node .pairs > dd {
+	font-size: @xf-fontSizeNormal;
+}
+
+.uix_tabList {
+	background: @io-primaryGradient;
+	
+	.uix_tabItem {color: rgba(255,255,255,.7);}
+}
+
+// Icons
+
+<xf:comment> 
+.p-nav-opposite .p-navgroup-link {
+	i:after {font-family: 'fontello';}
+	&--conversations i:after {
+		content: '\e820';
+	}
+	&--alerts i:after {
+		content: '\e802';		
+	}
+	&--bookmarks i:before {
+		font-family: 'fontello';
+		content: '\e814' !important;			
+	}
+	&--search i:after {
+		content: '\e846';			
+	}
+	.mdi-dots-vertical:before {
+		font-family: 'fontello';
+		content: '\e83a';			
+	}
+}
+
+.uix_tabList .uix_icon {
+	&:before {font-family: 'fontello';}
+	&--inbox:before {content: '\e820';}
+	&--user:before {content: '\e84c';}
+	&--comment-alert:before {content: '\e804';}
+	&--alert:before {content: '\e802';}
+}
+
+.node.node--category .node-icon i:before {
+	font-family: 'fontello';
+	content: '\e826';
+}
+.node.node--forum .node-icon i:before {
+	font-family: 'fontello';
+	content: '\e834';
+}
+.node.node--link .node-icon i:before {
+	font-family: 'fontello';
+	content: '\e810';
+}
+.node.node--page .node-icon i:before {
+	font-family: 'fontello';
+	content: '\e83e';
+}
+
+.uix_categoryStrip__icon .uix_icon--folder:before {
+	font-family: 'fontello';
+	content: '\e826';	
+}
+
+.uix_postThreadWidget .mdi-forum:before {
+	font-family: 'fontello';
+	content: '\e834';		
+}
+
+.p-nav .p-nav-menuTrigger i:after {
+	font-family: 'fontello';
+	content: '\e852';	
+}
+</xf:comment>
+
+.p-header-logo--image img {transition: ease-in .1s max-height;}
+
+.menu-content {
+	position: relative;
+	padding-top: 4px;
+	
+	&:before {
+		content: '';
+		background: @io-primaryGradient;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 4px;
+		display: block;
+		border-top-left-radius: @xf-borderRadiusLarge;
+		border-top-right-radius: @xf-borderRadiusLarge;
+		position: absolute;
+	}
+}]]></template>
+    <template title="message.less" type="public" addon_id="XF" version_id="2001070" version_string="2.0.10"><![CDATA[@_message-actionColumnWidth: 40px;
+@_messageSimple-userColumnWidth: 70px;
+
+.message
+{
+	+ .message,
+	&.message--bordered
+	{
+		border-top: @xf-borderSize solid @xf-borderColor;
+	}
+}
+
+.message,
+.block--messages .message
+{
+	&.is-mod-selected
+	{
+		background: @xf-inlineModHighlightColor;
+
+		.message-userArrow:after
+		{
+			border-right-color: @xf-messageUserBlock--backgorund-color;
+		}
+	}
+}
+
+.message-inner
+{
+	display: flex;
+
+	.has-no-flexbox &
+	{
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+}
+
+.message-cell
+{
+	display: block;
+	vertical-align: top;
+	padding: @xf-messagePadding;
+
+	.has-no-flexbox &
+	{
+		display: table-cell;
+	}
+
+	.message--quickReply &
+	{
+		//padding-bottom: 35px; // for the submit row
+
+		> .formRow:last-child
+		{
+			> dd
+			{
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	&.message-cell--closer
+	{
+		padding: @xf-messagePaddingSmall;
+
+		&.message-cell--main
+		{
+			padding-left: ((@xf-messagePaddingSmall) * 1.5);
+
+		}
+
+		&.message-cell--user
+		{
+			.m-fixedWidthFlex((@xf-messageUserBlockWidth) + 2 * (@xf-messagePaddingSmall));
+
+			.message--simple &
+			{
+				.m-fixedWidthFlex(@_messageSimple-userColumnWidth + 2 * (@xf-messagePaddingSmall));
+			}
+		}
+
+		&.message-cell--action
+		{
+			.m-fixedWidthFlex((@_message-actionColumnWidth) + 2 * (@xf-messagePaddingSmall));
+		}
+	}
+
+	&.message-cell--user,
+	&.message-cell--action
+	{
+		position: relative;
+		.xf-messageUserBlock(no-border);
+		border-right: @xf-messageUserBlock--border-width solid @xf-messageUserBlock--border-color;
+		min-width: 0;
+	}
+
+	&.message-cell--user
+	{
+		.m-fixedWidthFlex((@xf-messageUserBlockWidth) + 2 * (@xf-messagePadding));
+
+		.message--simple &
+		{
+			.m-fixedWidthFlex(@_messageSimple-userColumnWidth + 2 * @xf-messagePaddingSmall);
+			// width: auto;
+			// min-width: auto;
+			// background: none;
+			// border: none;
+			padding-right: 0;
+		}
+	}
+
+	&.message-cell--action
+	{
+		.m-fixedWidthFlex((@_message-actionColumnWidth) + 2 * (@xf-messagePadding));
+	}
+
+	&.message-cell--main
+	{
+		// padding-left: (@xf-messagePadding * 1.5);
+
+		flex: 1 1 auto;
+		width: 100%;
+		// display: flex;
+		min-width: 0;
+		.xf-uix_messageMain();
+
+		&.is-editing
+		{
+			padding: 0;
+		}
+
+		.block
+		{
+			margin: 0;
+		}
+
+		.block-container
+		{
+			margin: 0;
+			border: none;
+		}
+	}
+
+	&.message-cell--alert
+	{
+		font-size: @xf-fontSizeSmall;
+		flex: 1 1 auto;
+		width: 100%;
+		min-width: 0;
+		.xf-contentAccentBase();
+
+		a
+		{
+			.xf-contentAccentLink();
+		}
+	}
+}
+
+.message-main
+{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 0;
+}
+
+.message-content
+{
+	flex: 1 1 auto;
+
+	// IE11 flex bug
+	min-height: 1px;
+	max-width: 100%;
+}
+
+.message-footer
+{
+	margin-top: auto;
+}
+
+form.message--simple .message-cell--main {
+	flex-direction: column;
+	padding: @xf-paddingLarge;
+}
+
+.message--quickReply .message-cell--main {
+	flex-direction: column;
+	padding: @xf-messagePadding;
+}
+
+@media (max-width: @xf-messageSingleColumnWidth)
+{
+	.message:not(.message--forceColumns)
+	{
+		.message-inner
+		{
+			display: block;
+		}
+
+		.message-cell
+		{
+			display: block;
+			.m-clearFix();
+
+			&.message-cell--user
+			{
+				width: auto;
+				border-right: none;
+				border-bottom: @xf-messageUserBlock--border-width solid @xf-messageUserBlock--border-color;
+			}
+
+			&.message-cell--main
+			{
+				// padding-left: @xf-messagePadding;
+			}
+		}
+	}
+
+	.message--simple:not(.message--forceColumns),
+	.message--quickReply:not(.message--forceColumns)
+	{
+		.message-cell.message-cell--user
+		{
+			display: none;
+		}
+	}
+}
+
+// ######################## USER COLUMN #########################
+
+.message-userArrow
+{
+	position: absolute;
+	top: (@xf-messagePadding) * 2;
+	right: -1px;
+
+	.m-triangleLeft(xf-default(@xf-messageUserBlock--border-color, transparent), @xf-messagePadding);
+
+	<xf:if is="property('uix_removeMessageArrow')">
+	display: none;
+	</xf:if>
+
+	&:after
+	{
+		position: absolute;
+		top: -(@xf-messagePadding - 1px);
+		right: -@xf-messagePadding;
+		content: "";
+
+		.m-triangleLeft(@xf-contentBg, @xf-messagePadding - 1px);
+	}
+}
+
+
+.message-avatar
+{
+	text-align: center;
+	margin-bottom: 3px;
+
+	.avatar
+	{
+		vertical-align: bottom;
+		max-width: @xf-messageUserBlockWidth;
+		max-height: @xf-messageUserBlockWidth;
+	}
+}
+
+.message-avatar-wrapper
+{
+	position: relative;
+	display: inline-block;
+	vertical-align: bottom;
+
+	.message-avatar-online
+	{
+		position: absolute;
+		top: -3px;
+		left: -3px;
+
+		// border: 7px solid transparent;
+		// border-left-color: rgb(127, 185, 0);
+		// border-top-color: rgb(127, 185, 0);
+		// border-radius: (@xf-avatarBorderRadius + 1) max(0px, @xf-avatarBorderRadius - 1px) 0 max(0px, @xf-avatarBorderRadius - 1);
+		height: 10px;
+		width: 10px;
+		background: rgb(127, 185, 0);
+		border-radius: 100%;
+	}
+}
+
+.message-name
+{
+	font-weight: @xf-fontWeightHeavy;
+	font-size: inherit;
+	text-align: center;
+	margin: 0;
+}
+
+.message-userTitle
+{
+	font-size: @xf-fontSizeSmaller;
+	font-weight: normal;
+	text-align: center;
+	margin: 0;
+}
+
+.message-userBanner.userBanner
+{
+	@media (min-width: @xf-messageSingleColumnWidth) {
+		display: block;
+	}
+	margin-top: 3px;
+}
+
+.message-userExtras
+{
+	// margin-top: 3px;
+	font-size: @xf-fontSizeSmaller;
+
+	<xf:if is="property('uix_postBitIcons')">
+		dl.pairs dt:after {content:'';}
+
+	.pairs {
+
+		display: flex;
+		align-items: center;
+
+		i {font-size: 18px;}
+
+		dd {
+			min-width: 0;
+			max-width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: left;
+		}
+	}
+
+
+	</xf:if>
+}
+
+.message--deleted
+{
+	.message-userDetails
+	{
+		display: none;
+	}
+
+	.message-avatar .avatar
+	{
+		.m-avatarSize(@avatar-s);
+	}
+}
+
+.message-cell--user
+{
+	.message-date,
+	.message-permalink
+	{
+		display: none;
+	}
+}
+
+@media (min-width: @xf-messageSingleColumnWidth) {
+	.message-userDetails {text-align: center;}
+}
+
+@media (max-width: @xf-messageSingleColumnWidth)
+{
+
+	.uix_messagePostBitWrapper {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		min-width: 0;
+		max-width: 100%;
+	}
+
+	.message:not(.message--forceColumns)
+	{
+		.message-userArrow
+		{
+			top: auto;
+			right: auto;
+			bottom: -1px;
+			left: ((@avatar-s) / 2);
+
+			border: none;
+			.m-triangleUp(xf-default(@xf-messageUserBlock--border-color, transparent), @xf-messagePadding);
+
+			&:after
+			{
+				top: auto;
+				right: auto;
+				left: -(@xf-messagePadding - 1px);
+				bottom: -@xf-messagePadding;
+
+				border: none;
+				.m-triangleUp(@xf-contentBg, @xf-messagePadding - 1px);
+			}
+		}
+
+		&.is-mod-selected
+		{
+			.message-userArrow:after
+			{
+				border-color: transparent;
+				border-bottom-color: @xf-inlineModHighlightColor;
+			}
+		}
+
+		.message-user
+		{
+			display: flex;
+			.has-no-flexbox &
+			{
+				display: table;
+				width: 100%;
+			}
+		}
+
+		.message-avatar
+		{
+			margin-bottom: 0;
+			.has-no-flexbox &
+			{
+				display: table-cell;
+				width: 1%;
+			}
+
+			.avatar
+			{
+				.m-avatarSize(@avatar-s);
+			}
+		}
+
+		.message-userDetails
+		{
+			flex: 1;
+			min-width: 0;
+			padding-left: @xf-messagePadding;
+			width: 100%;
+
+			.has-no-flexbox &
+			{
+				display: table-cell;
+			}
+		}
+
+		.message-userExtras {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			padding-left: @xf-messagePadding;
+			padding-top: @xf-paddingSmall;
+
+			.pairs {
+				margin-right: @xf-paddingMedium;
+				line-height: 1.3;
+			}
+		}
+
+		.message-name
+		{
+			text-align: left;
+		}
+
+		.message-userTitle,
+		.message-userBanner.userBanner
+		{
+			display: inline-block;
+			text-align: left;
+			margin: 0;
+		}
+
+		.message--deleted
+		{
+			.message-userDetails
+			{
+				display: block;
+			}
+		}
+	}
+}
+
+// ####################### MAIN COLUMN ####################
+
+.message-content
+{
+	position: relative;
+
+	.js-selectToQuoteEnd
+	{
+		height: 0;
+		font-size: 0;
+		overflow: hidden;
+	}
+
+	.message--multiQuoteList &
+	{
+		min-height: 80px;
+		max-height: 120px;
+		overflow: hidden;
+
+		.message-body
+		{
+			pointer-events: none;
+		}
+	}
+}
+
+.message-attribution
+{
+	color: @xf-textColorMuted;
+	font-size: @xf-fontSizeSmaller;
+	border-bottom: @xf-borderSize solid @xf-borderColorFaint;
+	padding-bottom: 3px;
+	// .m-clearFix();
+	.xf-uix_messageMeta;
+
+	&.message-attribution--plain
+	{
+		border-bottom: none;
+		font-size: inherit;
+		padding-bottom: 0;
+	}
+}
+
+.message-attribution-main { float: left; }
+.message-attribution-opposite { float: right; }
+
+.message-attribution-source
+{
+	font-size: @xf-fontSizeSmaller;
+	margin-bottom: @xf-paddingSmall;
+}
+
+.message-attribution-user
+{
+	font-weight: @xf-fontWeightHeavy;
+
+	.avatar
+	{
+		display: none;
+	}
+
+	.attribution
+	{
+		display: inline;
+		font-size: inherit;
+		font-weight: inherit;
+		margin: 0;
+	}
+}
+
+.message-newIndicator
+{
+	.xf-messageNewIndicator();
+}
+
+.message-minorHighlight
+{
+	font-size: @xf-fontSizeSmall;
+	color: @xf-textColorFeature;
+	padding-left: @xf-messagePadding;
+	padding-right: @xf-messagePadding;
+}
+
+.message-fields
+{
+	margin: @xf-messagePadding 0;
+	.xf-uix_threadField();
+}
+
+.message-body
+{
+	margin: @xf-messagePadding 0;
+	font-family: @xf-fontFamilyBody;
+	.xf-uix_messageBody();
+
+	.message--simple &
+	{
+		margin-top: @xf-messagePaddingSmall;
+		margin-bottom: @xf-messagePaddingSmall;
+	}
+
+	&:last-child
+	{
+		margin-bottom: 0;
+	}
+}
+
+.message-attachments
+{
+	margin: .5em 0;
+	.xf-uix_messageAttachments();
+}
+
+	.message-attachments-list
+	{
+		.m-listPlain();
+	}
+
+.message-lastEdit
+{
+	margin-top: .5em;
+	color: @xf-textColorMuted;
+	font-size: @xf-fontSizeSmallest;
+	text-align: right;
+	padding: 0 @xf-messagePadding @xf-messagePadding;
+}
+
+.message-signature
+{
+	margin-top: @xf-messagePadding;
+	.xf-messageSignature();
+}
+
+.message-actionBar .actionBar-set
+{
+	// margin-top: @xf-messagePadding;
+	font-size: @xf-fontSizeSmall;
+	// padding: calc( @xf-messagePadding / 2 );
+	.message--simple &
+	{
+		// margin-top: @xf-messagePaddingSmall;
+	}
+}
+
+.message .likesBar
+{
+	// .xf-minorBlockContent();
+	// font-size: @xf-fontSizeSmaller;
+	margin-top: @xf-messagePadding;
+	padding: @xf-messagePaddingSmall;
+	.xf-uix_messageLikes();
+}
+
+.message-historyTarget
+{
+	margin-top: @xf-messagePadding;
+}
+
+.message-gradient
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+
+	.m-gradient(fade(@xf-contentBg, 0%), @xf-contentBg, @xf-contentBg, 0%, 90%);
+}
+
+.message-responses
+{
+	margin-top: @xf-messagePaddingSmall;
+	font-size: @xf-fontSizeSmall;
+}
+
+.message-responseRow
+{
+	margin-top: -@xf-minorBlockContent--border-width;
+	.xf-minorBlockContent();
+	padding: @xf-messagePadding;
+
+	// note that border radiuses are very difficult to do here due to a lot of dynamic showing/hiding
+
+	&.message-responseRow--likes
+	{
+		.m-transitionFadeDown();
+	}
+}
+
+
+
+@media (max-width: @xf-messageSingleColumnWidth)
+{
+	.message:not(.message--forceColumns)
+	{
+		.message-attribution-user .avatar
+		{
+			display: inline-block;
+			.m-avatarSize((@xf-fontSizeNormal) * (@xf-lineHeightDefault));
+		}
+
+		.message-content
+		{
+			// this is 1px to workaround an IE11 issue - see #139187
+			min-height: 1px;
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+	.message-signature
+	{
+		display: none;
+	}
+}
+
+// MESSAGE MENU
+
+.message-menuGroup
+{
+	display: inline-block;
+}
+
+.message-menuTrigger
+{
+	display: inline-block;
+
+	&:after
+	{
+		.m-faBase();
+		.m-faContent(@fa-var-caret-down, 1em);
+		//font-size: 120%;
+		text-align: right;
+	}
+
+	&:hover:after
+	{
+		color: black;
+	}
+}
+
+.message-menu-section
+{
+	&--editDelete
+	{
+		.menu-linkRow
+		{
+			font-weight: @xf-fontWeightHeavy;
+			font-size: @xf-fontSizeNormal;
+		}
+	}
+}
+
+.message-menu-link
+{
+	&--delete i:after
+	{
+		.m-faContent(@fa-var-trash-o);
+	}
+	&--edit i:after
+	{
+		.m-faContent(@fa-var-edit);
+	}
+	&--report i:after
+	{
+		.m-faContent(@fa-var-frown-o);
+	}
+	&--warn i:after
+	{
+		.m-faContent(@fa-var-warning);
+	}
+	&--spam i:after
+	{
+		.m-faContent(@fa-var-ban);
+	}
+	&--ip i:after
+	{
+		.m-faContent(@fa-var-sitemap);
+	}
+	&--history i:after
+	{
+		.m-faContent(@fa-var-history);
+	}
+	&--follow i:after
+	{
+		.m-faContent(@fa-var-user-plus);
+	}
+	&--ignore i:after
+	{
+		.m-faContent(@fa-var-user-times);
+	}
+	&--share i:after
+	{
+		.m-faContent(@fa-var-share-alt);
+	}
+}
+
+// ############################# COMMENTS ###############
+
+.comment
+{
+}
+
+.comment-inner
+{
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.comment-avatar
+{
+	display: table-cell;
+	width: 24px;
+	vertical-align: top;
+
+	.avatar,
+	img
+	{
+		vertical-align: bottom;
+	}
+}
+
+.comment-main
+{
+	display: table-cell;
+	padding-left: @xf-messagePadding;
+	vertical-align: top;
+}
+
+.comment-contentWrapper
+{
+	margin-bottom: @xf-messagePaddingSmall;
+}
+
+.message-responses .comment-actionBar.actionBar {padding: 0;}
+
+.message-responses .comment-actionBar .actionBar-set.actionBar-set--internal {padding: 0;}
+
+.comment-user
+{
+	font-weight: @xf-fontWeightHeavy;
+}
+
+.comment-body
+{
+	display: inline;
+}
+
+.comment-input
+{
+	display: block;
+	height: 2.34em;
+	margin-bottom: @xf-messagePaddingSmall;
+}
+
+.comment-actionBar .actionBar-set
+{
+	// margin-top: @xf-messagePaddingSmall;
+	color: @xf-textColorMuted;
+}
+
+.comment-likes
+{
+	.m-transitionFadeDown();
+
+	margin-top: @xf-messagePaddingSmall;
+	font-size: @xf-fontSizeSmaller;
+}
+
+// ######################### ACTION BAR #######################
+
+.actionBar
+{
+	.m-clearFix();
+	.xf-uix_messageActionBar();
+}
+
+.actionBar-set
+{
+	&.actionBar-set--internal
+	{
+		float: left;
+		margin-left: -3px;
+
+		> .actionBar-action:first-child
+		{
+			margin-left: 0;
+		}
+	}
+
+	&.actionBar-set--external
+	{
+		float: right;
+		margin-right: -3px;
+
+		> .actionBar-action:last-child
+		{
+			margin-right: 0;
+		}
+	}
+}
+
+// ################################## MESSAGE QUICK REPLY ADDITIONS #############
+
+.formSubmitRow.formSubmitRow--messageQr
+{
+	.formSubmitRow-controls
+	{
+		text-align: center;
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: @xf-messagePadding;
+		margin-right: @xf-messagePadding;
+
+		@media (max-width: @xf-formResponsive)
+		{
+			text-align: right;
+		}
+
+		.menu & {text-align: right;}
+	}
+}
+
+// ################################## MESSAGE NOTICES #############################
+
+.messageNotice
+{
+	margin: @xf-messagePaddingSmall 0;
+	padding: @xf-messagePaddingSmall @xf-messagePadding;
+	.xf-contentAccentBase();
+	font-size: @xf-fontSizeSmaller;
+	border-left: @xf-borderSizeMinorFeature solid @xf-borderColorAttention;
+	.xf-uix_messageNotice();
+
+	a,
+	a:hover
+	{
+		.xf-contentAccentLink();
+	}
+
+	&:first-child
+	{
+		margin-top: 0;
+	}
+
+	&:before
+	{
+		display: inline-block;
+		.m-faBase();
+		padding-right: .2em;
+		font-size: 125%;
+		color: @xf-textColorAttention;
+		vertical-align: middle;
+		font-size: @xf-uix_iconSize !important;
+	}
+
+	&.messageNotice--deleted:before { .m-faContent(@fa-var-trash, .79em); <xf:macro template="uix_icons.less" name="content" arg-icon="delete" />}
+	&.messageNotice--moderated:before { .m-faContent(@fa-var-shield, .72em); <xf:macro template="uix_icons.less" name="content" arg-icon="moderate" />}
+	&.messageNotice--warning:before { .m-faContent(@fa-var-warning, 1em); <xf:macro template="uix_icons.less" name="content" arg-icon="warning" />}
+	&.messageNotice--ignored:before { .m-faContent(@fa-var-microphone-slash, .79em); <xf:macro template="uix_icons.less" name="content" arg-icon="ignored" />}
+}
+
+// ##################### MESSAGE VARIANTS/RESPONSIVE ##################
+
+@media (min-width: @xf-responsiveEdgeSpacerRemoval)
+{
+	.block:not(.block--messages)
+	{
+		@{block-noStripSel} > .block-body:first-child > .message:first-child,
+		.block-topRadiusContent.message,
+		.block-topRadiusContent > .message:first-child
+		{
+			.message-cell:first-child { border-top-left-radius: @block-borderRadius-inner; }
+			.message-cell:last-child { border-top-right-radius: @block-borderRadius-inner; }
+		}
+
+		@{block-noStripSel} > .block-body:last-child > .message:last-child,
+		.block-bottomRadiusContent.message,
+		.block-bottomRadiusContent > .message:last-child
+		{
+			.message-cell:first-child { border-bottom-left-radius: @block-borderRadius-inner; }
+			.message-cell:last-child { border-bottom-right-radius: @block-borderRadius-inner; }
+		}
+	}
+}
+
+.block--messages, .js-quickReply
+{
+	.block-container
+	{
+		background: none;
+		border: none;
+		box-shadow: none;
+		border-radius: 0;
+		overflow: visible;
+	}
+
+	.message,
+	.block-row
+	{
+		.xf-contentBase();
+		.xf-blockBorder();
+		border-radius: @xf-blockBorderRadius;
+
+		.xf-uix_message();
+		
+		&:first-child {
+			border-top-left-radius: @xf-borderRadiusLarge;
+			border-top-right-radius: @xf-borderRadiusLarge;		
+		}
+		&:last-child {
+			border-bottom-left-radius: @xf-borderRadiusLarge;
+			border-bottom-right-radius: @xf-borderRadiusLarge;		
+		}		
+
+		+ .message,
+		+ .block-row
+		{
+			margin-top: @xf-blockPaddingV;
+			// Changed for iO
+			margin-top:0;
+		}
+	}
+
+	.message-cell
+	{
+		&:first-child
+		{
+			border-radius: 0;
+			border-top-left-radius: @block-borderRadius-inner;
+			border-bottom-left-radius: @block-borderRadius-inner;
+		}
+
+		&:last-child
+		{
+			border-radius: 0;
+			border-top-right-radius: @block-borderRadius-inner;
+			border-bottom-right-radius: @block-borderRadius-inner;
+		}
+
+		&:first-child:last-child
+		{
+			border-radius: @block-borderRadius-inner;
+		}
+	}
+
+	@media (max-width: @xf-messageSingleColumnWidth)
+	{
+		.message:not(.message--forceColumns)
+		{
+			.message-cell
+			{
+				&:first-child
+				{
+					border-radius: 0;
+					border-top-left-radius: @block-borderRadius-inner;
+					border-top-right-radius: @block-borderRadius-inner;
+				}
+
+				&:last-child
+				{
+					border-radius: 0;
+					border-bottom-left-radius: @block-borderRadius-inner;
+					border-bottom-right-radius: @block-borderRadius-inner;
+				}
+
+				&:first-child:last-child
+				{
+					border-radius: @block-borderRadius-inner;
+				}
+			}
+		}
+
+		.message--simple:not(.message--forceColumns) .message-cell--user + .message-cell
+		{
+			border-radius: 0;
+			border-top-left-radius: @block-borderRadius-inner;
+			border-top-right-radius: @block-borderRadius-inner;
+		}
+	}
+
+	@media (max-width: @xf-responsiveEdgeSpacerRemoval)
+	{
+		.message,
+		.block-row
+		{
+			border-left: none;
+			border-right: none;
+			border-radius: 0;
+		}
+
+		.message-cell
+		{
+			border-radius: 0;
+
+			&:first-child,
+			&:last-child
+			{
+				border-radius: 0;
+			}
+		}
+
+		.message--simple .message-cell--user + .message-cell
+		{
+			border-radius: 0;
+		}
+	}
+}]]></template>
+  </templates>
+  <properties>
+    <group group_name="io" title="iO" description="Style properties for the iO theme" display_order="0" addon_id=""/>
+    <property property_name="blockFilterBar" group_name="block" title="Block filter bar" description="When the content of a block can be filtered, the controls to do so are styled here" property_type="css" value_type="" depends_on="" value_group="" display_order="20800" css_components="text,background,border,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "@xf-textColor",
+    "background-color": "@xf-contentBg",
+    "border-bottom-width": "1px",
+    "border-bottom-color": "@xf-borderColor"
+}</value>
+    </property>
+    <property property_name="blockMinorHeader" group_name="block" title="Block minor header" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20400" css_components="text,background,border,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeNormal",
+    "color": "@xf-textColorDimmed",
+    "font-weight": "@xf-fontWeightHeavy"
+}</value>
+    </property>
+    <property property_name="borderColor" group_name="color" title="Border color" description="" property_type="value" value_type="color" depends_on="" value_group="borderBasic" display_order="4000" addon_id="XF">
+      <value>"xf-intensify(@xf-contentHighlightBg, 6%)"</value>
+    </property>
+    <property property_name="borderRadiusLarge" group_name="borderSpacing" title="Large border radius" description="" property_type="value" value_type="unit" depends_on="" value_group="borderRadius" display_order="1200" addon_id="XF">
+      <value>"8px"</value>
+    </property>
+    <property property_name="borderRadiusMedium" group_name="borderSpacing" title="Medium border radius" description="" property_type="value" value_type="unit" depends_on="" value_group="borderRadius" display_order="1100" addon_id="XF">
+      <value>"8px"</value>
+    </property>
+    <property property_name="borderRadiusSmall" group_name="borderSpacing" title="Small border radius" description="" property_type="value" value_type="unit" depends_on="" value_group="borderRadius" display_order="1000" addon_id="XF">
+      <value>"4px"</value>
+    </property>
+    <property property_name="buttonBase" group_name="button" title="Button base" description="Defines the styling for the basic elements that are common to all text-based buttons" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,border_radius,padding,extra" addon_id="XF">
+      <value>{
+    "font-size": "15px",
+    "font-weight": "@xf-fontWeightLight",
+    "border-radius": "@xf-borderRadiusMedium",
+    "padding-top": "0",
+    "padding-right": "15px",
+    "padding-bottom": "0",
+    "padding-left": "15px",
+    "extra": "text-align: center;\noutline: none;\nline-height: 35px;\nheight: 35px;\ntext-decoration: none;\ndisplay: inline-flex;\nalign-items: center;\njustify-content: center;\ncursor: pointer;\nbox-sizing: content-box;\n-webkit-appearance: none;\nwill-change: box-shadow;\ntransition: all 0.3s cubic-bezier(.25,.8,.25,1);\nborder: none;\nwhite-space: nowrap;\nborder-radius: @xf-borderRadiusSmall;"
+}</value>
+    </property>
+    <property property_name="buttonCta" group_name="button" title="Button - call to action" description="Call to action buttons sit alone and invite the user to do something, like post a new thread" property_type="css" value_type="" depends_on="" value_group="" display_order="20300" css_components="text,background,extra" addon_id="XF">
+      <value>{
+    "color": "#fff",
+    "extra": "box-shadow: @xf-uix_elevation1;\nborder: none;\nbackground: linear-gradient(@xf-uix_secondaryColor, darken(@xf-uix_secondaryColor, 10%) );"
+}</value>
+    </property>
+    <property property_name="buttonPrimary" group_name="button" title="Button - primary" description="These rules are used mostly for the main submit button for forms" property_type="css" value_type="" depends_on="" value_group="" display_order="20200" css_components="text,background,extra" addon_id="XF">
+      <value>{
+    "color": "#fff",
+    "extra": "box-shadow: @xf-uix_elevation1;\nborder: none;\nbackground: linear-gradient(@xf-uix_primaryColor, darken(@xf-uix_primaryColor, 10%) );"
+}</value>
+    </property>
+    <property property_name="fontFamilyBody" group_name="fonts" title="Body Text Font" description="This font is used for the text of messages etc." property_type="value" value_type="string" depends_on="" value_group="font" display_order="200" addon_id="XF">
+      <value>"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',  'Ubuntu', 'Cantarell', 'Fira Sans',      'Droid Sans', 'Helvetica Neue', sans-serif"</value>
+    </property>
+    <property property_name="fontFamilyUi" group_name="fonts" title="User Interface Font" description="The font list for your main text" property_type="value" value_type="string" depends_on="" value_group="font" display_order="100" addon_id="XF">
+      <value>"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',  'Ubuntu', 'Cantarell', 'Fira Sans',      'Droid Sans', 'Helvetica Neue', sans-serif"</value>
+    </property>
+    <property property_name="fontSizeLarge" group_name="fonts" title="Large font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1400" addon_id="XF">
+      <value>"16px"</value>
+    </property>
+    <property property_name="fontSizeLargest" group_name="fonts" title="Largest font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1600" addon_id="XF">
+      <value>"36px"</value>
+    </property>
+    <property property_name="fontSizeNormal" group_name="fonts" title="Normal font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1000" addon_id="XF">
+      <value>"13px"</value>
+    </property>
+    <property property_name="fontSizeSmall" group_name="fonts" title="Small font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1100" addon_id="XF">
+      <value>"12px"</value>
+    </property>
+    <property property_name="fontSizeSmaller" group_name="fonts" title="Smaller font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1200" addon_id="XF">
+      <value>"12px"</value>
+    </property>
+    <property property_name="fontSizeSmallest" group_name="fonts" title="Smallest font size" description="" property_type="value" value_type="unit" depends_on="" value_group="size" display_order="1300" addon_id="XF">
+      <value>"11px"</value>
+    </property>
+    <property property_name="fontWeightHeavy" group_name="fonts" title="Heavy font weight" description="" property_type="value" value_type="number" depends_on="" value_group="weight" display_order="2200" addon_id="XF">
+      <value_parameters>step=100
+min=100
+max=900</value_parameters>
+      <value>"700"</value>
+    </property>
+    <property property_name="input" group_name="input" title="Form input" description="Controls the style of most text-input boxes" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,background,border,border_radius,padding,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeNormal",
+    "color": "@xf-textColor",
+    "background-color": "@xf-contentAltBg",
+    "border-width": "@xf-borderSize",
+    "border-radius": "@xf-borderRadiusMedium",
+    "border-top-color": "@xf-borderColorHeavy",
+    "border-right-color": "@xf-borderColorLight",
+    "border-bottom-color": "@xf-borderColorLight",
+    "border-left-color": "@xf-borderColorHeavy",
+    "padding": "6px",
+    "extra": "box-shadow: inset 0 1px 4px rgba(0,0,0,.1);"
+}</value>
+    </property>
+    <property property_name="io_nodeGradients" group_name="io" title="Enable smart node gradients" description="Generates node colors based on the primary brand color" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="memberHeader" group_name="member" title="Member profile header" description="The member profile page's content header is styled with these settings" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,background,border,extra" addon_id="XF">
+      <value>{
+    "background-color": "@xf-contentAltBg",
+    "border-bottom-width": "0",
+    "border-bottom-color": "@xf-borderColorLight"
+}</value>
+    </property>
+    <property property_name="menu" group_name="menu" title="Menu" description="Controls the main block of all popup menus" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,background,border_width_simple,border_color_simple,border_radius_simple,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "@xf-textColor",
+    "background-color": "@xf-contentBg",
+    "border-width": "0",
+    "border-color": "@xf-borderColor",
+    "border-radius": "@xf-borderRadiusSmall",
+    "extra": "box-shadow: 0px 10px 20px rgba(0,0,0,0.15), rgba(0,0,0,0.1) 0px 0px 0px 1px;"
+}</value>
+    </property>
+    <property property_name="messagePadding" group_name="message" title="Message padding" description="When using the full-size message block, this value defines the size of the padding around the message text" property_type="value" value_type="unit" depends_on="" value_group="padding" display_order="200" addon_id="XF">
+      <value>"@xf-paddingLarge"</value>
+    </property>
+    <property property_name="messagePaddingSmall" group_name="message" title="Message padding small" description="This value controls the padding around the message text when using the small message block" property_type="value" value_type="unit" depends_on="" value_group="padding" display_order="400" addon_id="XF">
+      <value>"@xf-paddingLarge"</value>
+    </property>
+    <property property_name="messageUserBlock" group_name="message" title="Message user info block" description="Apart from its width, the (left) message user info column is styled here" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,background,border_width_simple,border_color_simple,extra" addon_id="XF">
+      <value>{
+    "border-width": "0"
+}</value>
+    </property>
+    <property property_name="nodeIconReadColor" group_name="nodeList" title="Read node icon color" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="200" addon_id="XF">
+      <value>"@xf-textColorMuted"</value>
+    </property>
+    <property property_name="nodeIconUnreadColor" group_name="nodeList" title="Unread node icon color" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="100" addon_id="XF">
+      <value>"#fff"</value>
+    </property>
+    <property property_name="paletteAccent1" group_name="palette" title="Accent 1" description="" property_type="value" value_type="color" depends_on="" value_group="accent" display_order="2000" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"#4080FF"</value>
+    </property>
+    <property property_name="paletteAccent2" group_name="palette" title="Accent 2" description="" property_type="value" value_type="color" depends_on="" value_group="accent" display_order="2100" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"#4080FF"</value>
+    </property>
+    <property property_name="paletteAccent3" group_name="palette" title="Accent 3" description="" property_type="value" value_type="color" depends_on="" value_group="accent" display_order="2200" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"#4080FF"</value>
+    </property>
+    <property property_name="paletteColor2" group_name="palette" title="Color 2" description="" property_type="value" value_type="color" depends_on="" value_group="primary" display_order="1100" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"#f1f3fb"</value>
+    </property>
+    <property property_name="paletteColor3" group_name="palette" title="Color 3" description="" property_type="value" value_type="color" depends_on="" value_group="primary" display_order="1200" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"#ecf2fb"</value>
+    </property>
+    <property property_name="paletteColor4" group_name="palette" title="Color 4" description="" property_type="value" value_type="color" depends_on="" value_group="primary" display_order="1300" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"rgb(248, 250, 255)"</value>
+    </property>
+    <property property_name="paletteColor5" group_name="palette" title="Color 5" description="" property_type="value" value_type="color" depends_on="" value_group="primary" display_order="1400" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"@xf-paletteColor2"</value>
+    </property>
+    <property property_name="paletteNeutral1" group_name="palette" title="Neutral 1" description="" property_type="value" value_type="color" depends_on="" value_group="neutral" display_order="3000" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"rgb(160, 175, 206)"</value>
+    </property>
+    <property property_name="paletteNeutral2" group_name="palette" title="Neutral 2" description="" property_type="value" value_type="color" depends_on="" value_group="neutral" display_order="3100" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"rgb(112, 130, 167)"</value>
+    </property>
+    <property property_name="paletteNeutral3" group_name="palette" title="Neutral 3" description="" property_type="value" value_type="color" depends_on="" value_group="neutral" display_order="3200" addon_id="XF">
+      <value_parameters>hidePalette=true</value_parameters>
+      <value>"rgb(56, 71, 100)"</value>
+    </property>
+    <property property_name="publicFooter" group_name="footer" title="Footer" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20000" css_components="text,background,border,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "@xf-textColorDimmed",
+    "background-color": "@xf-contentHighlightBg"
+}</value>
+    </property>
+    <property property_name="publicFooterLink" group_name="footer" title="Footer links" description="Controls styling for individual links within the footer" property_type="css" value_type="" depends_on="" value_group="" display_order="20100" css_components="text,extra" addon_id="XF">
+      <value>{
+    "color": "@xf-textColor"
+}</value>
+    </property>
+    <property property_name="publicLogoUrl" group_name="basic" title="Logo URL" description="" property_type="value" value_type="string" depends_on="" value_group="logo" display_order="100" addon_id="XF">
+      <value>"@xf-uix_imagePath/io/images/logo.png"</value>
+    </property>
+    <property property_name="publicLogoUrl2x" group_name="basic" title="2x logo URL" description="" property_type="value" value_type="string" depends_on="" value_group="logo" display_order="200" addon_id="XF">
+      <value>""</value>
+    </property>
+    <property property_name="publicNav" group_name="headerNav" title="Navigation row" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20100" css_components="text,background,extra" addon_id="XF">
+      <value>{
+    "color": "@xf-textColorMuted",
+    "font-weight": "@xf-fontWeightNormal",
+    "background-color": "@xf-contentBg"
+}</value>
+    </property>
+    <property property_name="publicNavSelected" group_name="headerNav" title="Navigation row - selected tab" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20300" css_components="text,background,border,border_radius,extra" addon_id="XF">
+      <value>{
+    "color": "@xf-uix_secondaryColor",
+    "font-weight": "@xf-fontWeightHeavy",
+    "extra": "// box-shadow: inset 0 -2px @xf-uix_secondaryColor;"
+}</value>
+    </property>
+    <property property_name="publicNavTab" group_name="headerNav" title="Navigation row - tab" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20200" css_components="text,background,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeNormal",
+    "color": "@xf-textColorMuted",
+    "text-decoration": "none",
+    "extra": "text-transform: uppercase;\nline-height: 1;\nborder-top-left-radius: @xf-borderRadiusSmall;\nborder-top-right-radius: @xf-borderRadiusSmall;\nheight: @xf-uix_navigationBarHeight;"
+}</value>
+    </property>
+    <property property_name="publicNavTabHover" group_name="headerNav" title="Navigation row - hovered tab" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20400" css_components="text,background,extra" addon_id="XF">
+      <value>{
+    "color": "@xf-textColor",
+    "text-decoration": "none"
+}</value>
+    </property>
+    <property property_name="publicStaffBar" group_name="headerNav" title="Staff tools bar" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20700" css_components="text,background,border,extra" addon_id="XF">
+      <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "rgba(255,255,255,.7)",
+    "extra": "background: linear-gradient(-270deg, @xf-uix_primaryColor 0%, lighten(@xf-uix_primaryColor, 15%) 100%);"
+}</value>
+    </property>
+    <property property_name="uix_additionalCss" group_name="uix_globalSettings" title="List of additional css templates to include" description="A comma separated list of additional CSS/less templates to load. Requires the .css or .less suffix" property_type="value" value_type="string" depends_on="" value_group="" display_order="400" addon_id="">
+      <value>"io.less"</value>
+    </property>
+    <property property_name="uix_brandmarkImage__breakpoint" group_name="basic" title="Logo breakpoint" description="Max viewport width to switch to the brandmark image. Use 100% for always, 0 for never, and other values in pixels" property_type="value" value_type="string" depends_on="" value_group="" display_order="600" addon_id="">
+      <value>"0"</value>
+    </property>
+    <property property_name="uix_buttonCtaActive" group_name="button" title="Button - call to action (active)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20320" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "extra": "background: linear-gradient(darken(@xf-uix_secondaryColor, 15%), darken(@xf-uix_secondaryColor, 25%) );"
+}</value>
+    </property>
+    <property property_name="uix_buttonCtaHover" group_name="button" title="Button - call to action (hover)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20310" css_components="text,background,extra" addon_id="">
+      <value>{
+    "extra": "box-shadow: @xf-uix_elevation2;\nbackground: linear-gradient(darken(@xf-uix_secondaryColor, 5%), darken(@xf-uix_secondaryColor, 15%) );"
+}</value>
+    </property>
+    <property property_name="uix_buttonHover" group_name="button" title="Button - default (hover)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20110" css_components="text,background,extra" addon_id="">
+      <value>{
+    "background-color": "fade(@xf-buttonDefault--color, 15%)"
+}</value>
+    </property>
+    <property property_name="uix_buttonPrimaryActive" group_name="button" title="Button - primary (active)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20220" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "extra": "background: linear-gradient(darken(@xf-uix_primaryColor, 15%), darken(@xf-uix_primaryColor, 25%) );"
+}</value>
+    </property>
+    <property property_name="uix_buttonPrimaryHover" group_name="button" title="Button primary (hover)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20210" css_components="text,background,extra" addon_id="">
+      <value>{
+    "color": "#fff",
+    "extra": "box-shadow: @xf-uix_elevation2;\nbackground: linear-gradient(darken(@xf-uix_primaryColor, 5%), darken(@xf-uix_primaryColor, 15%) );"
+}</value>
+    </property>
+    <property property_name="uix_categoryDescription" group_name="nodeList" title="Category description" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "font-size": "@xf-fontSizeSmaller",
+    "color": "#fff",
+    "font-weight": "@xf-fontWeightNormal",
+    "padding-top": "4px",
+    "extra": "line-height: 1.5;"
+}</value>
+    </property>
+    <property property_name="uix_categoryDescriptionDisplay" group_name="nodeList" title="Category description display" description="" property_type="value" value_type="radio" depends_on="" value_group="" display_order="1100" addon_id="">
+      <value_parameters>tooltip=Tooltip
+inline=Inline
+none=None</value_parameters>
+      <value>"tooltip"</value>
+    </property>
+    <property property_name="uix_categoryIconStyle" group_name="nodeList" title="Category icon style" description="Styles the category strip icon if applicable" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "font-size": "24px",
+    "color": "#fff",
+    "padding-right": "@xf-paddingMedium"
+}</value>
+    </property>
+    <property property_name="uix_categoryStrip" group_name="nodeList" title="Category Strip" description="Styles the category strip for nodes" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra" addon_id="">
+      <value>{
+    "font-size": "@xf-fontSizeLarge",
+    "color": "#fff",
+    "font-weight": "@xf-fontWeightHeavy",
+    "border-bottom-width": "0",
+    "padding-top": "@xf-paddingMedium",
+    "padding-right": "@xf-paddingLarge",
+    "padding-bottom": "@xf-paddingMedium",
+    "padding-left": "@xf-paddingLarge",
+    "extra": "line-height: 1;\nbackground-size: cover;\nbackground-position: center;\nbackground: linear-gradient(-270deg, @xf-uix_primaryColor 0%, xf-diminish(@xf-uix_primaryColor, 15%) 100%);"
+}</value>
+    </property>
+    <property property_name="uix_categoryStripOutsideWrapper" group_name="nodeList" title="Move category strip outside wrapper" description="Moves the category strip outside of the level 1 node container" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="1200" addon_id="">
+      <value>0</value>
+    </property>
+    <property property_name="uix_clickableThreads" group_name="uix_discussionList" title="Clickable threads" description="Makes the entire thread list item clickable" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_copyrightOrder" group_name="footer" title="Copyright row order" description="" property_type="value" value_type="number" depends_on="" value_group="" display_order="300" addon_id="">
+      <value>"20"</value>
+    </property>
+    <property property_name="uix_discussionListAnimation" group_name="misc" title="Discussion list animation" description="Adds animation to discussion list items on page load" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3200" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_discussionListCollapseWidth" group_name="uix_discussionList" title="Width to collapse discussion list items" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"10000px"</value>
+    </property>
+    <property property_name="uix_discussionListItem" group_name="uix_discussionList" title="Discussion list item" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius" addon_id="">
+      <value>{
+    "border-radius": "@xf-borderRadiusLarge"
+}</value>
+    </property>
+    <property property_name="uix_discussionListItemEven" group_name="uix_discussionList" title="Discussion list item (even)" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>""</value>
+    </property>
+    <property property_name="uix_discussionListItemHover" group_name="uix_discussionList" title="Discussion list item (hover)" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"@xf-contentAltBg"</value>
+    </property>
+    <property property_name="uix_discussionListItemSticky" group_name="uix_discussionList" title="Discussion list item (sticky)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border" addon_id="">
+      <value>[]</value>
+    </property>
+    <property property_name="uix_discussionListTitle" group_name="uix_discussionList" title="Title" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text" addon_id="">
+      <value>{
+    "font-size": "@xf-fontSizeNormal",
+    "color": "@xf-textColor",
+    "font-weight": "@xf-fontWeightHeavy"
+}</value>
+    </property>
+    <property property_name="uix_elevation1" group_name="uix_globalSettings" title="Elevation 1" description="Sets the box-shadow value for elevation level 1" property_type="value" value_type="string" depends_on="" value_group="elevation" display_order="2000" addon_id="">
+      <value>"0 4px 15px 0 fade(shade(darken(@xf-pageBg, 20%), 40%), 20%)"</value>
+    </property>
+    <property property_name="uix_elevation2" group_name="uix_globalSettings" title="Elevation 2" description="Sets the box shadow value for elevation level 2" property_type="value" value_type="string" depends_on="" value_group="elevation" display_order="2100" addon_id="">
+      <value>"0 4px 15px 0 fade(shade(darken(@xf-pageBg, 20%), 40%), 20%)"</value>
+    </property>
+    <property property_name="uix_extendedFooterStyle" group_name="footer" title="Extended Footer" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-contentBg",
+    "border-top-width": "0",
+    "border-top-color": "@xf-borderColor",
+    "border-bottom-width": "0",
+    "padding-top": "@xf-paddingLargest * 2",
+    "padding-bottom": "@xf-paddingLargest * 2",
+    "extra": "line-height: 1.7;"
+}</value>
+    </property>
+    <property property_name="uix_extendedFooter__whiteText" group_name="footer" title="Extended Footer White Text" description="Checking this option will add CSS to make all text white for legibility. Only use this Style Property if you have a dark background that is causing legibility issues. (Most often useful for a dark footer on a light theme.)" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="2400" addon_id="">
+      <value>0</value>
+    </property>
+    <property property_name="uix_fab" group_name="button" title="Page action as floating action button" description="Adds the page action as a floating action button" property_type="value" value_type="select" depends_on="" value_group="" display_order="1000" addon_id="">
+      <value_parameters>never=Never
+mobile=Mobile
+always=Always</value_parameters>
+      <value>"never"</value>
+    </property>
+    <property property_name="uix_footerChooser" group_name="footer" title="Footer chooser" description="Styles the footer chooser (ex. style chooser, width toggle, language chooser)" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,extra" addon_id="">
+      <value>{
+    "color": "@xf-textColorMuted",
+    "border-width": "2px",
+    "border-color": "@xf-borderColor"
+}</value>
+    </property>
+    <property property_name="uix_footerChooserHover" group_name="footer" title="Footer chooser hover" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,extra" addon_id="">
+      <value>{
+    "color": "@xf-textColor",
+    "background-color": "@xf-borderColor"
+}</value>
+    </property>
+    <property property_name="uix_footerCopyrightRow" group_name="footer" title="Footer copyright row" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "color": "@xf-textColorDimmed",
+    "padding-top": "@xf-paddingLarge",
+    "padding-bottom": "@xf-paddingLarge"
+}</value>
+    </property>
+    <property property_name="uix_footerLinkHover" group_name="footer" title="Footer links hover" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,extra" addon_id="">
+      <value>{
+    "color": "@xf-uix_primaryColor",
+    "extra": "text-decoration: none;"
+}</value>
+    </property>
+    <property property_name="uix_footerMenu" group_name="footer" title="Footer menu" description="Styles the footer menu bar" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-contentHighlightBg",
+    "padding-top": "0"
+}</value>
+    </property>
+    <property property_name="uix_footerMenuOrder" group_name="footer" title="Footer menu order" description="" property_type="value" value_type="number" depends_on="" value_group="" display_order="200" addon_id="">
+      <value>"30"</value>
+    </property>
+    <property property_name="uix_footerWidgetHeader" group_name="footer" title="Footer widget header" description="Styles the minor heading block is footer widgets" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "background-color": "none",
+    "border-bottom-width": "0",
+    "padding": "0",
+    "padding-bottom": "@xf-paddingMedium"
+}</value>
+    </property>
+    <property property_name="uix_googleFonts" group_name="fonts" title="Google Fonts" description="Choose the fonts in which to load from Google Fonts API." property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>""</value>
+    </property>
+    <property property_name="uix_headerWrapper" group_name="headerNav" title="Header wrapper" description="Styles the wrapper around the entire header" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border,border_radius,padding,extra" addon_id="">
+      <value>[]</value>
+    </property>
+    <property property_name="uix_headingFont" group_name="fonts" title="Secondary font" description="Font family used for headings and other decorative text situations." property_type="value" value_type="string" depends_on="" value_group="" display_order="210" addon_id="">
+      <value>"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',  'Ubuntu', 'Cantarell', 'Fira Sans',      'Droid Sans', 'Helvetica Neue', sans-serif"</value>
+    </property>
+    <property property_name="uix_iconSizeLarge" group_name="uix_icons" title="Icon large font size" description="" property_type="value" value_type="unit" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"22px"</value>
+    </property>
+    <property property_name="uix_icon_alert" group_name="uix_icons" title="Alert" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f09c"</value>
+    </property>
+    <property property_name="uix_icon_alertOff" group_name="uix_icons" title="Alert (off)" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fa90"</value>
+    </property>
+    <property property_name="uix_icon_article" group_name="uix_icons" title="Article" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f9ec"</value>
+    </property>
+    <property property_name="uix_icon_camera" group_name="uix_icons" title="Camera" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fb46"</value>
+    </property>
+    <property property_name="uix_icon_commentAlert" group_name="uix_icons" title="Comment alert" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f17e"</value>
+    </property>
+    <property property_name="uix_icon_delete" group_name="uix_icons" title="Delete" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f9e6"</value>
+    </property>
+    <property property_name="uix_icon_email" group_name="uix_icons" title="Email" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f1f0"</value>
+    </property>
+    <property property_name="uix_icon_fileDocument" group_name="uix_icons" title="File (Document)" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f9ed"</value>
+    </property>
+    <property property_name="uix_icon_folder" group_name="uix_icons" title="Folder" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f256"</value>
+    </property>
+    <property property_name="uix_icon_home" group_name="uix_icons" title="Home" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f6a0"</value>
+    </property>
+    <property property_name="uix_icon_inbox" group_name="uix_icons" title="Inbox" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f1f0"</value>
+    </property>
+    <property property_name="uix_icon_info" group_name="uix_icons" title="Info" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f2fd"</value>
+    </property>
+    <property property_name="uix_icon_like" group_name="uix_icons" title="Like (thumbs up)" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f514"</value>
+    </property>
+    <property property_name="uix_icon_messages" group_name="uix_icons" title="Messages" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f821"</value>
+    </property>
+    <property property_name="uix_icon_page" group_name="uix_icons" title="Page" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f9ed"</value>
+    </property>
+    <property property_name="uix_icon_post" group_name="uix_icons" title="Post" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f365"</value>
+    </property>
+    <property property_name="uix_icon_register" group_name="uix_icons" title="Register" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fa37"</value>
+    </property>
+    <property property_name="uix_icon_settings" group_name="uix_icons" title="Settings" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f8ba"</value>
+    </property>
+    <property property_name="uix_icon_toggleOff" group_name="uix_icons" title="Toggle Off" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fa18"</value>
+    </property>
+    <property property_name="uix_icon_toggleOn" group_name="uix_icons" title="Toggle On" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fa19"</value>
+    </property>
+    <property property_name="uix_icon_trophy" group_name="uix_icons" title="Trophy" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f53a"</value>
+    </property>
+    <property property_name="uix_icon_unlike" group_name="uix_icons" title="Unlike (thumbs down)" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f512"</value>
+    </property>
+    <property property_name="uix_icon_unlock" group_name="uix_icons" title="Unlock" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f340"</value>
+    </property>
+    <property property_name="uix_icon_user" group_name="uix_icons" title="User" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f013"</value>
+    </property>
+    <property property_name="uix_icon_userMultiple" group_name="uix_icons" title="Users (multiple)" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f00f"</value>
+    </property>
+    <property property_name="uix_icon_video" group_name="uix_icons" title="Video" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\fbb8"</value>
+    </property>
+    <property property_name="uix_icon_warn" group_name="uix_icons" title="Warn" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f02a"</value>
+    </property>
+    <property property_name="uix_icon_warning" group_name="uix_icons" title="Warning" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f02a"</value>
+    </property>
+    <property property_name="uix_icon_whatsNew" group_name="uix_icons" title="What's new" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"\\f17e"</value>
+    </property>
+    <property property_name="uix_imagePath" group_name="basic" title="Image path" description="Sets the path to images for the theme." property_type="value" value_type="string" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"styles/io"</value>
+    </property>
+    <property property_name="uix_logoText" group_name="basic" title="Logo text" description="Adds text in place of a logo. Note: this is overwritten when a logo image path is set" property_type="value" value_type="string" depends_on="" value_group="logo_text" display_order="1100" addon_id="">
+      <value>"iO"</value>
+    </property>
+    <property property_name="uix_message" group_name="message" title="Message" description="Styles the message container" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "border-radius": "0",
+    "extra": "border: none;"
+}</value>
+    </property>
+    <property property_name="uix_messageActionBar" group_name="message" title="Message action bar" description="Styles the action bar for messages" property_type="css" value_type="" depends_on="" value_group="" display_order="20040" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "padding": "@xf-messagePadding",
+    "padding-top": "0",
+    "extra": "margin: -@xf-messagePadding;\nmargin-top: 0;"
+}</value>
+    </property>
+    <property property_name="uix_messageAnimation" group_name="misc" title="Message animation" description="Adds an animation to messages on page load" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3300" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_messageControl" group_name="message" title="Message control" description="Styles the message actions such as reply and report" property_type="css" value_type="" depends_on="" value_group="" display_order="20050" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "color": "@xf-textColorMuted",
+    "background-color": "fade(@xf-textColorMuted, 10%)",
+    "padding-right": "5px",
+    "padding-left": "5px",
+    "extra": "border-radius: @xf-borderRadiusSmall;\ndisplay: inline-block;"
+}</value>
+    </property>
+    <property property_name="uix_messageControlHover" group_name="message" title="Message control (hover)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="20060" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "color": "@xf-textColorDimmed",
+    "background-color": "fade(@xf-textColorDimmed, 10%)"
+}</value>
+    </property>
+    <property property_name="uix_messageLikes" group_name="message" title="Message like bar" description="Styles the &quot;Likes&quot; bar for messages" property_type="css" value_type="" depends_on="" value_group="" display_order="20030" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-contentAltBg",
+    "border-width": "0",
+    "border-radius": "20px",
+    "padding": "@xf-messagePadding",
+    "padding-top": "10px",
+    "padding-bottom": "10px",
+    "extra": "margin: 0 0 @xf-messagePadding;"
+}</value>
+    </property>
+    <property property_name="uix_metaCell" group_name="uix_discussionList" title="Meta cell (for discussion list)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border" addon_id="">
+      <value>[]</value>
+    </property>
+    <property property_name="uix_navLogoVertSpacing" group_name="basic" title="Navigation logo vertical spacing" description="The max height of the navigation logo is the height of the navigation bar minus these spacings, however it may be smaller when there is not enough horizontal width." property_type="value" value_type="unit" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"16px"</value>
+    </property>
+    <property property_name="uix_navTabIcons" group_name="headerNav" title="Navigation tab icons" description="" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="2040" addon_id="">
+      <value>0</value>
+    </property>
+    <property property_name="uix_navigationBarHeight" group_name="headerNav" title="Navigation bar height" description="Sets the height of the primary navigation bar. (Note: this gets overwritten by sticky nav bar height when applicable. If unset, the navigation bar height will simply be as large as the largest component inside of it.)" property_type="value" value_type="unit" depends_on="" value_group="" display_order="2010" addon_id="">
+      <value>"65px"</value>
+    </property>
+    <property property_name="uix_nodeAnimations" group_name="misc" title="Node animations" description="" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3600" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_nodeBlockBody" group_name="nodeList" title="Block Body (for nodes)" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "border-radius": "@xf-borderRadiusSmall",
+    "padding": "@xf-paddingMedium"
+}</value>
+    </property>
+    <property property_name="uix_nodeBody" group_name="nodeList" title="Node body" description="Styles the individual node body" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-contentBg",
+    "extra": "overflow: hidden;"
+}</value>
+    </property>
+    <property property_name="uix_nodeBodyEven" group_name="nodeList" title="Node body (even)" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="2600" addon_id="">
+      <value>""</value>
+    </property>
+    <property property_name="uix_nodeBodyHover" group_name="nodeList" title="Node body (hover)" description="Adds a hover state to nodes" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-contentAltBg",
+    "extra": "position: relative;\nborder-radius: @xf-borderRadiusMedium;"
+}</value>
+    </property>
+    <property property_name="uix_nodeClickable" group_name="nodeList" title="Clickable nodes" description="Makes the entire node a clickable link to the forum. (Ignores other inner links.)" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="2050" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_nodeIconStyle" group_name="nodeList" title="Node icon style" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "font-size": "24px",
+    "border-radius": "@xf-borderRadiusSmall",
+    "padding": "4px"
+}</value>
+    </property>
+    <property property_name="uix_pageAnimation" group_name="misc" title="Page animations" description="Adds animations to main components (header, sidebars, main content, footer) on page load" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3000" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_removeIndexPageTitle" group_name="uix_globalSettings" title="Remove Title from Forum Index" description="Removes the page title from the forum index. Note: Only applicable when there are no other components in titlebar (such as page action or sidebar toggle.)" property_type="value" value_type="boolean" depends_on="" value_group="" display_order="100" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_removePageAction" group_name="uix_globalSettings" title="Remove forum list page actions" description="Removes the page actions from the forum list. By default these are New Posts and Post New Thread." property_type="value" value_type="boolean" depends_on="" value_group="" display_order="200" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_search_maxResponsiveWidth" group_name="uix_search" title="Viewport Width to Show Search Icon" description="Enter the maximum viewport width at which the search icon replaces the search bar." property_type="value" value_type="string" depends_on="" value_group="" display_order="1000" addon_id="">
+      <value>"10000px"</value>
+    </property>
+    <property property_name="uix_separateThreads" group_name="uix_discussionList" title="Separate Sticky Threads" description="This will add headings above sticky threads and above normal threads to clearly differentiate the two types of threads." property_type="value" value_type="boolean" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_sideNavigationAnimation" group_name="misc" title="Side navigation animation" description="Adds an animation to side navigation items on page load" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3500" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_sidebarWidgetAnimations" group_name="misc" title="Sidebar widget animation" description="Adds an animation to sidebar widgets on page load" property_type="value" value_type="boolean" depends_on="" value_group="uix_pageAnimation" display_order="3100" addon_id="">
+      <value>1</value>
+    </property>
+    <property property_name="uix_sidebarWidgetHeading" group_name="uix_sidebar" title="Sidebar widget heading" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra" addon_id="">
+      <value>[]</value>
+    </property>
+    <property property_name="uix_stickyNavHeight" group_name="headerNav" title="Height of the sticky navigation bar" description="" property_type="value" value_type="unit" depends_on="" value_group="" display_order="2015" addon_id="">
+      <value>"65px"</value>
+    </property>
+    <property property_name="uix_structPaddingH" group_name="uix_discussionList" title="Structured list horizontal padding" description="Sets the horizontal padding for list items such as discussion list, conversation list, reports list, etc.." property_type="value" value_type="unit" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"@xf-paddingMedium"</value>
+    </property>
+    <property property_name="uix_structPaddingV" group_name="uix_discussionList" title="Structured list vertical padding" description="Sets the vertical padding for list items such as discussion list, conversation list, reports list, etc.." property_type="value" value_type="unit" depends_on="" value_group="" display_order="0" addon_id="">
+      <value>"@xf-paddingMedium"</value>
+    </property>
+    <property property_name="uix_threadListSeparator" group_name="uix_discussionList" title="Thread list separators" description="Styles the thread list separate when Separate Sticky Threads is enabled." property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "@xf-textColorDimmed",
+    "background-color": "transparent",
+    "padding-top": "10px",
+    "padding-bottom": "10px",
+    "extra": "text-transform: uppercase;"
+}</value>
+    </property>
+    <property property_name="uix_viewportRemoveVisitorTabsText" group_name="headerNav" title="Viewport width to remove visitor tab text" description="Sets the minimum viewport width to display the conversations, alert and username text." property_type="value" value_type="unit" depends_on="uix_removeVisitorTabsText" value_group="" display_order="2280" addon_id="">
+      <value>"10000px"</value>
+    </property>
+    <property property_name="uix_viewportShowLogoBlock" group_name="headerNav" title="Minimum viewport width to show logo block" description="Viewport width to show the logo block. Below this width, the logo block will hide, and its components will be moved to the navigation" property_type="value" value_type="unit" depends_on="uix_enableLogoBlock" value_group="" display_order="6100" addon_id="">
+      <value>"100%"</value>
+    </property>
+    <property property_name="uix_viewportWidthRemoveSubNav" group_name="headerNav" title="Viewport width to remove the sub-navigation" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="2020" addon_id="">
+      <value>"100%"</value>
+    </property>
+    <property property_name="uix_visitorTabsMobile" group_name="headerNav" title="Visitor tabs location (mobile)" description="Choose where the visitor tabs should go for mobile" property_type="value" value_type="select" depends_on="" value_group="" display_order="2205" addon_id="">
+      <value_parameters>initial=Initial (don't change)
+tabbar= Tab bar
+canvas=Canvas</value_parameters>
+      <value>"tabbar"</value>
+    </property>
+    <property property_name="uix_welcomeSectionInner" group_name="uix_welcomeSection" title="Welcome section inner" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="10" css_components="text,background,border,padding,extra" addon_id="">
+      <value>{
+    "color": "#fff",
+    "padding": "24px",
+    "extra": "display: flex;\nalign-items: center;\njustify-content: center;\ntext-align: center;"
+}</value>
+    </property>
+    <property property_name="uix_welcomeSectionLocation" group_name="uix_welcomeSection" title="Welcome section location" description="Chooses where to insert the welcome section" property_type="value" value_type="select" depends_on="" value_group="" display_order="200" addon_id="">
+      <value_parameters>aboveMainContainer=Default (above main container)
+mainContainerTop= Top of main container
+aboveMainContent=Above main content
+mainContentTop=Top of main content
+header=Bottom of header</value_parameters>
+      <value>"header"</value>
+    </property>
+    <property property_name="uix_welcomeSectionOverlay" group_name="uix_welcomeSection" title="Welcome section overlay" description="" property_type="value" value_type="color" depends_on="" value_group="" display_order="2000" addon_id="">
+      <value>"url('@xf-uix_imagePath/io/images/swirl.png')"</value>
+    </property>
+    <property property_name="uix_welcomeSectionText__style" group_name="uix_welcomeSection" title="Welcome section text" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="40" css_components="text,padding,extra" addon_id="">
+      <value>{
+    "font-size": "15px",
+    "color": "rgba(255,255,255,.75)",
+    "font-weight": "@xf-fontWeightLight",
+    "padding-top": "@xf-paddingSmall",
+    "padding-bottom": "@xf-paddingLarge"
+}</value>
+    </property>
+    <property property_name="uix_welcomeSectionTitle__style" group_name="uix_welcomeSection" title="Welcome section title" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="30" css_components="text,padding,extra" addon_id="">
+      <value>{
+    "font-size": "36px",
+    "extra": "margin: 0;\nfont-family: @xf-uix_headingFont;"
+}</value>
+    </property>
+    <property property_name="uix_welcomeSection__buttonText" group_name="uix_welcomeSection" title="Welcome section button text" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="1200" addon_id="">
+      <value>"Register now"</value>
+    </property>
+    <property property_name="uix_welcomeSection__style" group_name="uix_welcomeSection" title="Welcome section container" description="" property_type="css" value_type="" depends_on="" value_group="" display_order="0" css_components="background,border,border_radius,padding,extra" addon_id="">
+      <value>{
+    "background-color": "@xf-uix_primaryColor",
+    "extra": "margin-bottom: @xf-elementSpacer;\nbackground-size: cover;\nbackground-position: center;\nbackground-image: linear-gradient(to right, spin(@xf-uix_primaryColor, -20%), @xf-uix_primaryColor);"
+}</value>
+    </property>
+    <property property_name="uix_welcomeSection__text" group_name="uix_welcomeSection" title="Welcome section text" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="1100" addon_id="">
+      <value>"Join this amazing group of people and start discussing what you like."</value>
+    </property>
+    <property property_name="uix_welcomeSection__title" group_name="uix_welcomeSection" title="Welcome section title" description="" property_type="value" value_type="string" depends_on="" value_group="" display_order="1000" addon_id="">
+      <value>"Welcome to iO"</value>
+    </property>
+  </properties>
+</style>
