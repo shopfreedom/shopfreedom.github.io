@@ -1,0 +1,117 @@
+.bodyShop {
+	margin: 0 auto;
+	background-color: #F5F5DC;
+	cursor: url(image/red_cursor.png), default;
+}
+/*Шапка сайта*/
+.headerShop {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position-x: center;
+	background-position-y: center;
+	background-image: url(image/header.png);
+	position: relative;
+}
+.gradient-headerShop {
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+.text-serverOnline {
+	padding: 1% 0 1% 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: yellow;
+	font-size: 24px;
+	font-family: '@MineCraft Rus';
+	text-align: center;
+}
+.donate {
+	text-align: center;
+	color: yellow;
+	background-color: rgba(0, 0, 0, 0.7);
+	font-size: 22px;
+}
+.donateSite {
+	padding: 5px 15px;
+}
+/*При наведении курсора (инфа о донате)*/
+.all_status {
+	display: inline-block;
+	margin: 20px;
+}
+.name_status {
+	background-color: #2C3D63;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	height: 40px;
+	border-radius: 25px 25px 0px 0px;
+	padding-top: 20px;
+}
+.img_status {
+	background-color: gainsboro;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center; 
+	width: 250px;
+	height: 250px;
+}
+.align_status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #1bb5329e;
+	border-radius: 0px 0px 15px 15px;
+	padding: 10px;
+}
+.buy_status {
+	padding: 5px;
+	font-size: 18px;
+	background-color: #f3503d;
+	border-radius: 10px;
+	color: white;
+	cursor: url(image/blue_pointer.png), pointer;
+}
+.buy_status:hover {
+	box-shadow: 0 0 10px #f3503d;
+}
+.rub_status {
+	padding: 5px;
+	color: #2C3D63;
+	font-size: 18px;
+	font-weight: bolder;
+}
+.status {
+	transition: all ease 1s;
+}
+.status:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.valute {
+	transition: all ease 1s;
+}
+.valute:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.key {
+	transition: all ease 1s;
+}
+.key:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.site_vk {
+	text-decoration: none;
+	color: yellow;
+}
+.vk {
+	transition: all ease 1s;
+}
+
+
