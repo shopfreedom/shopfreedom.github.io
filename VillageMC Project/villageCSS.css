@@ -1,0 +1,143 @@
+.bodyShop {
+	margin: 0 auto;
+	background-color: #F5F5DC;
+	cursor: url(image/red_cursor.png), default;
+}
+/*Шапка сайта*/
+.headerShop {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position-x: center;
+	background-position-y: center;
+	background-image: url(image/header.png);
+	min-width: 300px;
+}
+.gradient-headerShop {
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+.text-serverOnline {
+	padding: 1% 0 1% 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: yellow;
+	font-size: 24px;
+	font-family: '@MineCraft Rus';
+	text-align: center;
+}
+.donate {
+	text-align: center;
+	color: yellow;
+	background-color: rgba(0, 0, 0, 0.7);
+	font-size: 22px;
+	overflow-y: hidden;
+    overflow-x: auto;
+}
+.donateSite {
+	padding: 5px 15px;
+}
+/*При наведении курсора (инфа о донате)*/
+.all_status {
+	display: inline-block;
+	margin: 20px;
+}
+.name_status {
+	background-color: #2C3D63;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	border-radius: 25px 25px 0px 0px;
+	line-height: 30px;
+	padding: 15px 5px 5px 5px;
+}
+.img_status {
+	background-color: gainsboro;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center; 
+	height: 280px;
+	width: 280px;
+}
+.align_status {
+	display: flex;
+	justify-content: space-between;
+	background-color: #1bb5329e;
+	border-radius: 0px 0px 15px 15px;
+	padding: 10px;
+}
+.buy_status {
+	padding: 5px;
+	font-size: 18px;
+	background-color: #f3503d;
+	border-radius: 10px;
+	color: white;
+	cursor: url(image/blue_pointer.png), pointer;
+}
+.buy_status:hover {
+	box-shadow: 0 0 10px orange;
+}
+.rub_status {
+	padding: 5px;
+	color: #2C3D63;
+	font-size: 18px;
+	font-weight: bolder;
+}
+.status {
+	transition: all ease 1s;
+}
+.status:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.valute {
+	transition: all ease 1s;
+}
+.valute:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.key {
+	transition: all ease 1s;
+}
+.key:hover {
+	color: #FFF;
+	cursor: url(image/sword.png), pointer;
+	background-color: green;
+	transform: translateY(10%);
+}
+.site_vk {
+	text-decoration: none;
+	color: yellow;
+}
+.site_vk:hover {
+	cursor: url(image/sword.png), pointer;  
+}
+.vk {
+	transition: all ease 1s;
+}
+.vk:hover {
+	cursor: url(image/sword.png), pointer;
+}
+/*Кнопки*/
+.button {
+	margin: 15px 15px 0 15px;
+	display: flex;
+	text-align: left;
+	font-weight: bolder;
+	min-width: 300px;
+	width: 300px;
+	cursor: url(image/blue_pointer.png), pointer;
+}
+.text {
+	text-decoration: none;
+}
+.text:hover {
+	text-shadow: 1px 1px 2px gray;
+}
+.footer {
+	background: linear-gradient(to top, gray, silver); 
+	min-width: 300px;
+}
