@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Название сайта -->
+		<title>FreeDom Guild</title>
+		<!-- Иконка перед названием сайта -->
+		<link rel="icon" type="image" href="image/iconForTitle.png">
+		<style type="text/css">
+			body {
+				font-family: Helvetica, Arial, sans-serif;
+			}
+			a {
+				text-decoration: none;
+				padding: 0 10px 0 10px;
+				color: gainsboro;
+			}
+			a:hover {
+				color: white;
+			}
+			.allNew:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body style='margin: 0 auto;'>
+		<!-- Шапка сайта -->
+		<div style="background-color: black; display: flex; justify-content: space-between; position: sticky; top: 0;">
+			<div style="display: flex; padding: 10px;">
+				<a href='FreeDom.html'>
+					<img src="image/iconForTitle.png" width="65px" height="30px" border = "2px solid red">
+				</a>
+				<div style="padding-top: 10px;">
+					<a href="#">Новости</a>
+					<a href="#">Игроки</a>
+					<a href="#">Информация о Freedom</a>
+				</div>
+			</div>
+			<div style="float: right; display: flex; padding: 20px;">
+				<a href="https://vk.com/freedomvmc">Поддержка VK</a>
+				<a href="https://vk.com/freedomvmc?w=app6013442_-195869323%2523form_id%253D1">Подать заявку!</a>
+			</div>
+		</div>
+		<!-- Тело сайта -->
+		<div style="/*background-image: url(list_gif/fd.gif);*/ background-size: cover; background-repeat: no-repeat; background-position-x: center; background-position-y: center; background-color: black;">
+			<div style='margin: 0; padding: 25% 0 25% 0'>
+				<h1 style="margin: 0 0 0 5%; color: white; font-size: 70px;">Набор в гильдию!</h1>
+				<div style="margin: 0 0 0 5%; color: #ebdec2;">
+					<p style='font-size: 20px;'>Freedom проводит набор в гильдию!<br>Величайшие игроки с сервера собираются под общие знамёна,<br> чтобы сохранить не только свою свободу, но и свободу сервера.<br> Мы должны объединиться вместе, чтобы защитить то, что нам дорого.</p>
+				</div>
+				<div style="margin: 0 0 0 5%; color: #ebdec2;">
+					<a href="https://vk.com/freedomvmc?w=app6013442_-195869323%2523form_id%253D1" style='padding: 0; text-decoration: underline; font-size: 20px; color: #ebdec2;'>Подробности о наборе</a>
+				</div>
+			</div>
+			<div style="display: flex;">
+				<p style='margin: 0 0 0 5%; color: white; font-weight: bolder;'>ПОСЛЕДНИЕ НОВОСТИ</p>
+				<a href="#Новости" style='color: orange;' class='allNew'>Все новости</a>
+			</div>
+			<div style="display: flex;">
+				<a class='borderNew' href="https://vk.com/tenven" style='margin: 1% 0 5% 2%; border: 3px solid orange; width: 280px; height: 155px; background-image: url(image/iconForTitle.png); background-size: cover; background-repeat: no-repeat; background-position-x: center; background-position-y: center;'>
+					<div style='margin: 80px 5px 0px 5px;'>
+						<p style='color: gainsboro;'>30 июня 2021</p> 
+						<p class='textNew' style='color: orange; font-weight: bold;'>Подробности о Ten_Ven</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			let borderNew = document.querySelector('.borderNew')
+			let textNew = document.querySelector('.textNew')
+			borderNew.onmouseover = () => {
+				borderNew.style.border = '3px solid white'
+				textNew.style.color = 'white'
+			}
+			borderNew.onmouseout = () => {
+				borderNew.style.border = '3px solid orange'
+				textNew.style.color = 'orange'
+			}
+		</script>
+	</body>
+</html>
