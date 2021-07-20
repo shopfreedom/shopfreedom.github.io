@@ -1,0 +1,76 @@
+.bodyLB {
+	margin: 0 auto;
+	font-family: 'Roboto Thin';
+}
+.articleLB {
+	margin: 0 auto;
+	background-image: url(image/article.png);
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+	position: fixed;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	min-width: 1080px;
+	min-height: 440px;
+}
+.backgroundRGB {
+	margin: 0 auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	width: 100%;
+}
+.listCheats_text {
+	margin: 0 auto;
+	display: flex;
+	float: left;
+}
+.listCheats {
+	margin: 0 auto;
+	padding: 2.5% 2.5% 0% 2.5%;
+	display: flex;
+	justify-content: space-between;
+}
+.siteCheat {
+	margin: 0 auto;
+	height: 118px;
+	font-size: 16px;
+	color: white;
+	list-style-type: none;
+	cursor: pointer;
+	overflow-y: auto;
+}
+.siteCheat::-webkit-scrollbar {
+	width: 0;
+}
+li {
+	display: none;
+}
+ul:hover > abbr {
+	color: deepskyblue;
+}
+ul:hover > li {
+	display: block;
+}
+li:active{
+	color: deepskyblue;
+}
+.divHeadText {
+	margin-top: 7.5%;
+	z-index: 0;
+}
+.headtext {
+	color: white;
+	text-align: center;
+	margin: 2%;
+}
+.headText-1 {
+	font-size: 76px;
+}
+.headText-2 {
+	font-size: 30px;
+	margin: 0 35% 0 35%;
+	border: 1px solid white;
+	border-radius: 17.5px;
+}
