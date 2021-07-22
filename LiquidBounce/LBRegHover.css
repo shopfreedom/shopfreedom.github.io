@@ -1,0 +1,51 @@
+.Combat:hover > .nameCombat {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.World:hover > .nameWorld {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Targets:hover > .nameTargets {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Misc:hover > .nameMisc {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Player:hover > .namePlayer {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Movement:hover > .nameMovement {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Render:hover > .nameRender {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Exploit:hover > .nameExploit {
+	color: deepskyblue;
+	cursor: pointer;
+}
+.Fun:hover > .nameFun {
+	color: deepskyblue;
+	cursor: pointer;
+}
+/*Стилизация полосы прокрутки*/
+.siteCheat::-webkit-scrollbar { 
+	background-color: transparent;
+	width: 7.5px;
+}
+/*Cтилизация дорожки*/
+.siteCheat::-webkit-scrollbar-track {
+	border: 1px solid deepskyblue;
+	border-radius: 10px;
+}
+/*Стилизация ползунка*/
+.siteCheat::-webkit-scrollbar-thumb { 
+	border-radius: 10px;
+  	background-color: deepskyblue;
+}
